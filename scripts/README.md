@@ -17,6 +17,16 @@ python -m scripts.run_evals --suite seed --export evals/results/seed-packet.json
 
 The runner does not assign product-judgment scores. Automated judging is added only after its model configuration and human-calibration protocol are approved.
 
+Validate, summarize, and optionally enforce the gates on a populated result file with:
+
+```bash
+python -m scripts.evaluate_results evals/results/seed-run.json --suite seed
+python -m scripts.evaluate_results evals/results/seed-run.json --suite seed --enforce-gates
+```
+
+The result evaluator computes deterministic aggregates from recorded assessments; it never
+generates responses or assigns judgment scores.
+
 Build or verify deterministic knowledge indexes with:
 
 ```bash

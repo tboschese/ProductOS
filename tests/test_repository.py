@@ -19,6 +19,7 @@ def test_json_schemas_are_valid() -> None:
     validators = build_validators(schemas, registry)
     assert "source" in validators
     assert "eval-case" in validators
+    assert "eval-run" in validators
 
 
 def test_valid_fixtures_pass() -> None:

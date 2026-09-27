@@ -21,18 +21,9 @@
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
-      "items": {
-        "type": "string",
-        "enum": [
-          "problem_framing", "product_sense", "customer_reasoning", "strategic_reasoning",
-          "business_reasoning", "market_reasoning", "data_reasoning", "statistical_reasoning",
-          "causal_reasoning", "ux_reasoning", "technical_reasoning", "organizational_reasoning",
-          "regulatory_reasoning", "risk_awareness", "hypothesis_quality", "evidence_discipline",
-          "experimentation_rigor", "trade_off_awareness", "method_selection",
-          "decision_quality", "measurement_quality", "communication", "language_terminology_fidelity"
-        ]
-      }
+      "items": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/rubricDimension"}
     },
+    "citations_expected": {"type": "boolean", "default": false},
     "expected_behaviors": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
     "forbidden_behaviors": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
     "hard_failures": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},

@@ -35,6 +35,9 @@ Frequently exercised cases form the regression suite. Unseen or restricted holdo
 
 Automated scoring is introduced only with a recorded model, prompt version, sampling settings, run date, and repetition policy. Human reviewers calibrate the rubric and periodically measure judge agreement. A score is evidence about behavior, not objective truth.
 
+The executable result contract, separation rules, calibration lifecycle, and gate semantics are
+defined in [judge-protocol.md](judge-protocol.md).
+
 ## Initial scenario families
 
 Phase 1 begins with scenarios spanning:
@@ -59,3 +62,5 @@ Thresholds are calibrated after a baseline to avoid false precision. Initial tar
 - average multilingual decision-quality difference no greater than 0.5 on the four-point scale.
 
 These values are starting hypotheses, not permanent truths.
+
+The seed suite stores these thresholds as data so every report identifies the policy it applied.

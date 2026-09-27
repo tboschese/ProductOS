@@ -6,6 +6,23 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ## [Unreleased]
 
+## [0.3.0-alpha.2] — 2026-09-27
+
+### Added
+
+- Versioned behavioral eval-run schema with complete positive and negative fixtures.
+- Reproducible judge protocol covering blind generation, repetitions, calibration, and gate
+  interpretation.
+- Semantic result validation and deterministic aggregation for behavior coverage, forbidden
+  behaviors, hard failures, critical dimensions, citations, and multilingual deltas.
+- Suite-owned gate policies and tests proving that hard failures cannot be hidden by averages.
+
+### Known limitations
+
+- The repository contains no claimed behavioral baseline; synthetic test data only verifies the
+  machinery.
+- Judge calibration and an independently reviewed run remain pending.
+
 ## [0.3.0-alpha.1] — 2026-09-27
 
 ### Added

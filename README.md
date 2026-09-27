@@ -4,7 +4,7 @@ ProductOS is an evidence-based, multilingual Product Management knowledge and re
 
 ## Status
 
-The repository is at **0.3.0-alpha.1 — Research infrastructure**. It contains the Phase 0 foundation, Product Reasoning Engine v0, Staff Product Manager and Research Curator skills, structured registries, cross-reference validation, deterministic indexes, and a 21-case seed eval suite. The first bounded knowledge slice is `in_review`; broad research and scored behavioral baselines remain intentionally pending.
+The repository is at **0.3.0-alpha.2 — Research and evaluation infrastructure**. It contains the Phase 0 foundation, Product Reasoning Engine v0, Staff Product Manager and Research Curator skills, structured registries, cross-reference validation, deterministic indexes, a 21-case seed eval suite, and an auditable behavioral-result protocol. The first bounded knowledge slice is `in_review`; broad research and a calibrated scored baseline remain intentionally pending.
 
 ## Design principles
 
@@ -35,6 +35,7 @@ pytest
 - [Phase 0 architecture review](docs/phase-0-review.md)
 - [0.2.0 alpha review](docs/releases/0.2.0-alpha.1.md)
 - [0.3.0 alpha review](docs/releases/0.3.0-alpha.1.md)
+- [0.3.0 alpha.2 review](docs/releases/0.3.0-alpha.2.md)
 - [Research methodology](research/methodology.md)
 - [Evaluation strategy](evals/strategy.md)
 - [Contribution guide](CONTRIBUTING.md)

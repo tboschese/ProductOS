@@ -343,6 +343,22 @@ def validate_content(validators: Mapping[str, Validator]) -> list[str]:
                     failures.append(
                         f"{path.relative_to(ROOT)} references missing eval case {case_id}"
                     )
+            suite_cases = [
+                eval_cases[case_id]
+                for case_id in data["case_ids"]
+                if case_id in eval_cases
+            ]
+            exercised_dimensions = {
+                str(dimension)
+                for case in suite_cases
+                for dimension in case["applicable_dimensions"]
+            }
+            for dimension in data["gate_policy"]["critical_dimensions"]:
+                if dimension not in exercised_dimensions:
+                    failures.append(
+                        f"{path.relative_to(ROOT)} gate policy references unexercised "
+                        f"critical dimension {dimension}"
+                    )
 
         if schema_key == "eval-case" and path.parent.name == "multilingual":
             family_id = str(data["case_family_id"])

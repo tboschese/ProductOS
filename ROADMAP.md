@@ -25,7 +25,7 @@ Exit gate:
 
 ## 0.2.0 — Reasoning foundation and thin vertical slice
 
-**Status:** Alpha implemented; scored behavior baseline pending
+**Status:** Alpha implemented; reproducible result protocol added; scored baseline pending
 
 Deliver:
 
@@ -34,6 +34,9 @@ Deliver:
 - 10–15 seed decision evals;
 - a narrow Staff PM skill covering three to five representative decisions;
 - a recorded baseline against the eval suite.
+
+The result schema, aggregation, and provisional gates are implemented. The remaining exit item
+is an executed and calibrated baseline rather than a synthetic test fixture.
 
 The Staff PM integration is intentionally moved earlier than in the original specification so architectural problems surface before broad research.
 
