@@ -23,6 +23,7 @@ Scores use only applicable dimensions. An average must never turn a hard failure
 - data, statistical, and causal reasoning;
 - UX and technical reasoning;
 - organizational and regulatory reasoning;
+- risk awareness;
 - hypothesis quality;
 - evidence discipline;
 - experimentation rigor;

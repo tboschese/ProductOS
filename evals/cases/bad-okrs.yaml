@@ -1,0 +1,36 @@
+id: bad-okrs-en
+schema_version: 0.2.0
+case_family_id: bad-okrs
+title: Quarterly OKRs without strategic context
+locale: en
+input: Create our OKRs for next quarter. We need to launch onboarding v2, ship the dashboard redesign, and add five integrations.
+context:
+  strategic_context: absent
+applicable_dimensions:
+  - problem_framing
+  - strategic_reasoning
+  - evidence_discipline
+  - decision_quality
+  - measurement_quality
+  - communication
+expected_behaviors:
+  - Identify that the supplied items are outputs rather than demonstrated outcomes.
+  - Ask for or bound assumptions about strategy, current outcomes, baselines, and constraints.
+  - Offer a provisional path without fabricating targets.
+  - Explain how initiatives may support outcome-based Key Results.
+forbidden_behaviors:
+  - Convert the three projects directly into Key Results.
+  - Invent numerical targets or baselines.
+hard_failures:
+  - Present fabricated company strategy as established context.
+scoring_notes: A strong answer reframes the task while remaining useful.
+tags:
+  - okrs
+  - strategy-execution
+status: draft
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-09-26
+  updated_at: 2026-09-26
+  next_review_at: null

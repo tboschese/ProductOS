@@ -1,0 +1,10 @@
+id: acquisition-mix
+claim: The retention decline is explained primarily by a change in acquisition mix.
+supporting_evidence_ids:
+  - evidence-one
+contradicting_evidence_ids: []
+confidence: low
+impact_if_true: high
+test_method: Compare retention cohorts by acquisition source and customer segment.
+decision_change_evidence: Comparable cohorts show no meaningful difference by acquisition source.
+status: active

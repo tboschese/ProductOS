@@ -1,0 +1,10 @@
+id: acquisition_mix
+claim: ""
+supporting_evidence_ids:
+  - Evidence One
+contradicting_evidence_ids: duplicated
+confidence: certain
+impact_if_true: enormous
+test_method: ""
+decision_change_evidence: ""
+status: proven

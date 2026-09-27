@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://product-os.dev/schemas/uncertainty.schema.json",
+  "title": "ProductOS decision uncertainty",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "question", "category", "why_it_matters", "evidence_ids", "confidence",
+    "dominant", "reduction_method", "decision_change_evidence", "stop_criteria",
+    "residual_uncertainty"
+  ],
+  "properties": {
+    "id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "question": {"type": "string", "minLength": 1},
+    "category": {
+      "type": "string",
+      "enum": ["customer", "value", "market", "usability", "technical", "business", "economic", "data", "operational", "regulatory", "execution", "organizational"]
+    },
+    "why_it_matters": {"type": "string", "minLength": 1},
+    "evidence_ids": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/idList"},
+    "confidence": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/confidence"},
+    "dominant": {"type": "boolean"},
+    "reduction_method": {"type": "string", "minLength": 1},
+    "decision_change_evidence": {"type": "string", "minLength": 1},
+    "stop_criteria": {"type": "string", "minLength": 1},
+    "residual_uncertainty": {"type": "string", "minLength": 1}
+  }
+}

@@ -34,4 +34,4 @@ Build an evidence-based, multilingual Product Management knowledge and reasoning
 - Do not create domain knowledge, frameworks, or skills without their required schemas and eval coverage.
 - Keep `AGENTS.md` concise; put detailed guidance in the relevant subsystem documentation.
 - Run `python scripts/validate_repository.py` after structural or schema changes.
-- Run regression evals after changes to reasoning, skill instructions, or knowledge selection.
+- Inspect the seed suite with `python -m scripts.run_evals --suite seed` after changes to reasoning, skill instructions, or knowledge selection; run scored regression evals once a judge protocol is configured.

@@ -27,7 +27,7 @@
           "problem_framing", "product_sense", "customer_reasoning", "strategic_reasoning",
           "business_reasoning", "market_reasoning", "data_reasoning", "statistical_reasoning",
           "causal_reasoning", "ux_reasoning", "technical_reasoning", "organizational_reasoning",
-          "regulatory_reasoning", "hypothesis_quality", "evidence_discipline",
+          "regulatory_reasoning", "risk_awareness", "hypothesis_quality", "evidence_discipline",
           "experimentation_rigor", "trade_off_awareness", "method_selection",
           "decision_quality", "measurement_quality", "communication", "language_terminology_fidelity"
         ]

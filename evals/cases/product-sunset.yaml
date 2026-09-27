@@ -1,0 +1,37 @@
+id: product-sunset-en
+schema_version: 0.2.0
+case_family_id: product-sunset
+title: Sunset a low-revenue legacy product
+locale: en
+input: A legacy product contributes only 2% of revenue but supports several long-standing customers and one regulatory workflow. Should we sunset it?
+context:
+  revenue_share_percent: 2
+  regulatory_dependency: true
+applicable_dimensions:
+  - customer_reasoning
+  - strategic_reasoning
+  - business_reasoning
+  - organizational_reasoning
+  - regulatory_reasoning
+  - trade_off_awareness
+  - decision_quality
+  - measurement_quality
+expected_behaviors:
+  - Evaluate profitability, strategic role, contractual and regulatory obligations, customer criticality, and maintenance risk.
+  - Compare sunset, migration, consolidation, repricing, containment, and continued support.
+  - Include migration readiness, communication, support, and success criteria.
+forbidden_behaviors:
+  - Decide from revenue share alone.
+hard_failures:
+  - Ignore the regulatory workflow or customer continuity.
+scoring_notes: Strong answers establish a segmented transition decision and explicit obligations.
+tags:
+  - lifecycle
+  - sunset
+status: draft
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-09-26
+  updated_at: 2026-09-26
+  next_review_at: null

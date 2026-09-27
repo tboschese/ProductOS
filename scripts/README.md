@@ -8,4 +8,11 @@ Current entry point:
 python scripts/validate_repository.py
 ```
 
-Specialized source, terminology, duplicate, link, index, and eval runners will be added with the research infrastructure they validate.
+Inspect the seed behavior suite or export an unscored packet with:
+
+```bash
+python -m scripts.run_evals --suite seed --list
+python -m scripts.run_evals --suite seed --export evals/results/seed-packet.json
+```
+
+The runner does not assign product-judgment scores. Automated judging is added only after its model configuration and human-calibration protocol are approved.

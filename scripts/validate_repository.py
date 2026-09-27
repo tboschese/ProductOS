@@ -51,6 +51,7 @@ SCHEMA_BY_CONTENT_PARENT = {
     "active": "research-task",
     "cases": "eval-case",
     "multilingual": "eval-case",
+    "regression": "eval-suite",
 }
 
 MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
@@ -204,6 +205,7 @@ def content_files() -> Iterable[tuple[Path, str]]:
 def validate_content(validators: Mapping[str, Validator]) -> list[str]:
     failures: list[str] = []
     seen_ids: dict[str, Path] = {}
+    records: list[tuple[Path, str, dict[str, object]]] = []
 
     for path, schema_key in content_files():
         data = load_yaml(path)
@@ -227,6 +229,38 @@ def validate_content(validators: Mapping[str, Validator]) -> list[str]:
             )
         else:
             seen_ids[entity_id] = path
+
+        records.append((path, schema_key, data))
+
+    eval_cases = {
+        str(data["id"]): data
+        for _, schema_key, data in records
+        if schema_key == "eval-case"
+    }
+    english_families = {
+        str(data["case_family_id"])
+        for _, schema_key, data in records
+        if schema_key == "eval-case" and data.get("locale") == "en"
+    }
+
+    for path, schema_key, data in records:
+        if schema_key == "eval-suite":
+            for case_id in data["case_ids"]:
+                if case_id not in eval_cases:
+                    failures.append(
+                        f"{path.relative_to(ROOT)} references missing eval case {case_id}"
+                    )
+
+        if schema_key == "eval-case" and path.parent.name == "multilingual":
+            family_id = str(data["case_family_id"])
+            if data.get("locale") == "en":
+                failures.append(
+                    f"{path.relative_to(ROOT)} is multilingual but uses locale en"
+                )
+            if family_id not in english_families:
+                failures.append(
+                    f"{path.relative_to(ROOT)} has no canonical English case for {family_id}"
+                )
 
     return failures
 

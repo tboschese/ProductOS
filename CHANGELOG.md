@@ -6,6 +6,28 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ## [Unreleased]
 
+## [0.2.0-alpha.1] — 2026-09-27
+
+### Added
+
+- Product Reasoning Engine v0 and decision, evidence, uncertainty, and risk models.
+- Decision-record, evidence-item, hypothesis, uncertainty, risk, and eval-suite schemas.
+- Narrow Staff Product Manager skill with progressive references and five initial decision patterns.
+- Twelve canonical English eval families and eight linked Portuguese/Spanish variants.
+- Seed regression manifest and deterministic eval packet runner.
+
+### Changed
+
+- Repository validation now checks eval-suite references and multilingual case families.
+- Phase status now distinguishes structural readiness from unrun behavioral scoring.
+
+### Known limitations
+
+- No scored baseline or calibrated automated judge is configured.
+- Skill behavior has passed structural validation but not independent forward-testing.
+
+## [0.1.0] — 2026-09-26
+
 ### Added
 
 - Phase 0 repository bootstrap.

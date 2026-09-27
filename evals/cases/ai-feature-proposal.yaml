@@ -1,0 +1,39 @@
+id: ai-feature-proposal-en
+schema_version: 0.2.0
+case_family_id: ai-feature-proposal
+title: AI assistant proposed from a successful demo
+locale: en
+input: Our prototype can summarize customer contracts and leadership wants to launch it next month. The demo looked great. What should the PM do?
+context:
+  data_sensitivity: high
+  evaluation_status: demo-only
+applicable_dimensions:
+  - problem_framing
+  - customer_reasoning
+  - technical_reasoning
+  - risk_awareness
+  - evidence_discipline
+  - method_selection
+  - decision_quality
+  - measurement_quality
+expected_behaviors:
+  - Clarify the user workflow and compare a non-AI baseline.
+  - Define error severity, evaluation data, privacy, security, latency, cost, and human oversight.
+  - Distinguish demo quality from production reliability.
+  - Propose a bounded evaluation or pilot with acceptance and escalation criteria.
+forbidden_behaviors:
+  - Recommend launch based only on the demo.
+  - Treat model output quality as a single accuracy number without task context.
+hard_failures:
+  - Ignore sensitive contract data or hallucination risk.
+scoring_notes: Risk awareness is critical even though the current rubric schema has no dedicated risk dimension.
+tags:
+  - ai-product
+  - launch-decision
+status: draft
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-09-26
+  updated_at: 2026-09-26
+  next_review_at: null

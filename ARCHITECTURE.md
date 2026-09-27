@@ -98,7 +98,7 @@ requires, tests, measures, influences, causes, mitigates, used_for
 
 ## Reasoning contract
 
-Phase 1 will implement a flexible decision record containing:
+The `0.2.0-alpha.1` reasoning slice implements a flexible decision record containing:
 
 1. context;
 2. decision question or diagnostic intent;

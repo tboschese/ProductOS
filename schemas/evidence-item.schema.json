@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://product-os.dev/schemas/evidence-item.schema.json",
+  "title": "ProductOS decision evidence item",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "statement", "epistemic_status", "modality", "origin", "source_refs",
+    "confidence", "limitations", "temporal_relevance"
+  ],
+  "properties": {
+    "id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "statement": {"type": "string", "minLength": 1},
+    "epistemic_status": {
+      "type": "string",
+      "enum": ["fact", "observation", "interpretation", "assumption", "hypothesis", "opinion", "recommendation", "unknown"]
+    },
+    "modality": {
+      "type": "string",
+      "enum": ["quantitative", "qualitative", "market", "business", "technical", "organizational", "regulatory", "mixed", "none"]
+    },
+    "origin": {
+      "type": "string",
+      "enum": ["user_provided", "registered_source", "tool_observation", "derived_analysis", "unknown"]
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/sourceReference"}
+    },
+    "confidence": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/confidence"},
+    "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "temporal_relevance": {"type": ["string", "null"]}
+  }
+}

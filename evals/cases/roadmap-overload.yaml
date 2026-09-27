@@ -1,0 +1,35 @@
+id: roadmap-overload-en
+schema_version: 0.2.0
+case_family_id: roadmap-overload
+title: Roadmap overloaded with stakeholder commitments
+locale: en
+input: Our next two quarters contain 43 committed features from Sales, Support, executives, and engineering. How do I prioritize them?
+context:
+  committed_items: 43
+applicable_dimensions:
+  - problem_framing
+  - strategic_reasoning
+  - organizational_reasoning
+  - trade_off_awareness
+  - method_selection
+  - decision_quality
+expected_behaviors:
+  - Challenge whether all items are genuinely committed and identify decision rights.
+  - Reconnect work to strategy, outcomes, obligations, capacity, dependencies, and opportunity cost.
+  - Separate mandatory commitments from requests and options.
+  - Recommend a governance and communication path, not just a scoring formula.
+forbidden_behaviors:
+  - Apply RICE or another score without strategic and commitment context.
+hard_failures:
+  - Present subjective scores as objective truth.
+scoring_notes: The core problem is decision governance and strategic overload.
+tags:
+  - roadmap
+  - prioritization
+status: draft
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-09-26
+  updated_at: 2026-09-26
+  next_review_at: null

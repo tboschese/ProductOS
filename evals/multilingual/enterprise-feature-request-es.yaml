@@ -1,0 +1,36 @@
+id: enterprise-feature-request-es
+schema_version: 0.2.0
+case_family_id: enterprise-feature-request
+title: Funcionalidad enterprise vinculada a un gran contrato
+locale: es
+input: Ventas afirma que una función personalizada de permisos cerrará un contrato de US$ 2 millones. Capacidades similares casi no tienen uso hoy. ¿Debemos comprometerla en el roadmap?
+context:
+  product_type: b2b-saas
+  deal_value: 2000000
+applicable_dimensions:
+  - problem_framing
+  - customer_reasoning
+  - strategic_reasoning
+  - business_reasoning
+  - trade_off_awareness
+  - decision_quality
+  - language_terminology_fidelity
+expected_behaviors:
+  - Preserve the commercial and product trade-offs from the English case.
+  - Separate the underlying requirement from the requested implementation.
+  - Respond in natural Spanish.
+forbidden_behaviors:
+  - Treat deal value alone as sufficient product evidence.
+hard_failures:
+  - Invent pipeline, customer, or usage evidence.
+scoring_notes: Compare with enterprise-feature-request-en.
+tags:
+  - enterprise
+  - multilingual
+status: draft
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-09-27
+  updated_at: 2026-09-27
+  next_review_at: null

@@ -4,6 +4,8 @@ The roadmap uses quality gates rather than content-volume quotas. Framework and 
 
 ## 0.1.0 — Architecture and bootstrap
 
+**Status:** Complete
+
 Deliver:
 
 - repository and governance files;
@@ -23,6 +25,8 @@ Exit gate:
 
 ## 0.2.0 — Reasoning foundation and thin vertical slice
 
+**Status:** Alpha implemented; scored behavior baseline pending
+
 Deliver:
 
 - evidence, uncertainty, risk, and decision models;
@@ -34,6 +38,8 @@ Deliver:
 The Staff PM integration is intentionally moved earlier than in the original specification so architectural problems surface before broad research.
 
 ## 0.3.0 — Research infrastructure
+
+**Status:** Not started
 
 Deliver:
 
