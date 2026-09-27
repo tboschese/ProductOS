@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://product-os.dev/schemas/framework.schema.json",
+  "title": "ProductOS framework",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "schema_version", "name", "aliases", "category", "primary_domain", "facets",
+    "origin", "problem_it_addresses", "purpose", "inputs", "process", "outputs",
+    "use_when", "avoid_when", "assumptions", "strengths", "limitations", "risks",
+    "common_misuse", "alternatives", "complements", "examples", "source_refs",
+    "confidence", "status", "review"
+  ],
+  "properties": {
+    "id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "schema_version": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/schemaVersion"},
+    "name": {"type": "string", "minLength": 1},
+    "aliases": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "category": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "primary_domain": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "facets": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/facets"},
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authors", "year"],
+      "properties": {
+        "authors": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "year": {"type": ["integer", "null"], "minimum": 1800, "maximum": 2200}
+      }
+    },
+    "problem_it_addresses": {"type": "string", "minLength": 1},
+    "purpose": {"type": "string", "minLength": 1},
+    "inputs": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "process": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "outputs": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "use_when": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "avoid_when": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "assumptions": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "strengths": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "limitations": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "risks": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "common_misuse": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "alternatives": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/idList"},
+    "complements": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/idList"},
+    "examples": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/sourceReference"}
+    },
+    "confidence": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/confidence"},
+    "status": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/status"},
+    "review": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/review"}
+  }
+}

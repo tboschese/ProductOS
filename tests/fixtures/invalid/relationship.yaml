@@ -1,0 +1,9 @@
+id: relationship_example
+schema_version: 0.1.0
+subject_id: example-framework
+predicate: related_to
+object_id: Example Concept
+confidence: certain
+source_refs: []
+status: valid
+review: {}

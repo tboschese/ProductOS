@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://product-os.dev/schemas/source.schema.json",
+  "title": "ProductOS source",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "schema_version", "title", "authors", "organization", "year", "url",
+    "language", "type", "access", "authority_level", "facets", "summary",
+    "limitations", "last_verified", "status", "review"
+  ],
+  "properties": {
+    "id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "schema_version": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/schemaVersion"},
+    "title": {"type": "string", "minLength": 1},
+    "authors": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "organization": {"type": ["string", "null"]},
+    "year": {"type": ["integer", "null"], "minimum": 1800, "maximum": 2200},
+    "url": {"type": "string", "format": "uri"},
+    "language": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/locale"},
+    "type": {
+      "type": "string",
+      "enum": [
+        "primary_research", "original_framework", "peer_reviewed", "research_institution",
+        "industry_research", "company_publication", "practitioner", "community",
+        "regulation", "standard", "book"
+      ]
+    },
+    "access": {"type": "string", "enum": ["open", "paywalled", "restricted"]},
+    "authority_level": {"type": "string", "enum": ["A", "B", "C", "D", "E"]},
+    "facets": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/facets"},
+    "concept_ids": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/idList"},
+    "summary": {"type": "string", "minLength": 1},
+    "limitations": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "last_verified": {"type": "string", "format": "date"},
+    "status": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/status"},
+    "review": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/review"}
+  },
+  "anyOf": [
+    {"properties": {"authors": {"minItems": 1}}},
+    {"properties": {"organization": {"type": "string", "minLength": 1}}}
+  ]
+}

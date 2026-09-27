@@ -1,0 +1,52 @@
+id: example-framework
+schema_version: 0.1.0
+name: Example Framework
+aliases:
+  - EF
+category: decision-making
+primary_domain: decision-making
+facets:
+  capabilities:
+    - decision-making
+origin:
+  authors:
+    - Example Author
+  year: 2025
+problem_it_addresses: A synthetic problem used for schema validation.
+purpose: Validate the complete framework contract.
+inputs:
+  - Context
+process:
+  - Examine the context.
+outputs:
+  - A test result.
+use_when:
+  - Validating the schema fixture.
+avoid_when:
+  - Making a real product decision.
+assumptions:
+  - The fixture is not treated as knowledge.
+strengths:
+  - Exercises required fields.
+limitations:
+  - Has no real-world evidence.
+risks:
+  - Accidental use as knowledge.
+common_misuse:
+  - Publishing the fixture as guidance.
+alternatives: []
+complements: []
+examples:
+  - Schema validation.
+source_refs:
+  - source_id: source-example
+    locator: Section 1
+    role: background
+confidence: very_low
+status: draft
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-09-26
+  updated_at: 2026-09-26
+  next_review_at: null

@@ -1,0 +1,30 @@
+id: retention-decline-example
+schema_version: 0.1.0
+name: Retention decline example
+decision_question: What most credibly explains the observed retention decline?
+primary_domain: product-analytics
+facets:
+  practices:
+    - product-analytics
+signals:
+  - A sustained cohort retention change.
+competing_hypotheses:
+  - Acquisition mix changed.
+  - Product value declined.
+evidence_needed:
+  - Instrumentation validation.
+  - Cohort segmentation.
+trade_offs:
+  - Speed of intervention versus diagnostic confidence.
+measurement:
+  - Cohort retention by acquisition source.
+anti_pattern_ids:
+  - solution-jumping
+claim_ids: []
+status: draft
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-09-26
+  updated_at: 2026-09-26
+  next_review_at: null

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://product-os.dev/schemas/relationship.schema.json",
+  "title": "ProductOS relationship",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "schema_version", "subject_id", "predicate", "object_id", "confidence",
+    "source_refs", "status", "review"
+  ],
+  "properties": {
+    "id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "schema_version": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/schemaVersion"},
+    "subject_id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "predicate": {
+      "type": "string",
+      "enum": [
+        "supports", "contradicts", "alternative_to", "complements", "derived_from",
+        "requires", "tests", "measures", "influences", "causes", "mitigates", "used_for"
+      ]
+    },
+    "object_id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "confidence": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/confidence"},
+    "source_refs": {
+      "type": "array",
+      "items": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/sourceReference"}
+    },
+    "status": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/status"},
+    "review": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/review"}
+  }
+}

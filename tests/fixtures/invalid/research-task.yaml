@@ -1,0 +1,17 @@
+id: research example
+schema_version: 0.1.0
+title: ""
+primary_domain: decision-making
+research_question: ""
+why_it_matters: ""
+scope: []
+out_of_scope: []
+subtopics: []
+primary_source_plan: []
+secondary_source_plan: []
+questions: []
+expected_outputs: []
+conflicting_views_to_investigate: []
+acceptance_criteria: []
+review_status: finished
+review: {}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://product-os.dev/schemas/claim.schema.json",
+  "title": "ProductOS claim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "schema_version", "statement", "epistemic_status", "evidence_modality",
+    "supporting_sources", "contradicting_sources", "confidence", "limitations",
+    "primary_domain", "facets", "status", "review"
+  ],
+  "properties": {
+    "id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "schema_version": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/schemaVersion"},
+    "statement": {"type": "string", "minLength": 1},
+    "epistemic_status": {
+      "type": "string",
+      "enum": ["fact", "observation", "interpretation", "assumption", "hypothesis", "opinion", "recommendation", "unknown"]
+    },
+    "evidence_modality": {
+      "type": "string",
+      "enum": ["quantitative", "qualitative", "market", "business", "technical", "organizational", "regulatory", "mixed", "none"]
+    },
+    "supporting_sources": {
+      "type": "array",
+      "items": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/sourceReference"}
+    },
+    "contradicting_sources": {
+      "type": "array",
+      "items": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/sourceReference"}
+    },
+    "confidence": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/confidence"},
+    "limitations": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "primary_domain": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "facets": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/facets"},
+    "status": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/status"},
+    "review": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/review"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "approved"}}, "required": ["status"]},
+      "then": {"properties": {"supporting_sources": {"minItems": 1}}}
+    }
+  ]
+}
