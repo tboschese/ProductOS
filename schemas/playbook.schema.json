@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://product-os.dev/schemas/playbook.schema.json",
+  "title": "ProductOS adaptive playbook",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "schema_version", "name", "purpose", "primary_domain", "facets", "decision_pattern_ids",
+    "entry_conditions", "guiding_questions", "adaptive_actions", "avoid", "exit_conditions", "measures",
+    "claim_ids", "status", "review"
+  ],
+  "properties": {
+    "id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "schema_version": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/schemaVersion"},
+    "name": {"type": "string", "minLength": 1},
+    "purpose": {"type": "string", "minLength": 1},
+    "primary_domain": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "facets": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/facets"},
+    "decision_pattern_ids": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/idList"},
+    "entry_conditions": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "guiding_questions": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "adaptive_actions": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "avoid": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "exit_conditions": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "measures": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "claim_ids": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/idList"},
+    "status": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/status"},
+    "review": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/review"}
+  }
+}

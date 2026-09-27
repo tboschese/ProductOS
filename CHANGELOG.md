@@ -6,6 +6,26 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ## [Unreleased]
 
+## [0.3.0-alpha.1] — 2026-09-27
+
+### Added
+
+- Research Curator skill and review references.
+- Per-entity knowledge registries and schemas for anti-patterns, cases, and playbooks.
+- Cross-entity reference validation, deterministic indexes, and duplicate-label checks.
+- First bounded research slice on decision quality versus outcome quality.
+- Three reviewed source records, three claims, two concepts, multilingual terminology, relationships, an anti-pattern, a decision pattern, a playbook, and an eval case in `in_review` state.
+
+### Changed
+
+- Terminology entries now map explicitly to a canonical `concept_id`.
+- The seed eval suite now contains 21 cases.
+
+### Known limitations
+
+- The first knowledge slice has not received independent editorial approval.
+- No scored behavioral baseline or automated judge is configured.
+
 ## [0.2.0-alpha.1] — 2026-09-27
 
 ### Added

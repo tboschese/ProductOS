@@ -39,7 +39,7 @@ REQUIRED_PATHS = (
     "scripts",
 )
 
-SCHEMA_BY_CONTENT_PARENT = {
+KNOWLEDGE_SCHEMA_BY_PARENT = {
     "sources": "source",
     "claims": "claim",
     "concepts": "concept",
@@ -47,8 +47,18 @@ SCHEMA_BY_CONTENT_PARENT = {
     "terminology": "terminology",
     "decision-patterns": "decision-pattern",
     "relationships": "relationship",
+    "anti-patterns": "anti-pattern",
+    "cases": "case",
+    "playbooks": "playbook",
+}
+
+RESEARCH_SCHEMA_BY_PARENT = {
     "backlog": "research-task",
     "active": "research-task",
+    "completed": "research-task",
+}
+
+EVAL_SCHEMA_BY_PARENT = {
     "cases": "eval-case",
     "multilingual": "eval-case",
     "regression": "eval-suite",
@@ -194,10 +204,14 @@ def validate_markdown_links() -> list[str]:
 
 
 def content_files() -> Iterable[tuple[Path, str]]:
-    roots = (ROOT / "knowledge", ROOT / "research", ROOT / "evals")
-    for content_root in roots:
+    roots = (
+        (ROOT / "knowledge", KNOWLEDGE_SCHEMA_BY_PARENT),
+        (ROOT / "research", RESEARCH_SCHEMA_BY_PARENT),
+        (ROOT / "evals", EVAL_SCHEMA_BY_PARENT),
+    )
+    for content_root, schema_map in roots:
         for path in content_root.rglob("*.yaml"):
-            schema_key = SCHEMA_BY_CONTENT_PARENT.get(path.parent.name)
+            schema_key = schema_map.get(path.parent.name)
             if schema_key:
                 yield path, schema_key
 
@@ -231,6 +245,85 @@ def validate_content(validators: Mapping[str, Validator]) -> list[str]:
             seen_ids[entity_id] = path
 
         records.append((path, schema_key, data))
+
+        if path.is_relative_to(ROOT / "knowledge") and path.stem != entity_id:
+            failures.append(
+                f"{path.relative_to(ROOT)} filename must match entity id {entity_id}"
+            )
+
+    ids_by_schema: dict[str, set[str]] = {}
+    for _, schema_key, data in records:
+        ids_by_schema.setdefault(schema_key, set()).add(str(data["id"]))
+
+    knowledge_schema_keys = set(KNOWLEDGE_SCHEMA_BY_PARENT.values())
+    knowledge_ids = {
+        str(data["id"])
+        for _, schema_key, data in records
+        if schema_key in knowledge_schema_keys
+    }
+
+    def require_ids(
+        path: Path, values: object, target_schema: str, field_name: str
+    ) -> None:
+        target_ids = ids_by_schema.get(target_schema, set())
+        for value in values if isinstance(values, list) else []:
+            if value not in target_ids:
+                failures.append(
+                    f"{path.relative_to(ROOT)} {field_name} references missing "
+                    f"{target_schema} {value}"
+                )
+
+    def require_source_refs(path: Path, values: object, field_name: str) -> None:
+        source_ids = ids_by_schema.get("source", set())
+        for value in values if isinstance(values, list) else []:
+            if isinstance(value, dict) and value.get("source_id") not in source_ids:
+                failures.append(
+                    f"{path.relative_to(ROOT)} {field_name} references missing source "
+                    f"{value.get('source_id')}"
+                )
+
+    for path, schema_key, data in records:
+        if schema_key == "source":
+            require_ids(path, data.get("concept_ids", []), "concept", "concept_ids")
+        elif schema_key == "claim":
+            require_source_refs(path, data.get("supporting_sources", []), "supporting_sources")
+            require_source_refs(
+                path, data.get("contradicting_sources", []), "contradicting_sources"
+            )
+        elif schema_key == "concept":
+            require_ids(path, data.get("claim_ids", []), "claim", "claim_ids")
+        elif schema_key == "terminology":
+            require_ids(path, [data.get("concept_id")], "concept", "concept_id")
+        elif schema_key == "framework":
+            require_source_refs(path, data.get("source_refs", []), "source_refs")
+            require_ids(path, data.get("alternatives", []), "framework", "alternatives")
+            require_ids(path, data.get("complements", []), "framework", "complements")
+        elif schema_key == "decision-pattern":
+            require_ids(path, data.get("claim_ids", []), "claim", "claim_ids")
+            require_ids(
+                path, data.get("anti_pattern_ids", []), "anti-pattern", "anti_pattern_ids"
+            )
+        elif schema_key == "relationship":
+            for field_name in ("subject_id", "object_id"):
+                value = data.get(field_name)
+                if value not in knowledge_ids:
+                    failures.append(
+                        f"{path.relative_to(ROOT)} {field_name} references missing entity {value}"
+                    )
+            require_source_refs(path, data.get("source_refs", []), "source_refs")
+        elif schema_key == "anti-pattern":
+            require_ids(path, data.get("claim_ids", []), "claim", "claim_ids")
+            require_ids(path, data.get("eval_case_ids", []), "eval-case", "eval_case_ids")
+        elif schema_key == "case":
+            require_source_refs(path, data.get("source_refs", []), "source_refs")
+        elif schema_key == "playbook":
+            require_ids(
+                path,
+                data.get("decision_pattern_ids", []),
+                "decision-pattern",
+                "decision_pattern_ids",
+            )
+            require_ids(path, data.get("claim_ids", []), "claim", "claim_ids")
 
     eval_cases = {
         str(data["id"]): data

@@ -1,0 +1,40 @@
+id: outcome-bias-review-en
+schema_version: 0.3.0
+case_family_id: outcome-bias-review
+title: Successful outcome after a weak decision process
+locale: en
+input: We rushed a product launch without customer validation and accepted a known reliability risk. Adoption exceeded target and no major incident occurred. Leadership says this proves the decision was excellent. How should we review it?
+context:
+  outcome: favorable
+  process_gaps:
+    - customer-validation-skipped
+    - known-reliability-risk-accepted
+applicable_dimensions:
+  - problem_framing
+  - strategic_reasoning
+  - technical_reasoning
+  - risk_awareness
+  - evidence_discipline
+  - decision_quality
+  - measurement_quality
+expected_behaviors:
+  - Separate the favorable outcome from the quality of the original decision process.
+  - Reconstruct information, alternatives, uncertainty, and constraints available at commitment.
+  - Recognize adoption as evidence for future beliefs without using it to erase process gaps.
+  - Identify which process or calibration changes are actually supported by the outcome.
+forbidden_behaviors:
+  - Accept leadership's conclusion because the launch succeeded.
+  - Dismiss the outcome as irrelevant to future learning.
+hard_failures:
+  - Claim the reliability risk was acceptable merely because no incident occurred.
+scoring_notes: The answer should avoid both outcome bias and the opposite error of ignoring informative outcomes.
+tags:
+  - decision-quality
+  - outcome-bias
+status: in_review
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-09-27
+  updated_at: 2026-09-27
+  next_review_at: null

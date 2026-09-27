@@ -1,0 +1,135 @@
+{
+  "entities": {
+    "anti-patterns": [
+      {
+        "id": "outcome-equals-decision-quality",
+        "label": "Outcome equals decision quality",
+        "path": "knowledge/anti-patterns/outcome-equals-decision-quality.yaml",
+        "primary_domain": "decision-making",
+        "status": "in_review"
+      }
+    ],
+    "cases": [],
+    "claims": [
+      {
+        "id": "decision-quality-evaluated-ex-ante",
+        "label": "A decision under uncertainty should be evaluated primarily from the information, alternatives, values, and constraints available when the commitment was made, rather than from the realized outcome alone.",
+        "path": "knowledge/claims/decision-quality-evaluated-ex-ante.yaml",
+        "primary_domain": "decision-making",
+        "status": "in_review"
+      },
+      {
+        "id": "outcome-bias-affects-evaluation",
+        "label": "Knowledge of favorable or unfavorable outcomes can systematically change evaluations of otherwise equivalent decisions made under uncertainty.",
+        "path": "knowledge/claims/outcome-bias-affects-evaluation.yaml",
+        "primary_domain": "decision-making",
+        "status": "in_review"
+      },
+      {
+        "id": "outcomes-update-future-beliefs",
+        "label": "Outcome information can appropriately update beliefs for future similar decisions even when it should not be used to rewrite what was knowable in the original decision.",
+        "path": "knowledge/claims/outcomes-update-future-beliefs.yaml",
+        "primary_domain": "decision-making",
+        "status": "in_review"
+      }
+    ],
+    "concepts": [
+      {
+        "id": "decision-quality",
+        "label": "Decision Quality",
+        "path": "knowledge/concepts/decision-quality.yaml",
+        "primary_domain": "decision-making",
+        "status": "in_review"
+      },
+      {
+        "id": "outcome-bias",
+        "label": "Outcome Bias",
+        "path": "knowledge/concepts/outcome-bias.yaml",
+        "primary_domain": "decision-making",
+        "status": "in_review"
+      }
+    ],
+    "decision-patterns": [
+      {
+        "id": "post-outcome-decision-review",
+        "label": "Post-outcome decision review",
+        "path": "knowledge/decision-patterns/post-outcome-decision-review.yaml",
+        "primary_domain": "decision-making",
+        "status": "in_review"
+      }
+    ],
+    "frameworks": [],
+    "playbooks": [
+      {
+        "id": "review-decision-quality",
+        "label": "Review decision quality after an outcome",
+        "path": "knowledge/playbooks/review-decision-quality.yaml",
+        "primary_domain": "decision-making",
+        "status": "in_review"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "decision-quality-contradicts-outcome-equals",
+        "label": "decision-quality-contradicts-outcome-equals",
+        "path": "knowledge/relationships/decision-quality-contradicts-outcome-equals.yaml",
+        "primary_domain": null,
+        "status": "in_review"
+      },
+      {
+        "id": "outcome-bias-influences-decision-quality",
+        "label": "outcome-bias-influences-decision-quality",
+        "path": "knowledge/relationships/outcome-bias-influences-decision-quality.yaml",
+        "primary_domain": null,
+        "status": "in_review"
+      },
+      {
+        "id": "review-playbook-used-for-post-outcome",
+        "label": "review-playbook-used-for-post-outcome",
+        "path": "knowledge/relationships/review-playbook-used-for-post-outcome.yaml",
+        "primary_domain": null,
+        "status": "in_review"
+      }
+    ],
+    "sources": [
+      {
+        "id": "aiyer-et-al-2023",
+        "label": "Outcomes Affect Evaluations of Decision Quality",
+        "path": "knowledge/sources/aiyer-et-al-2023.yaml",
+        "primary_domain": null,
+        "status": "in_review"
+      },
+      {
+        "id": "baron-hershey-1988",
+        "label": "Outcome Bias in Decision Evaluation",
+        "path": "knowledge/sources/baron-hershey-1988.yaml",
+        "primary_domain": null,
+        "status": "in_review"
+      },
+      {
+        "id": "sdp-core-principles",
+        "label": "Core Principles of Decision Excellence",
+        "path": "knowledge/sources/sdp-core-principles.yaml",
+        "primary_domain": null,
+        "status": "in_review"
+      }
+    ],
+    "terminology": [
+      {
+        "id": "term-decision-quality",
+        "label": "Decision Quality",
+        "path": "knowledge/terminology/term-decision-quality.yaml",
+        "primary_domain": null,
+        "status": "in_review"
+      },
+      {
+        "id": "term-outcome-bias",
+        "label": "Outcome Bias",
+        "path": "knowledge/terminology/term-outcome-bias.yaml",
+        "primary_domain": null,
+        "status": "in_review"
+      }
+    ]
+  },
+  "schema_version": "0.3.0"
+}

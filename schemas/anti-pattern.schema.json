@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://product-os.dev/schemas/anti-pattern.schema.json",
+  "title": "ProductOS anti-pattern",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "schema_version", "name", "description", "primary_domain", "facets", "triggers",
+    "harmful_behavior", "consequences", "corrections", "claim_ids", "eval_case_ids", "status", "review"
+  ],
+  "properties": {
+    "id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "schema_version": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/schemaVersion"},
+    "name": {"type": "string", "minLength": 1},
+    "description": {"type": "string", "minLength": 1},
+    "primary_domain": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "facets": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/facets"},
+    "triggers": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "harmful_behavior": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "consequences": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "corrections": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+    "claim_ids": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/idList"},
+    "eval_case_ids": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/idList"},
+    "status": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/status"},
+    "review": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/review"}
+  }
+}

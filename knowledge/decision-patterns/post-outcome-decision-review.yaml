@@ -1,0 +1,37 @@
+id: post-outcome-decision-review
+schema_version: 0.3.0
+name: Post-outcome decision review
+decision_question: Was the original decision justified by what was knowable at commitment, and what should the outcome update for future decisions?
+primary_domain: decision-making
+facets:
+  capabilities:
+    - decision-making
+signals:
+  - A result is being used as the main proof that a prior decision was good or bad.
+  - The review lacks a record of ex-ante evidence and uncertainty.
+competing_hypotheses:
+  - The original reasoning was sound and uncertainty produced an unfavorable outcome.
+  - The original reasoning omitted material evidence or alternatives.
+  - The observed outcome reveals miscalibrated beliefs relevant to future decisions.
+evidence_needed:
+  - Decision record or contemporaneous framing, alternatives, evidence, and confidence.
+  - Outcome measurement validity and similarity to future decision contexts.
+trade_offs:
+  - Accountability versus hindsight distortion.
+  - Process learning versus overreacting to one outcome.
+measurement:
+  - Whether reviews separate ex-ante quality from ex-post learning.
+  - Whether belief or process updates identify the evidence that justifies them.
+anti_pattern_ids:
+  - outcome-equals-decision-quality
+claim_ids:
+  - outcome-bias-affects-evaluation
+  - decision-quality-evaluated-ex-ante
+  - outcomes-update-future-beliefs
+status: in_review
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-09-27
+  updated_at: 2026-09-27
+  next_review_at: null

@@ -1,5 +1,6 @@
 id: product-market-fit
 schema_version: 0.1.0
+concept_id: example-concept
 canonical_name: Product-Market Fit
 localized:
   en:

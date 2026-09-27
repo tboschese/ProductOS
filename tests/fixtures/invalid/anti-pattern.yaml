@@ -1,0 +1,14 @@
+id: Solution Jumping
+schema_version: 3
+name: ""
+description: ""
+primary_domain: Decision Making
+facets: {}
+triggers: []
+harmful_behavior: []
+consequences: []
+corrections: []
+claim_ids: invalid
+eval_case_ids: invalid
+status: ready
+review: {}

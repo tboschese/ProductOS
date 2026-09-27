@@ -1,0 +1,34 @@
+id: product-case-example
+schema_version: 0.3.0
+name: Synthetic product case
+primary_domain: product-strategy
+facets:
+  capabilities:
+    - strategic-reasoning
+context: Synthetic fixture context.
+customer_problem: Synthetic customer problem.
+business_model: Subscription.
+strategic_choices:
+  - Focus on one segment.
+product_choices:
+  - Build a narrow workflow.
+trade_offs:
+  - Breadth versus focus.
+outcomes:
+  - Schema validation completed.
+failures: []
+limitations:
+  - This is not real ProductOS knowledge.
+lessons:
+  - Fixtures must not be treated as cases.
+source_refs:
+  - source_id: source-example
+    locator: Section 1
+    role: background
+status: draft
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-09-27
+  updated_at: 2026-09-27
+  next_review_at: null

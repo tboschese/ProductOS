@@ -1,0 +1,30 @@
+id: diagnose-example
+schema_version: 0.3.0
+name: Diagnose example
+purpose: Exercise the adaptive playbook schema.
+primary_domain: decision-making
+facets:
+  practices:
+    - product-analytics
+decision_pattern_ids:
+  - retention-decline-example
+entry_conditions:
+  - A material metric changed.
+guiding_questions:
+  - Is the measurement valid?
+adaptive_actions:
+  - Choose analysis based on the dominant uncertainty.
+avoid:
+  - Applying a fixed checklist without context.
+exit_conditions:
+  - A decision-relevant explanation is supported.
+measures:
+  - Diagnostic confidence and decision impact.
+claim_ids: []
+status: draft
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-09-27
+  updated_at: 2026-09-27
+  next_review_at: null

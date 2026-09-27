@@ -39,7 +39,7 @@ The Staff PM integration is intentionally moved earlier than in the original spe
 
 ## 0.3.0 — Research infrastructure
 
-**Status:** Not started
+**Status:** Alpha implemented; first knowledge slice awaiting independent review
 
 Deliver:
 

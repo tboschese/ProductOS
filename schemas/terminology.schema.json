@@ -4,10 +4,11 @@
   "title": "ProductOS terminology entry",
   "type": "object",
   "additionalProperties": false,
-  "required": ["id", "schema_version", "canonical_name", "localized", "status", "review"],
+  "required": ["id", "schema_version", "concept_id", "canonical_name", "localized", "status", "review"],
   "properties": {
     "id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
     "schema_version": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/schemaVersion"},
+    "concept_id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
     "canonical_name": {"type": "string", "minLength": 1},
     "localized": {
       "type": "object",

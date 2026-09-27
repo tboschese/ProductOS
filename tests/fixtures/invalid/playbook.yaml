@@ -1,0 +1,16 @@
+id: diagnose_example
+schema_version: v3
+name: ""
+purpose: ""
+primary_domain: Decision Making
+facets: {}
+decision_pattern_ids: invalid
+entry_conditions: []
+guiding_questions: []
+adaptive_actions: []
+avoid: []
+exit_conditions: []
+measures: []
+claim_ids: invalid
+status: published
+review: {}

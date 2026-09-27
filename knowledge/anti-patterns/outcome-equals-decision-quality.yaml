@@ -1,0 +1,33 @@
+id: outcome-equals-decision-quality
+schema_version: 0.3.0
+name: Outcome equals decision quality
+description: Evaluating the quality of a past decision primarily from whether its realized outcome was favorable.
+primary_domain: decision-making
+facets:
+  capabilities:
+    - decision-making
+triggers:
+  - A launch, experiment, investment, or strategic bet has a salient positive or negative outcome.
+  - Reviewers lack or ignore the information available at commitment.
+harmful_behavior:
+  - Rewarding lucky decisions and punishing sound decisions exposed to unfavorable uncertainty.
+  - Rewriting ex-ante evidence after learning the outcome.
+consequences:
+  - Weak decision processes can be reinforced.
+  - Teams can hide uncertainty or avoid valuable reversible bets.
+corrections:
+  - Reconstruct framing, alternatives, evidence, beliefs, and constraints at commitment.
+  - Evaluate the original decision separately from what the outcome teaches for future decisions.
+claim_ids:
+  - outcome-bias-affects-evaluation
+  - decision-quality-evaluated-ex-ante
+  - outcomes-update-future-beliefs
+eval_case_ids:
+  - outcome-bias-review-en
+status: in_review
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-09-27
+  updated_at: 2026-09-27
+  next_review_at: null

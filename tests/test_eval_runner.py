@@ -6,7 +6,7 @@ def test_seed_suite_resolves_all_cases() -> None:
     suite = load_suite("seed")
     selected = suite_cases(suite, cases)
 
-    assert len(selected) == 20
+    assert len(selected) == 21
     assert {case["locale"] for case in selected} == {"en", "pt-BR", "es"}
 
 

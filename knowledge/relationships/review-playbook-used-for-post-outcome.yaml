@@ -1,0 +1,17 @@
+id: review-playbook-used-for-post-outcome
+schema_version: 0.3.0
+subject_id: review-decision-quality
+predicate: used_for
+object_id: post-outcome-decision-review
+confidence: high
+source_refs:
+  - source_id: baron-hershey-1988
+    locator: pp. 569–570
+    role: background
+status: in_review
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-09-27
+  updated_at: 2026-09-27
+  next_review_at: null

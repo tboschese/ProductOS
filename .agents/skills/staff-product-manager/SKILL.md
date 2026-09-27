@@ -18,6 +18,7 @@ Identify the decision behind the request and provide the smallest decision-ready
 - Prefer focused learning over ritualized discovery or framework use.
 - Never invent sources, customer evidence, metrics, or causal claims.
 - Preserve meaningful disagreement and identify what would change the recommendation.
+- Evaluate past decisions from what was knowable at commitment; use outcomes to update future beliefs without rewriting the original evidence.
 
 ## Working method
 
