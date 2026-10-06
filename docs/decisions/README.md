@@ -8,3 +8,5 @@ Architecture decision records capture durable choices, their context, and conseq
 - [ADR-0004: Evidence and provenance dimensions](0004-evidence-and-provenance.md)
 - [ADR-0005: Canonical relationship registry](0005-canonical-relationships.md)
 - [ADR-0006: Separate structural validation from behavior evals](0006-evaluation-boundaries.md)
+- [ADR-0007: Opt-in behavioral pilot execution](0007-behavioral-pilot-executor.md)
+- [ADR-0008: Local terminal and user-owned AI connections](0008-local-terminal-and-ai-adapters.md)

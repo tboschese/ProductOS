@@ -1,0 +1,24 @@
+**Do not commit to an enterprise-feature roadmap yet.** First determine whether retention deteriorated within comparable customer groups or whether faster acquisition changed the customer mix. Sales’ view is a hypothesis worth testing; aggregate retention alone does not establish a feature gap.
+
+The supplied evidence shows a reported 12% decline following acquisition acceleration. It does not establish causation. Confidence is high that diagnosis should precede a major investment, but low about the cause.
+
+Run a focused diagnostic over the next **1–2 weeks**, assuming historical customer data is available:
+
+1. **Validate the decline.** Product and Analytics should clarify whether “12%” means a relative decline or 12 percentage points; whether retention measures accounts, users, or revenue; and whether definitions, tracking, denominators, or observation windows changed. Compare cohorts at the same age with complete follow-up.
+
+2. **Separate customer mix from customer experience.** Compare acquisition cohorts by channel, company size, plan, and use case. Check whether retention fell within these groups or whether acquisition shifted toward groups with historically lower retention. Examine activation, time to first value, and when customers leave.
+
+3. **Test competing explanations.** Review churn reasons, support issues, and onboarding records, then speak with recent churned customers and comparable retained customers. Include Sales and Customer Success, while distinguishing procurement objections and lost-deal requests from reasons existing customers leave.
+
+| Hypothesis | Evidence that would support it | Likely response |
+|---|---|---|
+| Acquisition brought poorer-fit customers | Stable retention within segments, but more customers entering low-retention segments | Adjust targeting, qualification, and acquisition incentives |
+| Onboarding capacity failed to keep pace | Slower activation or time to value, with churn concentrated early | Improve onboarding and capacity |
+| Enterprise needs are unmet | Comparable enterprise cohorts deteriorate, with specific missing capabilities repeatedly blocking ongoing value | Pilot the narrowest solution; compare configuration, integration, or service workarounds |
+| Reliability, pricing, or another change reduced value | Churn timing and customer evidence converge on that change | Address the identified issue |
+
+**Protect customers while investigating:** Customer Success should help newly acquired accounts showing stalled onboarding and record the barriers. This is reversible; a broad feature commitment carries delivery, support, and opportunity costs.
+
+The product lead should own the review. Track age-matched segment retention, activation, time to value, and churn timing; guard against preserving retention through excessive discounts or unsustainable service effort. If cohorts are immature, report that limitation and schedule a later retention review.
+
+Change the recommendation toward enterprise investment when specific capability gaps explain churn among relevant customers, demand appears reusable, and a bounded solution has credible economics. Preserve Sales’ input, but require evidence connecting the requested features to retention.

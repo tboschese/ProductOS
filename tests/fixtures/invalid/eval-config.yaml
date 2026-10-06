@@ -1,0 +1,10 @@
+id: invalid-pilot
+schema_version: 0.3.0
+suite: seed
+system_under_test: {}
+instruction_paths: []
+generator: {}
+judge:
+  calibration_status: calibrated
+repetitions: 0
+timeout_seconds: 0

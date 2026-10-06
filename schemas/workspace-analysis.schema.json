@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://product-os.dev/schemas/workspace-analysis.schema.json",
+  "title": "Local immutable analysis input and original answer provenance",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "id", "decision_id", "decision_revision", "status", "started_at", "completed_at", "connection", "input_hashes", "response_sha256", "error", "output_format", "structured_status"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "id": {"type": "string", "pattern": "^analysis-[a-f0-9]{32}$"},
+    "decision_id": {"type": "string", "pattern": "^decision-[a-f0-9]{32}$"},
+    "decision_revision": {"type": "integer", "minimum": 1},
+    "status": {"enum": ["exported", "running", "completed", "failed", "cancelled"]},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": ["string", "null"], "format": "date-time"},
+    "connection": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "requested_model", "reported_model", "executable"],
+      "properties": {
+        "kind": {"enum": ["manual", "codex", "command"]},
+        "requested_model": {"type": ["string", "null"]},
+        "reported_model": {"type": ["string", "null"]},
+        "executable": {"type": ["string", "null"]}
+      }
+    },
+    "input_hashes": {
+      "type": "object", "additionalProperties": false,
+      "required": ["prompt.txt", "decision.json", "instructions.txt"],
+      "properties": {
+        "prompt.txt": {"$ref": "#/$defs/hash"},
+        "decision.json": {"$ref": "#/$defs/hash"},
+        "instructions.txt": {"$ref": "#/$defs/hash"}
+      }
+    },
+    "response_sha256": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/hash"}]},
+    "error": {"type": ["string", "null"]},
+    "output_format": {"enum": ["markdown", "decision_record"]},
+    "structured_status": {"enum": ["not_requested", "pending", "valid", "invalid"]}
+  },
+  "$defs": {"hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}},
+  "allOf": [
+    {"if": {"properties": {"status": {"const": "completed"}}}, "then": {"properties": {"response_sha256": {"$ref": "#/$defs/hash"}, "completed_at": {"type": "string"}, "error": {"type": "null"}}}},
+    {"if": {"properties": {"status": {"enum": ["failed", "cancelled"]}}}, "then": {"properties": {"completed_at": {"type": "string"}, "error": {"type": "string", "minLength": 1}}}}
+  ]
+}

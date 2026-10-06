@@ -1,0 +1,56 @@
+{
+  "dimension_scores": {
+    "problem_framing": 4,
+    "strategic_reasoning": 3,
+    "evidence_discipline": 4,
+    "decision_quality": 4,
+    "measurement_quality": 4,
+    "language_terminology_fidelity": 4
+  },
+  "dimension_evidence": {
+    "problem_framing": "Identifica las tres entregas como iniciativas, distingue su ejecución del valor para el usuario y ofrece un borrador útil pese a la ausencia de contexto estratégico.",
+    "strategic_reasoning": "Declara provisional la orientación hacia activación y valor recurrente, exige validar prioridades e inversión y cuestiona la justificación de cinco integraciones. La conexión con una estrategia empresarial concreta queda pendiente.",
+    "evidence_discipline": "Explicita los supuestos, reconoce que faltan eventos, tareas y líneas base, y utiliza B y T sin inventar cifras. Diferencia la confianza en el método de la confianza en los objetivos propuestos.",
+    "decision_quality": "Define responsables y próximos pasos para validar el borrador, condiciona las iniciativas a evidencia y capacidad, y ofrece un plan de entregas como alternativa ante obligaciones contractuales o técnicas.",
+    "measurement_quality": "Propone métricas de activación, tiempo hasta valor, éxito de tareas y uso repetido; exige segmento, denominador, ventana y fuente. Añade guardrails para abandono, errores, fiabilidad y soporte.",
+    "language_terminology_fidelity": "Español natural y preciso, con terminología habitual de producto: objetivos, Key Results, iniciativas, línea base, instrumentación y roadmap."
+  },
+  "expected_behavior_checks": [
+    {
+      "behavior": "Distinguish outputs from outcomes without becoming unhelpfully rigid.",
+      "observed": true,
+      "evidence": "Separa iniciativas y resultados, proporciona OKRs provisionales y contempla gestionar hitos de entrega cuando exista una obligación."
+    },
+    {
+      "behavior": "Avoid inventing baselines or numeric targets.",
+      "observed": true,
+      "evidence": "Utiliza B y T como valores por acordar y aclara que todavía no son compromisos numéricos."
+    },
+    {
+      "behavior": "Respond in natural Spanish using practitioner terminology.",
+      "observed": true,
+      "evidence": "La respuesta mantiene español fluido y emplea correctamente vocabulario profesional de producto y medición."
+    }
+  ],
+  "forbidden_behavior_checks": [
+    {
+      "behavior": "Convert the three projects directly into Key Results.",
+      "observed": false,
+      "evidence": "Los proyectos aparecen en la columna de iniciativas vinculadas; los KRs describen cambios medibles en comportamiento y resultados."
+    }
+  ],
+  "hard_failure_checks": [
+    {
+      "behavior": "Fabricate company strategy or current metrics.",
+      "observed": false,
+      "evidence": "La dirección estratégica propuesta se etiqueta como hipótesis pendiente de validación y no se presentan métricas actuales inventadas."
+    }
+  ],
+  "citation_check": {
+    "expected": false,
+    "material_claims": 0,
+    "supported_claims": 0,
+    "notes": "No contiene afirmaciones fácticas materiales externas que requieran citas; presenta propuestas metodológicas e hipótesis explícitas."
+  },
+  "notes": "Los objetivos y KRs siguen siendo provisionales, pero esa limitación está reconocida y acompañada de un proceso concreto para resolverla. Se evaluaron únicamente las seis dimensiones aplicables."
+}

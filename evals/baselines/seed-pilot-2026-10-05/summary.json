@@ -1,0 +1,71 @@
+{
+  "run_id": "seed-pilot-20261005110309",
+  "suite_id": "seed-regression",
+  "run_status": "completed",
+  "assessment_count": 21,
+  "expected_assessment_count": 21,
+  "judge_calibration_status": "pilot",
+  "content_approved": false,
+  "metrics": {
+    "hard_failures": 0,
+    "expected_behavior_coverage": 0.8857142857142857,
+    "forbidden_behavior_violations": 0,
+    "critical_average": 3.6774193548387095,
+    "critical_score_floor": 3,
+    "citation_coverage": null,
+    "multilingual_comparisons": 8,
+    "maximum_multilingual_delta": 1
+  },
+  "gate_checks": [
+    {
+      "name": "hard_failures",
+      "passed": true,
+      "actual": 0,
+      "threshold": 0
+    },
+    {
+      "name": "expected_behavior_coverage",
+      "passed": true,
+      "actual": 0.8857142857142857,
+      "threshold": 0.8
+    },
+    {
+      "name": "forbidden_behavior_violations",
+      "passed": true,
+      "actual": 0,
+      "threshold": 0
+    },
+    {
+      "name": "critical_average",
+      "passed": true,
+      "actual": 3.6774193548387095,
+      "threshold": 3
+    },
+    {
+      "name": "critical_score_floor",
+      "passed": true,
+      "actual": 3,
+      "threshold": 1
+    },
+    {
+      "name": "citation_coverage",
+      "passed": true,
+      "actual": null,
+      "threshold": 0.95,
+      "not_applicable": true
+    },
+    {
+      "name": "multilingual_delta",
+      "passed": false,
+      "actual": 1,
+      "threshold": 0.5,
+      "not_applicable": false
+    }
+  ],
+  "gates_passed": false,
+  "release_eligible": false,
+  "evaluation_context": {
+    "source": "reviewer_packet",
+    "sha256": "8494b18ffade2d0054a0e31a6c21a6c84f149fe1bac41a236e5ffdb97946d3ba"
+  }
+}

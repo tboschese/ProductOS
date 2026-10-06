@@ -1,0 +1,20 @@
+schema_version: 0.1.0
+id: analysis-00000000000000000000000000000001
+decision_id: decision-00000000000000000000000000000001
+decision_revision: 1
+status: completed
+started_at: '2026-10-05T12:00:00+00:00'
+completed_at: null
+connection:
+  kind: manual
+  requested_model: null
+  reported_model: null
+  executable: null
+input_hashes:
+  prompt.txt: '0000000000000000000000000000000000000000000000000000000000000000'
+  decision.json: '0000000000000000000000000000000000000000000000000000000000000000'
+  instructions.txt: '0000000000000000000000000000000000000000000000000000000000000000'
+response_sha256: null
+error: null
+output_format: markdown
+structured_status: not_requested

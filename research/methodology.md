@@ -46,6 +46,9 @@ Explain what the evidence supports, what remains unknown, when guidance applies,
 
 A reviewer checks source quality, claim accuracy, contradictions, duplication, terminology, copyright, and the task's acceptance criteria. Authors should not approve their own high-impact claims when independent review is available.
 
+Source review also classifies temporal stability, chooses a proportionate review interval, and
+runs the freshness audit. A reachable URL does not replace locator or content verification.
+
 ### 7. Publication
 
 Approved outputs update canonical entities. Research notes remain provenance, not an alternative knowledge base. Any reasoning change includes an eval proposal and regression run.
@@ -61,7 +64,8 @@ A task is complete only when:
 - proposed canonical entities were deduplicated and reviewed;
 - terminology and relationships were considered;
 - relevant evals were added or explicitly deemed unnecessary;
-- no restricted or confidential source material was committed.
+- no restricted or confidential source material was committed;
+- source freshness metadata is recorded and not overdue.
 
 ## Review outcomes
 

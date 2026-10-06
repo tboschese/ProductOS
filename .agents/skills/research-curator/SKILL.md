@@ -24,7 +24,9 @@ Move the task through intake, source planning, collection, analysis, synthesis, 
 
 Keep research notes as provenance. Canonical knowledge belongs under `knowledge/<entity-type>/<id>.yaml`; narrative synthesis belongs under `docs/`.
 
-After publishing, rebuild indexes, run repository validation, inspect duplicate warnings, and propose regression cases for any changed reasoning behavior.
+After publishing, rebuild indexes, run repository validation, audit source freshness, inspect
+duplicate warnings, and propose regression cases for any changed reasoning behavior. Use network
+URL probing only as an access check; it does not verify that the cited content is unchanged.
 
 ## References
 

@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import sys
@@ -62,6 +63,7 @@ EVAL_SCHEMA_BY_PARENT = {
     "cases": "eval-case",
     "multilingual": "eval-case",
     "regression": "eval-suite",
+    "configs": "eval-config",
 }
 
 MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
@@ -374,6 +376,41 @@ def validate_content(validators: Mapping[str, Validator]) -> list[str]:
     return failures
 
 
+def validate_eval_archives(
+    validators: Mapping[str, Validator], archive_root: Path | None = None
+) -> list[str]:
+    """Check archived pilot shape, file integrity, and verbatim response provenance."""
+    archive_root = archive_root or ROOT / "evals" / "baselines"
+    failures: list[str] = []
+    for run_path in sorted(archive_root.rglob("run.json")):
+        run = load_json(run_path)
+        errors = list(validators["eval-run"].iter_errors(run))
+        if errors:
+            failures.append(f"{run_path}: {format_errors(errors)}")
+            continue
+        snapshot = run.get("source_snapshot")
+        if not isinstance(snapshot, dict):
+            failures.append(f"{run_path}: archived pilot requires source_snapshot")
+            continue
+        if run["run_status"] != "completed":
+            failures.append(f"{run_path}: archived pilot must be completed")
+        for relative, expected in snapshot["files"].items():
+            path = (run_path.parent / relative).resolve()
+            if not path.is_relative_to(run_path.parent.resolve()):
+                failures.append(f"{run_path}: snapshot path escapes archive: {relative}")
+            elif not path.is_file() or hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+                failures.append(f"{run_path}: snapshot integrity failure: {relative}")
+        for assessment in run["assessments"]:
+            relative = (
+                f"generation/{assessment['case_id']}-{assessment['repetition']}.response.txt"
+            )
+            expected = snapshot["files"].get(relative)
+            response_digest = hashlib.sha256(assessment["response"].encode("utf-8")).hexdigest()
+            if expected != response_digest:
+                failures.append(f"{run_path}: response differs from its checkpoint: {relative}")
+    return failures
+
+
 def run_validation() -> list[str]:
     schemas, registry = load_schemas()
     validators = build_validators(schemas, registry)
@@ -382,6 +419,7 @@ def run_validation() -> list[str]:
     failures.extend(validate_required_paths())
     failures.extend(validate_fixtures(validators))
     failures.extend(validate_content(validators))
+    failures.extend(validate_eval_archives(validators))
     failures.extend(validate_markdown_links())
     return failures
 

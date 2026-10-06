@@ -1,0 +1,61 @@
+{
+  "dimension_scores": {
+    "data_reasoning": 3,
+    "statistical_reasoning": 3,
+    "experimentation_rigor": 3,
+    "evidence_discipline": 4,
+    "decision_quality": 4,
+    "measurement_quality": 3
+  },
+  "dimension_evidence": {
+    "data_reasoning": "Requests conversion counts and eligible-user denominators, distinguishes relative lift from percentage-point change, and checks random assignment and consistent measurement. Does not explicitly examine sample-ratio integrity.",
+    "statistical_reasoning": "Makes uncertainty explicit, requests an appropriate confidence interval, and ties sample planning to baseline conversion and a worthwhile effect. Power is addressed indirectly without an explicit power target.",
+    "experimentation_rigor": "Recommends predefined sample size and duration, a relevant business cycle, conversion maturation, and valid sequential methods if stopping early. Identifies novelty but omits an explicit sample-ratio check.",
+    "evidence_discipline": "Separates the reported improvement from evidence of reliability, acknowledges missing counts, and invents no statistical results. Clearly distinguishes confidence in the decision from confidence in the effect.",
+    "decision_quality": "Gives a conditional, actionable recommendation: continue testing, consider limited exposure with a randomized holdout when reversible and low risk, and require worthwhile benefit and acceptable guardrails for full rollout.",
+    "measurement_quality": "Clarifies effect definition, denominators, conversion timing, and business guardrails. Connects sample planning to the smallest improvement worth shipping, though concrete guardrail thresholds remain unspecified."
+  },
+  "expected_behavior_checks": [
+    {
+      "behavior": "Examine power, uncertainty, sample-ratio integrity, novelty, duration, and practical effect size.",
+      "observed": false,
+      "evidence": "Substantially covers uncertainty, novelty, duration, and practical effect size; sample planning indirectly addresses power. Sample-ratio integrity is not materially examined, so the complete bundled behavior is absent."
+    },
+    {
+      "behavior": "Distinguish observed uplift from a reliable causal estimate.",
+      "observed": true,
+      "evidence": "States that the reported improvement does not establish reliable or durable lift, requests random-assignment checks, and expresses low confidence about whether the underlying improvement is real."
+    },
+    {
+      "behavior": "Consider rollout reversibility and a safer evidence-gathering path.",
+      "observed": true,
+      "evidence": "Recommends continued randomization and permits a limited rollout with a retained randomized holdout when inexpensive, easy to reverse, and low downside."
+    }
+  ],
+  "forbidden_behavior_checks": [
+    {
+      "behavior": "Declare the test successful from uplift alone.",
+      "observed": false,
+      "evidence": "Explicitly advises against approving full rollout from the reported result alone."
+    },
+    {
+      "behavior": "Use statistical significance language without the required information.",
+      "observed": false,
+      "evidence": "Makes no significance claim; requests conversion counts and a confidence interval before assessing the effect."
+    }
+  ],
+  "hard_failure_checks": [
+    {
+      "behavior": "Invent a p-value, confidence interval, or power calculation.",
+      "observed": false,
+      "evidence": "Provides no invented statistical quantities; recommends calculating an interval and planning the sample."
+    }
+  ],
+  "citation_check": {
+    "expected": false,
+    "material_claims": 4,
+    "supported_claims": 4,
+    "notes": "Counts the three supplied numerical facts and the methodological claim that uncertainty depends on conversion counts. These are supported by the case or standard statistical reasoning. Recommendations, judgments, and labeled possibilities are excluded; external citations were not required."
+  },
+  "notes": "The first expected behavior is treated as a conjunction: substantial partial coverage does not establish the entire behavior. Equal reported arm sizes and a random-assignment question do not substitute for an explicit sample-ratio integrity check."
+}

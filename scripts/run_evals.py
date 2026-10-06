@@ -5,9 +5,19 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
-from scripts.validate_repository import ROOT, load_yaml, run_validation
+import yaml
+
+from scripts.validate_repository import (
+    ROOT,
+    build_validators,
+    format_errors,
+    load_schemas,
+    load_yaml,
+    run_validation,
+)
 
 CASE_ROOTS = (ROOT / "evals" / "cases", ROOT / "evals" / "multilingual")
 SUITE_ROOT = ROOT / "evals" / "regression"
@@ -49,46 +59,80 @@ def suite_cases(
 
 
 def export_packet(
-    suite: dict[str, object], selected_cases: list[dict[str, object]], output: Path
+    suite: dict[str, object], selected_cases: list[dict[str, object]], output: Path,
+    *, audience: str = "generator",
 ) -> Path:
-    output.parent.mkdir(parents=True, exist_ok=True)
+    if audience not in {"generator", "reviewer"}:
+        raise ValueError(f"Unknown packet audience: {audience}")
     packet = {
         "suite_id": suite["id"],
-        "schema_version": suite["schema_version"],
+        "schema_version": "0.3.0",
+        "audience": audience,
         "scoring_status": "unscored",
-        "cases": selected_cases,
+        "cases": [
+            {field: case[field] for field in ("id", "locale", "input", "context")}
+            for case in selected_cases
+        ] if audience == "generator" else selected_cases,
     }
+    if audience == "reviewer":
+        packet["suite"] = suite
+
+    failures = validate_packet_shape(packet)
+    if failures:
+        raise ValueError(f"Invalid {audience} packet: {'; '.join(failures)}")
+
+    output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(packet, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return output
+
+
+def validate_packet_shape(packet: dict[str, object]) -> list[str]:
+    schemas, registry = load_schemas()
+    validator = build_validators(schemas, registry)["eval-packet"]
+    errors = list(validator.iter_errors(packet))
+    return [format_errors(errors)] if errors else []
 
 
 def parser() -> argparse.ArgumentParser:
     command = argparse.ArgumentParser(description=__doc__)
     command.add_argument("--suite", default="seed", help="Suite ID or repository-relative path")
     command.add_argument("--list", action="store_true", help="List selected cases")
-    command.add_argument("--export", type=Path, help="Export an unscored JSON evaluation packet")
+    command.add_argument("--export", type=Path, help="Export a blind generator JSON packet")
+    command.add_argument(
+        "--export-review", type=Path, help="Export full cases and gate policy for reviewers only"
+    )
     return command
 
 
 def main() -> int:
-    args = parser().parse_args()
+    command = parser()
+    args = command.parse_args()
+    if args.export and args.export_review and args.export.resolve() == args.export_review.resolve():
+        command.error("Generator and reviewer packets must use different output paths")
     failures = run_validation()
     if failures:
         for failure in failures:
             print(f"error: {failure}")
         return 1
 
-    cases = load_cases()
-    suite = load_suite(args.suite)
-    selected = suite_cases(suite, cases)
+    try:
+        cases = load_cases()
+        suite = load_suite(args.suite)
+        selected = suite_cases(suite, cases)
+
+        if args.export:
+            output = export_packet(suite, selected, args.export)
+            print(f"Exported blind generator packet: {output}")
+        if args.export_review:
+            output = export_packet(suite, selected, args.export_review, audience="reviewer")
+            print(f"Exported reviewer packet: {output}")
+    except (OSError, ValueError, KeyError, yaml.YAMLError) as error:
+        print(f"error: {error}", file=sys.stderr)
+        return 1
 
     if args.list:
         for case in selected:
             print(f"{case['id']}\t{case['locale']}\t{case['title']}")
-
-    if args.export:
-        output = export_packet(suite, selected, args.export)
-        print(f"Exported unscored packet: {output}")
 
     locales: dict[str, int] = {}
     for case in selected:

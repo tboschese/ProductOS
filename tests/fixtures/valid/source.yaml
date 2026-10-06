@@ -1,5 +1,5 @@
 id: source-example
-schema_version: 0.1.0
+schema_version: 0.3.1
 title: Example primary source
 authors:
   - Example Author
@@ -19,6 +19,9 @@ summary: A fixture used to validate the source contract.
 limitations:
   - This is synthetic fixture data, not ProductOS knowledge.
 last_verified: 2026-09-26
+freshness:
+  temporal_stability: stable
+  review_interval_days: 365
 status: draft
 review:
   owner: product-os

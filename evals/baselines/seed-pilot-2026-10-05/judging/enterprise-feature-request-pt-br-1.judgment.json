@@ -1,0 +1,58 @@
+{
+  "dimension_scores": {
+    "problem_framing": 4,
+    "customer_reasoning": 4,
+    "strategic_reasoning": 3,
+    "business_reasoning": 4,
+    "trade_off_awareness": 4,
+    "decision_quality": 4,
+    "language_terminology_fidelity": 4
+  },
+  "dimension_evidence": {
+    "problem_framing": "Reformula a decisão em torno da necessidade para fechar o contrato e da menor solução aceitável; trata a afirmação de Vendas como hipótese.",
+    "customer_reasoning": "Distingue requisito de compra de frequência de uso e propõe confirmar problema, cenários e critérios de aceite com comprador, usuários e Segurança.",
+    "strategic_reasoning": "Condiciona o roadmap à reutilização, ao alinhamento estratégico e à prioridade relativa. Falta detalhar como validar demanda em outras contas antes desse investimento.",
+    "business_reasoning": "Investiga valor total versus receita anual, duração, margem e pagamento; compara benefício esperado com entrega, suporte, manutenção e custo de oportunidade.",
+    "trade_off_awareness": "Compara solução existente, serviço, entrega contratual, investimento reutilizável e recusa; reconhece tanto o valor comercial quanto os custos e riscos permanentes.",
+    "decision_quality": "Oferece recomendação provisória calibrada, avaliação delimitada, condições para cada alternativa, responsáveis e revisões antes do contrato e após a implantação.",
+    "language_terminology_fidelity": "Português brasileiro natural e preciso; preserva o sentido de permissões, controles de acesso, roadmap e compromisso comercial."
+  },
+  "expected_behavior_checks": [
+    {
+      "behavior": "Preserve the commercial and product trade-offs from the English case.",
+      "observed": true,
+      "evidence": "Pondera o contrato de US$ 2 milhões contra baixa utilização, demanda reutilizável, manutenção, riscos e prioridades deslocadas."
+    },
+    {
+      "behavior": "Separate the underlying requirement from the requested implementation.",
+      "observed": true,
+      "evidence": "Busca o problema e os critérios de aceite antes de comparar configuração, integração, implantação e desenvolvimento."
+    },
+    {
+      "behavior": "Respond in natural Brazilian Portuguese.",
+      "observed": true,
+      "evidence": "Usa construções naturais como “Antes de prometer uma data” e “o trabalho que sairia do roadmap”."
+    }
+  ],
+  "forbidden_behavior_checks": [
+    {
+      "behavior": "Treat deal value alone as sufficient product evidence.",
+      "observed": false,
+      "evidence": "Afirma explicitamente que US$ 2 milhões justificam investigar, mas não demonstram demanda recorrente nem retorno econômico."
+    }
+  ],
+  "hard_failure_checks": [
+    {
+      "behavior": "Invent pipeline, customer, or usage evidence.",
+      "observed": false,
+      "evidence": "Limita os fatos aos dois sinais fornecidos; apresenta explicações alternativas como hipóteses e solicita validação."
+    }
+  ],
+  "citation_check": {
+    "expected": false,
+    "material_claims": 2,
+    "supported_claims": 2,
+    "notes": "As duas alegações factuais específicas são fornecidas pelo caso: a afirmação de Vendas sobre o contrato e o baixo uso de capacidades semelhantes. Recomendações e hipóteses não foram contadas."
+  },
+  "notes": "A versão inglesa não foi fornecida para comparação direta; a preservação dos trade-offs foi avaliada pelo caso apresentado. Apenas as sete dimensões aplicáveis foram pontuadas."
+}

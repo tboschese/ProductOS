@@ -1,0 +1,28 @@
+**Producto debería liderar la decisión sobre qué resultados necesita mejorar el sistema y cómo migrar con continuidad asistencial. No aprobaría todavía una reescritura completa ni comprometería la arquitectura a microservicios.** Recomendaría evaluar primero una modernización incremental, con confianza moderada: permite aprender y limitar el alcance de los errores, pero faltan datos para elegir la solución definitiva.
+
+Los únicos datos aportados son el sector salud y los 20 años del sistema. La antigüedad justifica investigar; no demuestra que una reescritura sea necesaria. Microservicios es una propuesta técnica, no un resultado de negocio.
+
+Producto debería conducir estas acciones:
+
+1. **Definir el problema y el resultado esperado.** Con Ingeniería, profesionales clínicos y Operaciones, identificar qué limita hoy la atención o el negocio: interrupciones, errores, lentitud para introducir cambios, costes, integraciones o dificultades de uso. Son hipótesis por comprobar. Elegir los problemas prioritarios y establecer sus baselines antes de fijar objetivos.
+
+2. **Hacer visible lo que una migración debe preservar.** Mapear los flujos críticos, reglas clínicas y administrativas, datos, integraciones y dependencias. Un sistema antiguo puede contener reglas esenciales poco documentadas. Identificar qué cambios afectan decisiones clínicas, privacidad, seguridad o requisitos regulatorios y obtener revisión de los especialistas correspondientes antes de comprometerlos.
+
+3. **Comparar alternativas sobre el mismo alcance.**
+
+| Alternativa | Cuándo puede encajar | Principal trade-off |
+|---|---|---|
+| Mantener y contener | Los problemas son localizados y el sistema sigue siendo sostenible | Menor disrupción; pueden persistir restricciones |
+| Modernizar módulos gradualmente, incluido un monolito modular | Es posible mejorar límites internos y sustituir partes | Beneficios progresivos; convivencia temporal |
+| Extraer servicios mediante un patrón *strangler* | Existen dominios separables con necesidades propias de cambio o escala | Mayor independencia; más complejidad operativa y de consistencia |
+| Sustituir por un proveedor o reescribir | El producto disponible encaja, o las restricciones actuales impiden mejoras viables | Dependencia del proveedor o elevada exposición durante la migración |
+
+La comparación debe incluir coste total de construcción, operación paralela, migración de datos, formación, soporte y retirada del sistema anterior; también el trabajo de producto que se pospone.
+
+**La incertidumbre dominante es si los problemas prioritarios pueden resolverse por partes preservando las reglas, los datos y los flujos asistenciales.** Para reducirla, propondría una evaluación acotada —por ejemplo, cuatro a seis semanas, ajustadas al alcance— sobre un dominio representativo, con límites claros y riesgo controlable. Ingeniería debe demostrar cómo migrarlo, operarlo y revertirlo; Producto debe comprobar que mejora un resultado relevante. Una demo funcional no basta.
+
+Antes de exponer usuarios, acordaría criterios de aceptación: integridad y conciliación de datos, continuidad de los flujos críticos, observabilidad, responsables de incidentes y rollback probado. Mediría el resultado elegido junto con errores, disponibilidad, latencia, carga de soporte y coste operativo. Los umbrales deben partir del baseline y de la criticidad clínica.
+
+Producto mantiene el caso de inversión y los criterios de decisión; Ingeniería responde por viabilidad y arquitectura; responsables clínicos, Operaciones, Seguridad y cumplimiento validan los impactos de su ámbito. Un patrocinador ejecutivo debe asumir presupuesto y riesgo residual.
+
+Cambiaría la recomendación hacia una sustitución completa si la evaluación demuestra que las restricciones estructurales bloquean mejoras incrementales y existe un plan de migración creíble. **La decisión debe aprobar beneficios verificables y una transición segura; la arquitectura se elige para conseguirlos.**

@@ -1,0 +1,58 @@
+{
+  "dimension_scores": {
+    "customer_reasoning": 2,
+    "strategic_reasoning": 3,
+    "business_reasoning": 3,
+    "market_reasoning": 3,
+    "evidence_discipline": 3,
+    "trade_off_awareness": 2,
+    "decision_quality": 3
+  },
+  "dimension_evidence": {
+    "customer_reasoning": "Examines purchasing and renewal decisions, segment differences, and existing-customer trust costs. Customer value delivery, positioning, and contractual constraints receive little or no examination.",
+    "strategic_reasoning": "Distinguishes profit and growth objectives and considers higher pricing power, competitive differences, and a switching opportunity. Connects these possibilities to a bounded review.",
+    "business_reasoning": "Uses contribution profit per eligible prospect and considers conversion, discounts, margins, customer mix, renewal, contraction, and churn. Does not model financial scenarios, expansion, or migration effects.",
+    "market_reasoning": "Questions comparability of plans, discounts, and affected customers. Considers differences in competitor costs and value, and a possible acquisition opportunity without assuming customer acceptance.",
+    "evidence_discipline": "Explicitly identifies the sole supplied pricing evidence, labels alternative explanations, calibrates confidence, and requests purchasing and renewal evidence. No elasticity or financial results are invented.",
+    "trade_off_awareness": "Explains acquisition advantage versus forgone margin and selective increases versus blanket exposure. Packaging, grandfathering, communication, and migration trade-offs are absent.",
+    "decision_quality": "Provides a clear provisional decision, owners, a bounded pilot, advance success criteria, and a condition for revising the recommendation. Existing-customer assessment is separated, but concrete migration and rollback safeguards are missing."
+  },
+  "expected_behavior_checks": [
+    {
+      "behavior": "Examine positioning, segments, willingness to pay, value delivery, contracts, and competitive differences.",
+      "observed": true,
+      "evidence": "Materially examines segments, purchasing and renewal behavior, comparable competitor offers, and differences in cost/value. Contracts are absent; positioning and value delivery are underdeveloped."
+    },
+    {
+      "behavior": "Model revenue, conversion, churn, expansion, migration, and communication scenarios.",
+      "observed": false,
+      "evidence": "Proposes contribution-profit, conversion, and renewal measurements, but provides no scenario model. Expansion, migration, and communication scenarios are absent."
+    },
+    {
+      "behavior": "Compare matching, differentiated pricing, packaging, grandfathering, and no-change options.",
+      "observed": true,
+      "evidence": "Compares immediate blanket matching, holding prices temporarily, and selective increases. Packaging and grandfathering are not considered."
+    }
+  ],
+  "forbidden_behavior_checks": [
+    {
+      "behavior": "Treat competitor pricing as sufficient evidence of customer willingness to pay.",
+      "observed": false,
+      "evidence": "Explicitly states that the competitor's increase does not establish customer acceptance and requires the company's own purchasing and renewal evidence."
+    }
+  ],
+  "hard_failure_checks": [
+    {
+      "behavior": "Invent elasticity or financial impact.",
+      "observed": false,
+      "evidence": "Provides no fabricated elasticity, revenue uplift, churn estimate, or profit result. Potential effects are expressed as possibilities."
+    }
+  ],
+  "citation_check": {
+    "expected": false,
+    "material_claims": 2,
+    "supported_claims": 2,
+    "notes": "The competitor's 30% increase and Finance's request are supplied by the case. Recommendations, analytical judgments, and labeled hypotheses are excluded from the counts; external citations are unnecessary."
+  },
+  "notes": "Observed composite behaviors indicate substantial partial coverage, not completion of every listed element. The response offers a sound provisional decision and evidence plan, but lacks the comprehensive option comparison, scenario modeling, and migration safeguards needed for exceptional scores."
+}

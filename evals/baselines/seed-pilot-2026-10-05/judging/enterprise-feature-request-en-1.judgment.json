@@ -1,0 +1,68 @@
+{
+  "dimension_scores": {
+    "problem_framing": 3,
+    "customer_reasoning": 3,
+    "strategic_reasoning": 3,
+    "business_reasoning": 3,
+    "organizational_reasoning": 3,
+    "trade_off_awareness": 3,
+    "decision_quality": 3
+  },
+  "dimension_evidence": {
+    "problem_framing": "Separates Sales’ closing prediction, the buyer’s underlying requirement, and the requested implementation. Treats both deal value and low usage as inconclusive.",
+    "customer_reasoning": "Requires direct buyer and procurement/security validation, blocked workflows, acceptance criteria, and simpler alternatives. Investigates possible explanations for low usage rather than assuming lack of need.",
+    "strategic_reasoning": "Distinguishes a bounded exception for one deal from broader roadmap priority requiring repeatable demand. Considers comparable accounts, product complexity, and customization precedent.",
+    "business_reasoning": "Clarifies annual revenue versus total contract value and weighs expected contribution against delivery, lifecycle, and displaced roadmap costs. Contract duration, enforceable purchase commitments, and other commercial terms remain underdeveloped.",
+    "organizational_reasoning": "Assigns discovery and estimation responsibilities across Sales, Product, Engineering, and Security. Names the product leader as decision owner with engineering and commercial participation.",
+    "trade_off_awareness": "Compares several accommodations and declining, explicitly recognizing revenue, maintenance, customization expectations, capacity, and deal-loss trade-offs. A distinct service offering is absent.",
+    "decision_quality": "Provides a conditional recommendation, a discovery deadline, commitment gates, ownership, success measures, and reconsideration triggers. Cost bounds and economic thresholds are left unspecified."
+  },
+  "expected_behavior_checks": [
+    {
+      "behavior": "Separate the customer's underlying requirement from the requested implementation.",
+      "observed": true,
+      "evidence": "Asks whether the exact capability is necessary and whether a simpler solution satisfies the buyer; calls for identifying the blocked workflow and acceptance criteria."
+    },
+    {
+      "behavior": "Assess reusable segment value, contract terms, support cost, precedent, and opportunity cost.",
+      "observed": true,
+      "evidence": "Examines comparable accounts and repeatable demand, annual revenue versus total contract value, ongoing support, future customization expectations, and displaced roadmap work. Contract-term assessment is limited."
+    },
+    {
+      "behavior": "Compare product, configuration, service, pilot, commercial exception, and decline options.",
+      "observed": false,
+      "evidence": "Explicitly compares configuration, workarounds, integration, a paid pilot, a reusable feature, bespoke exception, and declining. It does not explicitly compare a service offering."
+    },
+    {
+      "behavior": "Establish a decision owner and evidence or conditions required for commitment.",
+      "observed": true,
+      "evidence": "Names the product leader as owner and requires confirmed purchase necessity, explicit acceptance criteria, engineering/security approval, and sufficient expected contribution."
+    }
+  ],
+  "forbidden_behavior_checks": [
+    {
+      "behavior": "Treat deal value alone as sufficient product evidence.",
+      "observed": false,
+      "evidence": "States that $2M warrants attention but does not justify permanent product complexity without further evidence."
+    },
+    {
+      "behavior": "Reject the request solely because current usage is low.",
+      "observed": false,
+      "evidence": "Explains that permissions may satisfy procurement or security requirements despite infrequent configuration and investigates reasons for low usage."
+    }
+  ],
+  "hard_failure_checks": [
+    {
+      "behavior": "Present unprovided pipeline or customer data as fact.",
+      "observed": false,
+      "evidence": "Requests corroboration from comparable accounts without claiming such evidence already exists. Possible usage explanations are presented as alternatives to investigate."
+    }
+  ],
+  "citation_check": {
+    "expected": false,
+    "material_claims": 3,
+    "supported_claims": 3,
+    "notes": "The factual premises—Sales’ closing prediction, the $2M deal value, and low current usage—come from the case. Recommendations and conditional possibilities are excluded; external citations are unnecessary."
+  },
+  "notes": "Only the seven case-applicable dimensions were scored. The options check uses a strict reading of the enumerated alternatives: workarounds and integrations do not establish a service offering. The broader assessment check is materially present, although contract terms receive only limited treatment."
+}

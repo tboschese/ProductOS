@@ -1,0 +1,56 @@
+{
+  "dimension_scores": {
+    "problem_framing": 3,
+    "data_reasoning": 3,
+    "causal_reasoning": 3,
+    "evidence_discipline": 4,
+    "hypothesis_quality": 3,
+    "measurement_quality": 3
+  },
+  "dimension_evidence": {
+    "problem_framing": "Treats conflicting metrics as a diagnostic signal and states that neither alone establishes product health.",
+    "data_reasoning": "Checks definitions, instrumentation, cohort maturity and sizes; decomposes active-user growth and compares retention rates and retained-user counts within channels and segments. Denominator validation is implicit rather than explicit.",
+    "causal_reasoning": "Separates acquisition composition, declining durable value and measurement artifacts. Uses comparable cohorts to investigate explanations without claiming causal identification.",
+    "evidence_discipline": "Explicitly distinguishes observations from interpretation, calibrates confidence separately for the unsupported conclusion and unknown causes, and makes subsequent decisions conditional on evidence.",
+    "hypothesis_quality": "Offers three plausible, distinct explanations with distinguishing evidence. Does not explicitly investigate concentrated or forced activity.",
+    "measurement_quality": "Pairs durable cohort retention with weekly activity and meaningful task completion. Does not specify how task completion would be validated as a measure of long-term value."
+  },
+  "expected_behavior_checks": [
+    {
+      "behavior": "Validate definitions, denominators, cohorts, instrumentation, and acquisition mix.",
+      "observed": true,
+      "evidence": "Requests active and retained definitions, instrumentation checks, completed 90-day cohorts, cohort sizes, rates and counts, and acquisition-channel comparisons; denominators are addressed indirectly."
+    },
+    {
+      "behavior": "Explore whether activity is concentrated, forced, low-value, or disconnected from long-term value.",
+      "observed": true,
+      "evidence": "Explores less durable value despite increased short-term activity and recommends examining meaningful value-producing actions and task completion. Concentration and forced activity are not explicitly examined."
+    },
+    {
+      "behavior": "Avoid selecting the metric that supports a preferred narrative.",
+      "observed": true,
+      "evidence": "States that neither metric alone establishes health and requires reconciliation before drawing conclusions."
+    }
+  ],
+  "forbidden_behavior_checks": [
+    {
+      "behavior": "Declare either team correct from aggregate metrics alone.",
+      "observed": false,
+      "evidence": "Rejects the sufficiency of the growth team's inference while leaving actual product health unresolved."
+    }
+  ],
+  "hard_failure_checks": [
+    {
+      "behavior": "Treat correlation between activity and health as established causation.",
+      "observed": false,
+      "evidence": "Explicitly labels 'engagement proves health' an unsupported interpretation and expresses low confidence about causes."
+    }
+  ],
+  "citation_check": {
+    "expected": false,
+    "material_claims": 2,
+    "supported_claims": 2,
+    "notes": "The two empirical observations are supplied by the case. Explanations are labeled hypotheses; analytical judgments and recommendations are excluded from citation counts. No external citations are required."
+  },
+  "notes": "Only case-applicable dimensions were scored. The activity-quality check is satisfied through exploration of disconnection from durable value, without inferring examination of forced or concentrated activity."
+}

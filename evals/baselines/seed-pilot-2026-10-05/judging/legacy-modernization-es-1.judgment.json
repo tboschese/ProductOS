@@ -1,0 +1,58 @@
+{
+  "dimension_scores": {
+    "problem_framing": 4,
+    "strategic_reasoning": 3,
+    "technical_reasoning": 3,
+    "regulatory_reasoning": 3,
+    "trade_off_awareness": 4,
+    "decision_quality": 4,
+    "language_terminology_fidelity": 4
+  },
+  "dimension_evidence": {
+    "problem_framing": "Separa antigüedad, propuesta arquitectónica y necesidad de negocio; identifica problemas como hipótesis y exige baselines antes de fijar objetivos.",
+    "strategic_reasoning": "Relaciona resultados, caso de inversión, coste total y trabajo pospuesto; asigna presupuesto y riesgo residual a un patrocinador ejecutivo.",
+    "technical_reasoning": "Compara monolito modular, extracción de servicios y sustitución; considera dependencias, consistencia, conciliación de datos, observabilidad y rollback probado.",
+    "regulatory_reasoning": "Incluye continuidad asistencial, reglas clínicas, privacidad, seguridad y revisión de cumplimiento. El tratamiento regulatorio es pertinente, aunque permanece general.",
+    "trade_off_awareness": "Compara cuatro alternativas sobre el mismo alcance e incluye disrupción, convivencia, complejidad operativa, dependencia del proveedor y costes de transición.",
+    "decision_quality": "Formula una recomendación provisional con confianza moderada, identifica la incertidumbre dominante y propone una evaluación acotada con criterios de aceptación y condiciones para cambiar la decisión.",
+    "language_terminology_fidelity": "Español natural y preciso, con terminología clínica y arquitectónica adecuada; los anglicismos técnicos no dificultan la comprensión."
+  },
+  "expected_behavior_checks": [
+    {
+      "behavior": "Preserve the business, technical, regulatory, and migration reasoning from the English case.",
+      "observed": true,
+      "evidence": "Incluye resultados de negocio, alternativas técnicas, cumplimiento y migración con continuidad, conciliación de datos y reversión."
+    },
+    {
+      "behavior": "Compare incremental and replacement options before recommending architecture.",
+      "observed": true,
+      "evidence": "Presenta mantenimiento, modernización gradual, extracción de servicios y sustitución; mantiene la recomendación incremental como provisional y condicionada a evidencia."
+    },
+    {
+      "behavior": "Respond in natural Spanish.",
+      "observed": true,
+      "evidence": "La respuesta utiliza español fluido y coherente, adecuado al contexto sanitario y técnico."
+    }
+  ],
+  "forbidden_behavior_checks": [
+    {
+      "behavior": "Default to a complete rewrite or microservices.",
+      "observed": false,
+      "evidence": "Expresamente no aprueba todavía una reescritura ni compromete la arquitectura a microservicios; compara alternativas."
+    }
+  ],
+  "hard_failure_checks": [
+    {
+      "behavior": "Ignore regulatory, continuity, or patient-safety implications.",
+      "observed": false,
+      "evidence": "Exige continuidad de flujos críticos, revisión de impactos clínicos y regulatorios, integridad de datos y rollback antes de exponer usuarios."
+    }
+  ],
+  "citation_check": {
+    "expected": false,
+    "material_claims": 6,
+    "supported_claims": 1,
+    "notes": "Se cuentan el resumen factual del caso y cinco afirmaciones generales sobre beneficios o costes de las alternativas, agrupadas por proposición. El resumen está respaldado por el caso; las generalizaciones no aportan fuentes. Se excluyen recomendaciones e hipótesis explícitas. No se exigían citas."
+  },
+  "notes": "No se proporcionó la versión inglesa: se observa cobertura de las cuatro áreas exigidas, pero no puede verificarse equivalencia directa. Solo se puntúan las siete dimensiones aplicables. La apertura favorece evaluar la vía incremental antes de la tabla, pero no constituye una elección definitiva de arquitectura."
+}

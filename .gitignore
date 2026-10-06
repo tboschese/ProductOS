@@ -7,5 +7,7 @@ __pycache__/
 build/
 dist/
 *.egg-info/
+.productos/
+output/terminal-qa/live-workspace/
 evals/results/*
 !evals/results/.gitkeep

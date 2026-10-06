@@ -19,6 +19,16 @@ The first implementation is repository-native:
 
 Phase 0 deliberately excludes a graph database, vector database, RAG service, SaaS UI, and model-specific orchestration. These can be introduced only after a measured retrieval problem exists.
 
+The optional behavioral pilot adds a manually invoked CLI adapter for evaluation only. Its
+declared instruction bundle and fresh generation/judging contexts do not introduce product
+runtime orchestration or retrieval infrastructure. See
+[ADR-0007](docs/decisions/0007-behavioral-pilot-executor.md).
+
+The optional local terminal under `productos/` is a separate product runtime. It invokes a
+user-selected AI connection only on explicit request and keeps personal decisions and answers
+in a user workspace outside canonical knowledge. See
+[ADR-0008](docs/decisions/0008-local-terminal-and-ai-adapters.md).
+
 ## System layers
 
 ```text
@@ -131,6 +141,11 @@ ProductOS separates:
 
 Deterministic scripts must not attempt to encode product judgment. Behavior scoring requires a declared judge protocol and periodic human calibration.
 
+`scripts.execute_evals` is an explicitly nondeterministic, opt-in pilot executor. Configuration
+is canonical under `evals/configs/`; prompt templates are versioned under `evals/prompts/`.
+It records instruction and case snapshots, raw responses, per-dimension judge evidence, and
+model settings. A pilot judge remains uncalibrated for release purposes.
+
 ## Security and content policy
 
 - Skills are reviewed as privileged instructions before release.
@@ -141,7 +156,7 @@ Deterministic scripts must not attempt to encode product judgment. Behavior scor
 ## Deferred decisions
 
 - final open-source license;
-- model and judge configuration for automated evals;
+- human calibration and release qualification of automated evaluation configurations;
 - retrieval/indexing implementation after usage evidence exists;
 - hosting or external service architecture;
 - specialized ProductOS skills beyond Staff PM and Research Curator.

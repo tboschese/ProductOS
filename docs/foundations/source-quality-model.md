@@ -26,9 +26,15 @@ Authority describes origin. Reviewers must separately assess:
 
 ## Source acceptance
 
-A source record requires identity, authorship or organization, publication year when available, URL, language, type, access level, authority class, summary, limitations, and verification date.
+A source record requires identity, authorship or organization, publication year when available,
+URL, language, type, access level, authority class, summary, limitations, verification date,
+temporal stability, and review interval.
 
 Missing metadata must be represented as unknown rather than inferred. Paywalled or restricted access is recorded explicitly.
+
+The current source contract is `schema_version: 0.3.1`. When migrating an older source record,
+add freshness metadata and update its schema version and metadata review date. Preserve
+`last_verified` unless source metadata and access were actually checked again.
 
 ## Claim provenance
 
@@ -39,6 +45,19 @@ Claims record supporting and contradicting references separately. Reviewers assi
 ## Freshness
 
 `last_verified` records when the source metadata and access path were checked. Review cadence depends on volatility: laws, market data, product documentation, and platform behavior require more frequent review than stable historical material.
+
+Each source classifies its temporal stability and records an explicit review interval:
+
+- `stable`: the underlying publication is not expected to change, although access and metadata
+  can still decay;
+- `evolving`: maintained guidance, standards, or syntheses may change between reviews;
+- `volatile`: laws, product documentation, market data, policies, or platform behavior can change
+  quickly.
+
+The label does not set the interval automatically. Curators choose and justify a cadence that is
+proportionate to the claim's use and the cost of stale guidance. `scripts.audit_sources` computes
+the next due date deterministically from `last_verified` and `review_interval_days`. Optional URL
+probing is a best-effort access check, not proof that source content is unchanged.
 
 ## Copyright and privacy
 

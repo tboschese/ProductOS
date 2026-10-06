@@ -1,0 +1,65 @@
+{
+  "dimension_scores": {
+    "problem_framing": 4,
+    "customer_reasoning": 3,
+    "data_reasoning": 3,
+    "causal_reasoning": 3,
+    "hypothesis_quality": 4,
+    "evidence_discipline": 4,
+    "decision_quality": 4,
+    "language_terminology_fidelity": 4
+  },
+  "dimension_evidence": {
+    "problem_framing": "Distinguishes acquisition mix from deterioration among comparable customers and clarifies relative decline versus percentage points, account versus revenue retention, and measurement windows.",
+    "customer_reasoning": "Proposes reviewing cancellations, tickets, and conversations with departed and retained customers; distinguishes sales requirements from needs sustaining use and renewal.",
+    "data_reasoning": "Validates instrumentation and denominators, matches cohort maturity, and segments by channel, company size, use case, and plan. Does not address sample sizes or statistical uncertainty.",
+    "causal_reasoning": "Explicitly states that temporal sequence does not establish causality and proposes observable patterns distinguishing competing explanations. Does not specify a causal identification design.",
+    "hypothesis_quality": "Provides four plausible explanations with mechanisms and distinguishing evidence: acquisition mix, activation constraints, product or commercial problems, and enterprise gaps.",
+    "evidence_discipline": "Treats Sales' explanation as a hypothesis, fabricates no findings, and explicitly separates high confidence in the diagnostic process from low confidence in specific causes.",
+    "decision_quality": "Sets a bounded diagnostic period, proposes conditional interventions and a limited enterprise pilot, and includes ownership, baseline, success criteria, and appropriately delayed retention assessment.",
+    "language_terminology_fidelity": "Uses natural, clear Spanish while retaining established terms such as enterprise, onboarding, roadmap, baseline, and Customer Success."
+  },
+  "expected_behavior_checks": [
+    {
+      "behavior": "Preserve the same diagnostic reasoning as the English case.",
+      "observed": true,
+      "evidence": "Preserves the diagnostic structure: verify the decline, compare comparable cohorts, examine competing explanations, gather customer evidence, and act conditionally."
+    },
+    {
+      "behavior": "Validate instrumentation and compare cohorts and segments.",
+      "observed": true,
+      "evidence": "Explicitly checks instrumentation, denominator, and window; compares equally mature cohorts and segments by acquisition channel, company size, use case, and plan."
+    },
+    {
+      "behavior": "Respond in natural Spanish while preserving established technical terms.",
+      "observed": true,
+      "evidence": "Spanish prose is idiomatic and retains established product terminology without awkward literal translations."
+    }
+  ],
+  "forbidden_behavior_checks": [
+    {
+      "behavior": "Accept the sales explanation as established fact.",
+      "observed": false,
+      "evidence": "Explicitly calls Sales' proposal a hypothesis and requires evidence connecting missing capabilities to actual enterprise losses."
+    },
+    {
+      "behavior": "Translate established terminology mechanically.",
+      "observed": false,
+      "evidence": "Retains enterprise, onboarding, roadmap, and baseline while explaining the surrounding reasoning naturally in Spanish."
+    }
+  ],
+  "hard_failure_checks": [
+    {
+      "behavior": "Invent customer evidence or causal findings.",
+      "observed": false,
+      "evidence": "Customer evidence is proposed for collection; all candidate causes are labeled hypotheses or conditional findings."
+    }
+  ],
+  "citation_check": {
+    "expected": false,
+    "material_claims": 4,
+    "supported_claims": 4,
+    "notes": "Counts the reported decline and three methodological claims: aggregate retention cannot distinguish composition from deterioration, temporal sequence does not establish causality, and recent cohorts may lack equivalent renewal exposure. Support comes from the case or standard methodological reasoning; no external citations were required. Recommendations and labeled hypotheses are excluded."
+  },
+  "notes": "The English counterpart was not supplied, so literal cross-language equivalence cannot be verified; the preservation check reflects the diagnostic reasoning specified by this case. Only the eight applicable dimensions were scored."
+}

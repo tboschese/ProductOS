@@ -1,0 +1,194 @@
+{
+  "suite_id": "seed-regression",
+  "schema_version": "0.3.0",
+  "audience": "generator",
+  "scoring_status": "unscored",
+  "cases": [
+    {
+      "id": "retention-decline-en",
+      "locale": "en",
+      "input": "Our B2B SaaS retention dropped 12% after acquisition accelerated. Sales believes we need more enterprise features. What should we do?",
+      "context": {
+        "product_type": "b2b-saas",
+        "evidence_provided": "aggregate-retention-only"
+      }
+    },
+    {
+      "id": "enterprise-feature-request-en",
+      "locale": "en",
+      "input": "Sales says a custom permissions feature will close a $2M deal. Similar capabilities have almost no usage today. Should we commit it to the roadmap?",
+      "context": {
+        "product_type": "b2b-saas",
+        "deal_value": 2000000
+      }
+    },
+    {
+      "id": "bad-okrs-en",
+      "locale": "en",
+      "input": "Create our OKRs for next quarter. We need to launch onboarding v2, ship the dashboard redesign, and add five integrations.",
+      "context": {
+        "strategic_context": "absent"
+      }
+    },
+    {
+      "id": "legacy-modernization-en",
+      "locale": "en",
+      "input": "We need to modernize a 20-year-old healthcare system. Engineering proposes rewriting it as microservices. How should product lead the decision?",
+      "context": {
+        "industry": "healthcare",
+        "system_age_years": 20
+      }
+    },
+    {
+      "id": "ai-feature-proposal-en",
+      "locale": "en",
+      "input": "Our prototype can summarize customer contracts and leadership wants to launch it next month. The demo looked great. What should the PM do?",
+      "context": {
+        "data_sensitivity": "high",
+        "evaluation_status": "demo-only"
+      }
+    },
+    {
+      "id": "small-experiment-sample-en",
+      "locale": "en",
+      "input": "Our A/B test improved conversion by 18%, but each group had only 90 users and the test ran for three days. Can we roll it out?",
+      "context": {
+        "sample_per_arm": 90,
+        "duration_days": 3
+      }
+    },
+    {
+      "id": "metric-conflict-en",
+      "locale": "en",
+      "input": "Weekly active use is up 25%, but 90-day retention is down. The growth team says engagement proves the product is healthier.",
+      "context": {
+        "metrics_in_conflict": true
+      }
+    },
+    {
+      "id": "roadmap-overload-en",
+      "locale": "en",
+      "input": "Our next two quarters contain 43 committed features from Sales, Support, executives, and engineering. How do I prioritize them?",
+      "context": {
+        "committed_items": 43
+      }
+    },
+    {
+      "id": "pricing-change-en",
+      "locale": "en",
+      "input": "Our main competitor raised prices by 30%. Finance wants us to match immediately. Should we?",
+      "context": {
+        "competitor_change_percent": 30
+      }
+    },
+    {
+      "id": "marketplace-liquidity-en",
+      "locale": "en",
+      "input": "Supply and demand both grew 40%, but successful matches per user fell. Marketing wants more acquisition spend.",
+      "context": {
+        "supply_growth_percent": 40,
+        "demand_growth_percent": 40
+      }
+    },
+    {
+      "id": "platform-investment-en",
+      "locale": "en",
+      "input": "Engineering wants two teams for a year to build an internal platform. Product teams say their needs are different. Should we fund it?",
+      "context": {
+        "proposed_team_count": 2,
+        "proposed_duration_months": 12
+      }
+    },
+    {
+      "id": "product-sunset-en",
+      "locale": "en",
+      "input": "A legacy product contributes only 2% of revenue but supports several long-standing customers and one regulatory workflow. Should we sunset it?",
+      "context": {
+        "revenue_share_percent": 2,
+        "regulatory_dependency": true
+      }
+    },
+    {
+      "id": "outcome-bias-review-en",
+      "locale": "en",
+      "input": "We rushed a product launch without customer validation and accepted a known reliability risk. Adoption exceeded target and no major incident occurred. Leadership says this proves the decision was excellent. How should we review it?",
+      "context": {
+        "outcome": "favorable",
+        "process_gaps": [
+          "customer-validation-skipped",
+          "known-reliability-risk-accepted"
+        ]
+      }
+    },
+    {
+      "id": "retention-decline-pt-br",
+      "locale": "pt-BR",
+      "input": "A retenção do nosso SaaS B2B caiu 12% depois que aceleramos a aquisição. Vendas acredita que precisamos de mais funcionalidades enterprise. O que devemos fazer?",
+      "context": {
+        "product_type": "b2b-saas",
+        "evidence_provided": "aggregate-retention-only"
+      }
+    },
+    {
+      "id": "retention-decline-es",
+      "locale": "es",
+      "input": "La retención de nuestro SaaS B2B cayó un 12% después de acelerar la adquisición. Ventas cree que necesitamos más funcionalidades enterprise. ¿Qué deberíamos hacer?",
+      "context": {
+        "product_type": "b2b-saas",
+        "evidence_provided": "aggregate-retention-only"
+      }
+    },
+    {
+      "id": "enterprise-feature-request-pt-br",
+      "locale": "pt-BR",
+      "input": "Vendas diz que uma funcionalidade customizada de permissões fechará um contrato de US$ 2 milhões. Capacidades semelhantes quase não têm uso hoje. Devemos colocá-la no roadmap?",
+      "context": {
+        "product_type": "b2b-saas",
+        "deal_value": 2000000
+      }
+    },
+    {
+      "id": "enterprise-feature-request-es",
+      "locale": "es",
+      "input": "Ventas afirma que una función personalizada de permisos cerrará un contrato de US$ 2 millones. Capacidades similares casi no tienen uso hoy. ¿Debemos comprometerla en el roadmap?",
+      "context": {
+        "product_type": "b2b-saas",
+        "deal_value": 2000000
+      }
+    },
+    {
+      "id": "bad-okrs-pt-br",
+      "locale": "pt-BR",
+      "input": "Crie nossos OKRs para o próximo trimestre. Precisamos lançar o onboarding v2, entregar o redesign do dashboard e adicionar cinco integrações.",
+      "context": {
+        "strategic_context": "absent"
+      }
+    },
+    {
+      "id": "bad-okrs-es",
+      "locale": "es",
+      "input": "Crea nuestros OKRs para el próximo trimestre. Necesitamos lanzar onboarding v2, entregar el rediseño del dashboard y agregar cinco integraciones.",
+      "context": {
+        "strategic_context": "absent"
+      }
+    },
+    {
+      "id": "legacy-modernization-pt-br",
+      "locale": "pt-BR",
+      "input": "Precisamos modernizar um sistema de saúde com 20 anos. Engenharia propõe reescrevê-lo como microservices. Como Produto deve liderar essa decisão?",
+      "context": {
+        "industry": "healthcare",
+        "system_age_years": 20
+      }
+    },
+    {
+      "id": "legacy-modernization-es",
+      "locale": "es",
+      "input": "Necesitamos modernizar un sistema de salud de 20 años. Ingeniería propone reescribirlo como microservicios. ¿Cómo debería Producto liderar la decisión?",
+      "context": {
+        "industry": "healthcare",
+        "system_age_years": 20
+      }
+    }
+  ]
+}

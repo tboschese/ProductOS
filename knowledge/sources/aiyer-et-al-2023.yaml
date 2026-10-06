@@ -1,5 +1,5 @@
 id: aiyer-et-al-2023
-schema_version: 0.3.0
+schema_version: 0.3.1
 title: Outcomes Affect Evaluations of Decision Quality
 authors:
   - Sriraj Aiyer
@@ -26,10 +26,13 @@ limitations:
   - The replication used one medical scenario and the authors caution against broad generalization.
   - Its design differs from the original, so effect sizes are not directly comparable.
 last_verified: 2026-09-27
+freshness:
+  temporal_stability: stable
+  review_interval_days: 730
 status: in_review
 review:
   owner: product-os
   reviewers: []
   created_at: 2026-09-27
-  updated_at: 2026-09-27
+  updated_at: 2026-10-05
   next_review_at: null

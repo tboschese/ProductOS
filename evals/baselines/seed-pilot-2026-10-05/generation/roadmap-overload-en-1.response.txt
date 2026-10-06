@@ -1,0 +1,28 @@
+**Prioritize the commitments first, then the features.** Build a capacity-backed plan for the next two quarters and explicitly renegotiate what does not fit. A ranked list alone leaves all 43 items apparently promised.
+
+The only established fact is the count. It does not tell us whether the plan is overloaded: effort, dependencies, deadlines, customer value, and the meaning of “committed” remain unknown.
+
+1. **Audit each commitment.** Record the problem, affected users, expected outcome, supporting evidence, estimated effort, dependencies, requester, deadline, and consequence of delay. Distinguish contractual obligations and external promises from internal targets and stakeholder requests. Do not silently withdraw promises; identify who can renegotiate them.
+
+2. **Agree on the outcomes that govern priority.** Product and the accountable executive should establish a small set of business and customer outcomes for these two quarters. Sales, Support, executives, and engineering provide evidence and constraints; the source of a request should not determine its priority. If the outcomes are disputed, resolve that disagreement before scoring features.
+
+3. **Establish feasible capacity with engineering.** Account for ongoing operations, maintenance, existing work, and delivery uncertainty. Use rough effort ranges initially. Evaluate dependencies as coherent packages: an enabling item may matter because of what it unlocks. If the commitments exceed capacity, make the scope-versus-resources decision explicit.
+
+4. **Compare items using consistent questions.**
+   - What outcome would improve, for whom, and by how much?
+   - What evidence supports that expectation?
+   - Why must this happen within these two quarters? What happens if it waits?
+   - What delivery, support, and ongoing complexity does it create?
+   - What would it displace, and could a smaller solution achieve the result?
+
+   Use judgment supported by evidence rather than a precise-looking score built from guesses. For uncertain, expensive proposals, prioritize a small validation step before committing the full build.
+
+5. **Publish an explicit disposition for all 43 items.** Assign each to **deliver, validate, renegotiate/defer, or decline**, with an owner and rationale. Put confirmed time-sensitive obligations and critical risk reduction into the plan, then select the strongest outcome contributions within remaining capacity. Keep later-quarter work conditional where evidence or estimates are weak.
+
+There are two defensible approaches: preserve existing promises to protect trust, or reopen them to improve value and feasibility. I recommend a combination: honor confirmed obligations unless the accountable owner renegotiates them, and reassess discretionary commitments. The trade-off is stakeholder friction now versus delivery failure or weak outcomes later.
+
+The Product lead should own the proposal, engineering should validate feasibility, and an accountable executive should resolve conflicts and approve changes to commitments. Sales and Support should supply deal, customer, and operational evidence—not just request volume.
+
+Measure the plan by the agreed customer and business outcomes, alongside delivery reliability and operational health. Feature count is a scope measure, not success. Review monthly and when a material obligation, capacity estimate, or evidence changes.
+
+**Confidence is high in this approach; the actual ordering remains undetermined until commitments, outcomes, and capacity are clarified.**

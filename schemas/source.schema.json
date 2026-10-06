@@ -7,11 +7,11 @@
   "required": [
     "id", "schema_version", "title", "authors", "organization", "year", "url",
     "language", "type", "access", "authority_level", "facets", "summary",
-    "limitations", "last_verified", "status", "review"
+    "limitations", "last_verified", "freshness", "status", "review"
   ],
   "properties": {
     "id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
-    "schema_version": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/schemaVersion"},
+    "schema_version": {"const": "0.3.1"},
     "title": {"type": "string", "minLength": 1},
     "authors": {
       "type": "array",
@@ -37,6 +37,18 @@
     "summary": {"type": "string", "minLength": 1},
     "limitations": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
     "last_verified": {"type": "string", "format": "date"},
+    "freshness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["temporal_stability", "review_interval_days"],
+      "properties": {
+        "temporal_stability": {
+          "type": "string",
+          "enum": ["stable", "evolving", "volatile"]
+        },
+        "review_interval_days": {"type": "integer", "minimum": 1, "maximum": 3650}
+      }
+    },
     "status": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/status"},
     "review": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/review"}
   },

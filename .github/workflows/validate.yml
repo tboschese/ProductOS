@@ -21,5 +21,10 @@ jobs:
       - run: python scripts/validate_repository.py
       - run: python -m scripts.build_indexes --check
       - run: python -m scripts.check_duplicates
+      - run: python -m scripts.audit_sources --fail-stale
+      - name: Validate archived pilot assessments without model calls
+        run: >-
+          python -m scripts.evaluate_results evals/baselines/seed-pilot-2026-10-05/run.json
+          --review-packet evals/baselines/seed-pilot-2026-10-05/snapshot/reviewer.json
       - run: pytest
       - run: ruff check .

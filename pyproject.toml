@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "product-os-foundation"
-version = "0.3.0a2"
-description = "Validation tooling for the ProductOS knowledge and reasoning repository"
+version = "0.3.0a6"
+description = "Evidence-aware ProductOS terminal and repository tooling"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
@@ -15,13 +15,21 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+terminal = ["textual>=8.2,<9"]
 dev = [
   "pytest>=8,<9",
   "ruff>=0.6,<1",
+  "textual>=8.2,<9",
 ]
 
-[tool.setuptools]
-py-modules = []
+[project.scripts]
+productos = "productos.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["productos*", "scripts*"]
+
+[tool.setuptools.package-data]
+productos = ["*.tcss"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

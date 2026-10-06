@@ -1,0 +1,21 @@
+**No la comprometería todavía en el roadmap.** Autorizaría una validación breve del requisito y del contrato, con una decisión explícita antes de prometer alcance o fecha. Confianza moderada: hay una oportunidad comercial relevante, pero evidencia insuficiente para asumir una obligación permanente.
+
+Los US$ 2 millones son el valor declarado del contrato; no conocemos duración, margen ni probabilidad de cierre. Que la función lo cerrará es una hipótesis de Ventas. El bajo uso de capacidades similares cuestiona su valor generalizable, aunque un permiso puede ser indispensable para seguridad o compra y utilizarse pocas veces.
+
+La incertidumbre principal es **si existe un requisito imprescindible que el producto actual no puede resolver y cuya entrega hará económicamente atractivo el contrato**. Hay tres explicaciones plausibles:
+
+- Es un bloqueo real de seguridad o contratación: confirmarlo con quien aprueba esos requisitos y con el comprador.
+- La capacidad ya existe, pero resulta difícil de configurar o descubrir: probar el flujo concreto con el cliente.
+- Es una preferencia o herramienta de negociación: identificar qué impediría firmar si no se entrega.
+
+Propongo resolverlo en cinco días hábiles, ajustando el plazo al proceso comercial:
+
+- **Ventas:** obtener confirmación del comprador sobre requisito, criterios de aceptación, otros bloqueos y condiciones de compra.
+- **Producto:** describir quién necesita hacer qué, sobre qué recursos y con qué restricciones; contrastarlo con clientes comparables y con las capacidades poco usadas.
+- **Ingeniería y Seguridad:** estimar entrega, mantenimiento y soporte; revisar configuración o integración como alternativas y comprobar que preservan los controles de acceso.
+
+La decisión posterior debería comparar tres caminos: resolver mediante configuración o integración; ofrecer un piloto o excepción acotada con responsabilidades explícitas; desarrollar una capacidad reutilizable. Declinar es válido si el coste, el riesgo o el trabajo desplazado superan el beneficio esperado.
+
+**Comprometería desarrollo únicamente** con necesidad confirmada, alcance verificable, viabilidad técnica, economía favorable y aceptación explícita de la oportunidad que sale del roadmap. Una necesidad exclusiva de este cliente puede justificar una excepción comercial, pero no demuestra demanda de mercado.
+
+Producto debe coordinar la decisión con responsables comerciales y técnicos. Antes de comprometer, acordar cómo verificar el requisito, errores de autorización, carga de soporte y resultado comercial. Revisar al cerrar la validación y tras la primera implementación; el éxito debe incluir cumplimiento del control requerido, no solo frecuencia de uso.

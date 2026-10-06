@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 from collections import Counter, defaultdict
@@ -14,7 +15,7 @@ from typing import Any
 
 import yaml
 
-from scripts.run_evals import load_cases, load_suite
+from scripts.run_evals import load_cases, load_suite, validate_packet_shape
 from scripts.validate_repository import (
     ROOT,
     build_validators,
@@ -38,6 +39,33 @@ def validate_run_shape(run: dict[str, Any]) -> list[str]:
     validator = build_validators(schemas, registry)["eval-run"]
     errors = sorted(validator.iter_errors(run), key=lambda error: list(error.path))
     return [format_errors(errors)] if errors else []
+
+
+def load_review_context(path: Path) -> tuple[dict[str, Any], dict[str, dict[str, Any]], str]:
+    raw = path.read_bytes()
+    packet = json.loads(raw)
+    if not isinstance(packet, dict):
+        raise ValueError("Reviewer packet must be an object")
+    failures = validate_packet_shape(packet)
+    if failures:
+        raise ValueError(f"Invalid evaluation packet: {'; '.join(failures)}")
+    if packet["audience"] != "reviewer":
+        raise ValueError("Scoring requires a reviewer packet, not a generator packet")
+
+    suite = packet["suite"]
+    if packet["suite_id"] != suite["id"]:
+        raise ValueError("Reviewer packet suite_id does not match its embedded suite")
+    cases = {case["id"]: case for case in packet["cases"]}
+    if len(cases) != len(packet["cases"]):
+        raise ValueError("Reviewer packet contains duplicate case IDs")
+    if set(cases) != set(suite["case_ids"]):
+        raise ValueError("Reviewer packet must contain exactly the cases in its embedded suite")
+    exercised = {
+        dimension for case in cases.values() for dimension in case["applicable_dimensions"]
+    }
+    if not set(suite["gate_policy"]["critical_dimensions"]) <= exercised:
+        raise ValueError("Reviewer packet gate policy contains unexercised critical dimensions")
+    return suite, cases, hashlib.sha256(raw).hexdigest()
 
 
 def _executor_failures(label: str, executor: dict[str, Any]) -> list[str]:
@@ -331,6 +359,10 @@ def summarize_run(
 
 
 def print_summary(summary: dict[str, Any]) -> None:
+    context = summary.get("evaluation_context")
+    if context:
+        digest = f"; sha256={context['sha256']}" if "sha256" in context else ""
+        print(f"Evaluation context: {context['source']}{digest}.")
     print(
         f"Run {summary['run_id']}: {summary['assessment_count']}/"
         f"{summary['expected_assessment_count']} assessments; "
@@ -351,7 +383,13 @@ def print_summary(summary: dict[str, Any]) -> None:
 def parser() -> argparse.ArgumentParser:
     command = argparse.ArgumentParser(description=__doc__)
     command.add_argument("run", type=Path, help="JSON or YAML eval-run file")
-    command.add_argument("--suite", default="seed", help="Suite ID or repository-relative path")
+    context = command.add_mutually_exclusive_group()
+    context.add_argument(
+        "--suite", help="Live suite ID or repository-relative path (default: seed)"
+    )
+    context.add_argument(
+        "--review-packet", type=Path, help="Evaluate against exported cases and gate policy"
+    )
     command.add_argument("--json", action="store_true", help="Print the summary as JSON")
     command.add_argument("--output", type=Path, help="Write the JSON summary to a file")
     command.add_argument(
@@ -377,8 +415,11 @@ def main() -> int:
             for failure in shape_failures:
                 print(f"error: {failure}", file=sys.stderr)
             return 1
-        suite = load_suite(args.suite)
-        cases = load_cases()
+        if args.review_packet:
+            suite, cases, packet_digest = load_review_context(args.review_packet)
+        else:
+            suite = load_suite(args.suite or "seed")
+            cases = load_cases()
         semantic_failures = validate_run_semantics(run, suite, cases)
     except (OSError, ValueError, KeyError, json.JSONDecodeError, yaml.YAMLError) as error:
         print(f"error: {error}", file=sys.stderr)
@@ -390,6 +431,10 @@ def main() -> int:
         return 1
 
     summary = summarize_run(run, suite, cases)
+    summary["evaluation_context"] = (
+        {"source": "reviewer_packet", "sha256": packet_digest}
+        if args.review_packet else {"source": "live_repository"}
+    )
     if args.json:
         print(json.dumps(summary, indent=2, ensure_ascii=False))
     else:
@@ -399,7 +444,8 @@ def main() -> int:
         args.output.write_text(
             json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
         )
-        print(f"Wrote summary: {args.output}")
+        if not args.json:
+            print(f"Wrote summary: {args.output}")
     return 2 if args.enforce_gates and not summary["gates_passed"] else 0
 
 

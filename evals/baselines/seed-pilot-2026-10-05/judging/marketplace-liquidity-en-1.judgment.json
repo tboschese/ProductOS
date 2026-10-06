@@ -1,0 +1,58 @@
+{
+  "dimension_scores": {
+    "problem_framing": 3,
+    "customer_reasoning": 3,
+    "business_reasoning": 3,
+    "data_reasoning": 4,
+    "causal_reasoning": 3,
+    "hypothesis_quality": 3,
+    "decision_quality": 3
+  },
+  "dimension_evidence": {
+    "problem_framing": "Separates aggregate growth from compatible supply and demand, frames deterioration as an unresolved constraint, and conditions acquisition on diagnosis.",
+    "customer_reasoning": "Examines compatibility, availability, failed-match reasons, completion, and retention for both marketplace sides. Pricing and fraud-related user harm are absent.",
+    "business_reasoning": "Connects targeted investment to the constrained side and segment, incremental completions, and acquisition economics. Does not examine margins or longer-term participant value.",
+    "data_reasoning": "Validates definitions, denominators, instrumentation, and observation windows; compares equally mature cohorts; segments by compatibility and channel; and distinguishes declining matches per user from potentially increasing total matches.",
+    "causal_reasoning": "Explicitly states that the figures do not establish cause and proposes funnel diagnosis plus controlled spend tests. Marketplace interference and experimental assignment are not addressed.",
+    "hypothesis_quality": "Offers distinct, testable explanations involving measurement, cohort mix, local imbalance, and fulfillment friction. Pricing and fraud hypotheses are missing, and hypotheses are not prioritized.",
+    "decision_quality": "Provides a clear temporary hold, a focused diagnostic review, conditional investment choices, and test guardrails. Approval thresholds and control design remain unspecified."
+  },
+  "expected_behavior_checks": [
+    {
+      "behavior": "Examine local density, category or geography imbalance, match quality, time-to-match, pricing, and fraud.",
+      "observed": false,
+      "evidence": "Examines geography, category, availability, compatibility, and completion friction; includes time to match as a guardrail. Pricing and fraud are absent, and local density is not explicitly assessed."
+    },
+    {
+      "behavior": "Distinguish aggregate growth from liquidity and user value.",
+      "observed": true,
+      "evidence": "States that equal growth does not establish compatible growth and evaluates completed matches, fulfillment, time to match, and retention."
+    },
+    {
+      "behavior": "Identify whether more acquisition would amplify the constraint.",
+      "observed": true,
+      "evidence": "Explicitly warns that acquisition could amplify a bottleneck and directs investment toward the missing side or fixing completion friction."
+    }
+  ],
+  "forbidden_behavior_checks": [
+    {
+      "behavior": "Recommend acquisition based only on total supply and demand growth.",
+      "observed": false,
+      "evidence": "Holds the proposed increase and requires segment-specific evidence, incremental matching improvements, and acceptable economics before broader spending."
+    }
+  ],
+  "hard_failure_checks": [
+    {
+      "behavior": "Equate marketplace size with liquidity.",
+      "observed": false,
+      "evidence": "Explicitly rejects aggregate growth as sufficient evidence of compatible supply and demand or justification for acquisition."
+    }
+  ],
+  "citation_check": {
+    "expected": false,
+    "material_claims": 3,
+    "supported_claims": 3,
+    "notes": "Counts the two 40% growth facts and declining successful matches per user, all supplied by the case. Recommendations, labeled hypotheses, and conditional possibilities are excluded. External citations were not required."
+  },
+  "notes": "The first expected behavior is treated as a composite requirement and marked unobserved because several requested checks are absent, despite substantial partial coverage. The response provides a sound diagnostic process but does not establish an actual binding constraint from the limited case evidence."
+}

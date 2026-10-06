@@ -1,0 +1,23 @@
+**Don’t match the 30% increase immediately.** The competitor’s move is a reason to review pricing, but it does not establish that your customers will accept the same increase. Confidence is moderate in delaying a broad change; evidence is insufficient to recommend a specific increase.
+
+The only supplied evidence is that the competitor raised prices by 30%. We don’t know whether that affects comparable plans, existing customers, or actual prices after discounts—or whether customers are accepting it. Finance’s request is a stakeholder preference, not evidence of pricing power.
+
+Three explanations remain credible:
+
+- **The market can support higher prices:** you may be leaving revenue on the table.
+- **The competitor faces different costs or offers different value:** matching could hurt your conversion and retention.
+- **The increase creates a switching opportunity:** holding prices could improve acquisition, although the added customers must be profitable.
+
+The dominant uncertainty is **how a higher price would affect your customers’ purchase and renewal decisions, and therefore your contribution profit**.
+
+I recommend a bounded pricing review followed by a controlled pilot:
+
+1. **Finance and Product:** establish the objective—profit, growth, or both—and baseline realized prices, margins, conversion, retention, and discounting by segment.
+2. **Sales and Product:** confirm which comparable competitor offers changed and review recent wins, losses, and price objections. Customer statements are useful, but purchasing behavior should carry more weight.
+3. **Product and Finance:** test a justified increase with a limited group of new customers, using a comparable control where feasible. Set acceptable conversion loss and minimum contribution-profit improvement before starting. Evaluate existing-customer increases separately because renewal and trust costs differ.
+
+Measure **contribution profit per eligible prospect**, with conversion, discounts, sales-cycle length, and customer mix as guardrails. For existing customers, also assess renewal, contraction, and churn over a full renewal window. Assign a review date that allows enough purchasing decisions to interpret the result.
+
+Holding prices temporarily preserves a potential acquisition advantage but may forgo margin. A selective increase can capture upside with less exposure than an immediate blanket increase.
+
+**Change the recommendation if your own purchasing and renewal evidence supports higher net profit at the proposed price. The competitor’s increase alone does not meet that threshold.**

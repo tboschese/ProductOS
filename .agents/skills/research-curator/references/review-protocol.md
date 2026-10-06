@@ -11,6 +11,9 @@
 - Are primary or original sources investigated where practical?
 - Are locators precise and verified?
 - Are relevance, method, recency, incentives, and limitations explicit?
+- Is temporal stability classified and is the review interval proportionate?
+- Is the source freshness audit current? If URLs were probed, was content still verified
+  separately?
 - Are conflicting findings preserved?
 - Does claim confidence match the weakest material evidence?
 

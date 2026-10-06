@@ -1,0 +1,27 @@
+**Do not approve an immediate sunset. Keep the product running while conducting a time-boxed retirement assessment.** Its 2% revenue share justifies reviewing the investment, but does not establish that retirement creates value.
+
+The supplied facts are that the product contributes 2% of revenue, serves several long-standing customers, and supports a regulatory workflow. Its profitability, operating burden, contractual obligations, replacement options, and effect on those customers’ other business are unknown. Long-standing relationships deserve consideration, but do not by themselves justify permanent support.
+
+The dominant uncertainty is **whether the regulatory workflow and customer needs can move to an acceptable alternative, at a cost that makes retirement worthwhile**. Compliance or legal specialists should establish the actual obligations; a regulatory dependency does not automatically require preserving this particular product.
+
+Compare three options:
+
+| Option | When it makes sense | Principal trade-off |
+|---|---|---|
+| Sunset with migration | A replacement meets customer and regulatory requirements, and retirement produces meaningful net savings | Migration expense, disruption, and possible loss of related business |
+| Maintain a limited service | Essential workflows remain dependent, but development can be restricted to necessary support and controls | Continued operating cost and technical exposure |
+| Modernize the essential workflow | The required capability has durable value and can be separated economically | Upfront investment and transition risk |
+
+**Proposed next step:** have the product leader own a 30-day assessment, with Engineering, Finance, Customer Success, and compliance/legal contributing. This is a proposed decision window, not a retirement deadline.
+
+The assessment should establish:
+
+- Product contribution after avoidable operating costs, plus migration and decommissioning costs. Separate savings that retirement would actually unlock from allocated overhead.
+- Which customers and workflows depend on it, available alternatives, contractual commitments, and any related revenue at risk.
+- Whether a replacement can preserve required functionality, records, access, and continuity—and how that will be validated before shutdown.
+
+Approve sunset only when there is a credible migration path, confirmed obligations can be met, and expected benefits justify transition costs and customer consequences. If those conditions fail, choose limited maintenance or targeted modernization rather than extending the review indefinitely.
+
+Measure success through realized net savings and completed, validated migrations. Use continuity of the regulatory workflow, data integrity, migration failures, and customer losses—including related business—as guardrails. Review at the end of the assessment and again before irreversible shutdown.
+
+Confidence is **high that revenue share alone is insufficient**, but low on the eventual sunset decision until continuity and economics are established.

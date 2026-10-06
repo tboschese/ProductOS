@@ -1,0 +1,17 @@
+**The PM should recommend against a broad launch next month and propose a gated pilot, contingent on evaluation and data safeguards.** A strong demo shows promise; demo-only evidence does not establish reliability for sensitive customer contracts. Confidence is high that launch readiness is unproven, while actual product quality remains unknown.
+
+The central question is whether summaries help a defined user complete contract review faster **without missing or misrepresenting consequential terms**. Two explanations remain plausible: the prototype delivers useful, repeatable value, or the demo hides failures on unfamiliar formats, exceptions, amendments, and ambiguous clauses.
+
+The PM should lead four immediate actions:
+
+1. **Define the use case and boundaries.** Identify who uses the summary and what decisions it supports. For an initial pilot, require reviewers to verify consequential terms against the original contract. Give summaries clause-level references and a clear escalation path for uncertainty.
+
+2. **Evaluate against the existing workflow.** With contract experts, build a permissioned, representative evaluation set separate from development examples. Include difficult cases and assess material omissions, unsupported statements, incorrect terms, and reference accuracy. Compare total review time and accuracy with manual review or simpler extraction templates—not just summary speed. Agree on acceptance thresholds before seeing results, with stricter treatment of consequential errors.
+
+3. **Resolve sensitive-data handling before exposure.** Engineering, Security, Privacy, and Legal should review provider retention and training practices, access controls, confidentiality obligations, deletion, and logging. Restrict the pilot to approved contracts and users. Human review does not resolve data exposure risk.
+
+4. **Make the launch decision explicit.** The PM should bring the accountable launch owner evidence, unresolved risks, and options: continue evaluation, run a bounded pilot, or launch more broadly after passing the gates. Next month can be a pilot target; it should not override acceptance criteria.
+
+Pilot success should mean reduced **end-to-end review effort** while meeting expert-approved accuracy thresholds. Track material errors, corrections, verification effort, escalation frequency, latency, and cost. Pause for a confidentiality incident or a consequential error that escapes required review.
+
+Expand only when evaluation and pilot evidence support it. If verification removes the time savings, or a simpler approach performs better, narrow or stop the feature.

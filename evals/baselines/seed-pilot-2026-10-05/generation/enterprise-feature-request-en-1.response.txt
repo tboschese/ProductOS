@@ -1,0 +1,19 @@
+**Do not make an unconditional roadmap commitment yet.** Validate the deal requirement and evaluate a bounded accommodation first. Confidence is moderate: $2M warrants attention, but the evidence does not yet justify permanent product complexity.
+
+Sales’ statement is an unverified prediction about closing the deal. Low usage of similar capabilities is evidence against broad demand, but permissions can be a procurement or security requirement even when customers rarely configure them. Neither signal settles the decision.
+
+The key uncertainty is **whether this exact capability is necessary to win a commercially attractive deal—and whether a simpler solution would satisfy the buyer.**
+
+Before making a promise, time-box these actions to five business days, or the buyer’s decision deadline if sooner:
+
+- **Sales and Product:** Confirm the requirement directly with the buyer and security/procurement stakeholders. Identify the blocked workflow, acceptance criteria, other closing conditions, and whether $2M means annual revenue or total contract value.
+- **Engineering and Security:** Estimate the smallest acceptable solution, authorization risks, implementation effort, ongoing support, and the roadmap work it would displace.
+- **Product:** Check why existing capabilities have little usage: limited need, poor discoverability, inadequate functionality, or a different customer segment. Seek corroboration from comparable accounts.
+
+Compare existing configuration, a process workaround where acceptable, an integration, a scoped paid pilot, a reusable product feature, and declining the request. A bespoke exception may capture revenue sooner, but adds maintenance and creates expectations for future customization. Declining preserves capacity but risks losing the deal.
+
+**Commit only if** the buyer confirms it is a necessary purchase condition, acceptance criteria are explicit, engineering/security approve the approach, and conservative expected deal contribution justifies delivery, lifecycle costs, and displaced roadmap value. A single deal can justify a bounded commercial exception; broader roadmap priority needs evidence of repeatable demand. The product leader should own that decision jointly with Engineering and the commercial owner.
+
+Measure purchase completion and realized revenue, successful authorized workflows, permission correctness, support burden, and delivery cost. Track adoption among eligible customers rather than treating frequent usage as the sole success criterion.
+
+Revisit the decision if the buyer accepts a workaround, the deal remains blocked for other reasons, costs exceed the agreed bound, or comparable customers demonstrate recurring demand.

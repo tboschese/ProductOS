@@ -1,0 +1,25 @@
+**Do not approve two teams for a year at the current level of evidence. Fund a bounded validation effort, with a pilot only if it identifies a valuable shared problem.** Confidence is moderate in this recommendation; confidence in the platform’s eventual value is low.
+
+The proposal commits **two team-years**, before accounting for migration, support, and ongoing ownership. Engineering’s request is not evidence of that return. Product teams’ differing needs are meaningful counterevidence, but they do not rule out shared infrastructure beneath different workflows.
+
+The decision is whether a common platform would remove enough recurring friction to justify its full cost and the product work displaced.
+
+Three explanations remain credible:
+
+- **Shared bottlenecks:** teams repeatedly solve the same infrastructure problems; a platform could reduce duplicated work.
+- **Different workflows, common foundations:** a narrow shared capability could help, while a comprehensive platform would constrain teams.
+- **Primarily local problems:** centralization would add coordination and migration costs without enough benefit.
+
+**Authorize a four-to-six-week validation effort with a capped allocation and a named Engineering owner, jointly reviewed with Product.** That timebox is a proposed limit, not an estimate of implementation effort. It should produce:
+
+1. **Evidence of a recurring bottleneck.** Examine recent delivery work across teams with different needs. Quantify time spent, delays, reliability problems, and existing workarounds. Separate platform-addressable problems from staffing, priorities, or process issues.
+2. **An alternatives comparison.** Compare the platform with improving existing tooling, buying a solution, sharing a small library or service, and leaving capabilities with individual teams. Include implementation, migration, operations, and displaced roadmap work.
+3. **A narrow pilot proposal.** Select one demonstrated shared problem, participating teams, an integration path, a maintenance owner, and success thresholds agreed before building.
+
+If the pilot proceeds, measure time to complete the affected workflow, engineering effort saved, reliability where relevant, actual use, and support burden against the current baseline. Include onboarding and migration effort; demo quality and stated enthusiasm are insufficient.
+
+Approve further investment in stages only if representative teams get measurable benefits, differences can be accommodated without extensive customization, and conservative benefits justify total costs. Prefer expanding a proven capability over authorizing the entire platform upfront.
+
+Stop or narrow the effort if no substantial common bottleneck emerges, benefits depend on extensive team-specific work, or adoption costs erase the gains. Strong evidence of repeated costly problems across teams would change the recommendation toward funding.
+
+The Engineering and Product leaders accountable for the displaced roadmap should make the funding decision together. The principal trade-off is potential long-term delivery efficiency versus a substantial immediate capacity commitment and a permanent operational responsibility.

@@ -20,6 +20,18 @@ judge configuration, repository revision, and response.
    failure.
 7. Mark the baseline provisional until judge calibration is complete.
 
+Export generator and reviewer packets together before generation. The generator packet is a
+host-side collection of independent requests: send only one case's `input` and `context` per
+fresh generation context, using its ID and locale for routing and result association. Do not
+send the whole packet or the reviewer packet to the generator. An export file alone does not
+enforce runtime isolation; the executor must preserve that separation.
+
+Use the reviewer packet for scoring and result evaluation so later edits to cases or gate
+policy cannot silently change the run's evaluation context. The summary records the SHA-256 of
+the exact reviewer file. This freezes cases and policy only; the repository revision, skill
+instructions, rubric, executor configuration, and raw responses must still be preserved as
+required above.
+
 ## Required separation
 
 The generator must not judge its own output in a single pass. When the same model family is
@@ -78,22 +90,45 @@ for consequential release decisions.
 
 ## Commands
 
-Export the case packet supplied to the response generator:
+Export the blind generator packet and the separate reviewer snapshot:
 
 ```bash
-python -m scripts.run_evals --suite seed --export evals/results/seed-packet.json
+python -m scripts.run_evals --suite seed --export evals/results/seed-generator.json \
+  --export-review evals/results/seed-reviewer.json
 ```
 
 Validate and summarize a populated eval-run file:
 
 ```bash
-python -m scripts.evaluate_results evals/results/seed-run.json --suite seed
-python -m scripts.evaluate_results evals/results/seed-run.json --suite seed --json
-python -m scripts.evaluate_results evals/results/seed-run.json --suite seed --enforce-gates
+python -m scripts.evaluate_results evals/results/seed-run.json \
+  --review-packet evals/results/seed-reviewer.json
+python -m scripts.evaluate_results evals/results/seed-run.json \
+  --review-packet evals/results/seed-reviewer.json --json
+python -m scripts.evaluate_results evals/results/seed-run.json \
+  --review-packet evals/results/seed-reviewer.json --enforce-gates
 ```
+
+For exploratory evaluation against live repository cases, use `--suite seed` instead of
+`--review-packet`. The result summary labels which context was used.
 
 Exit code `1` means the repository or run is invalid. With `--enforce-gates`, exit code `2`
 means the run is valid but one or more behavioral gates failed.
 
 Generated packets, runs, and reports remain under the ignored `evals/results/` directory unless
 a maintainer deliberately promotes a sanitized artifact.
+
+## First pilot adapter
+
+`scripts.execute_evals` freezes the configured instruction bundle, rubric, templates, packets,
+and runner, then generates all responses before starting judgments. It runs one fresh CLI
+context per call and rejects tool activity in the recorded events. Resume checks snapshot and
+response hashes and does not regenerate completed responses or assessments.
+
+The configuration under `evals/configs/seed-pilot.yaml` is a one-repetition smoke pilot with the
+judge marked `pilot`. It does not meet the repetition requirement for calibration. When the
+generator and judge use the same model, their fresh contexts provide procedural separation but
+not statistical independence. Independent human review must test score and hard-failure
+classification before the judge can be described as calibrated.
+
+The adapter loads the full declared instruction bundle as text. Assessing installed skill
+discovery, progressive references, tool use, and retrieval requires a different runtime test.

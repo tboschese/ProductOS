@@ -1,0 +1,72 @@
+{
+  "dimension_scores": {
+    "problem_framing": 4,
+    "customer_reasoning": 3,
+    "data_reasoning": 3,
+    "causal_reasoning": 3,
+    "hypothesis_quality": 4,
+    "evidence_discipline": 4,
+    "method_selection": 3,
+    "decision_quality": 4,
+    "measurement_quality": 3
+  },
+  "dimension_evidence": {
+    "problem_framing": "Reframes the roadmap request as a diagnostic decision, distinguishes customer-mix changes from within-group deterioration, and validates the meaning of the reported decline.",
+    "customer_reasoning": "Proposes interviews with churned and comparable retained customers and distinguishes procurement objections from existing-customer churn. Sampling and ongoing engagement analysis are unspecified.",
+    "data_reasoning": "Checks definitions, tracking, denominators, observation windows, and complete age-matched follow-up. Segments cohorts and separates mix effects from within-segment changes, but does not quantify contributions or statistical uncertainty.",
+    "causal_reasoning": "Explicitly rejects temporal sequence as causation and considers mix, onboarding, enterprise gaps, reliability, and pricing. Proposed observational triangulation supports diagnosis but does not establish intervention effects.",
+    "hypothesis_quality": "Provides competing, case-relevant hypotheses with discriminating evidence and corresponding actions; enterprise gaps must repeatedly block ongoing value in comparable customers.",
+    "evidence_discipline": "Clearly distinguishes supplied evidence, hypotheses, and confidence. Requires churn-linked capability evidence before enterprise investment and acknowledges immature-cohort limitations.",
+    "method_selection": "Combines cohort analysis, operational records, and customer interviews in a bounded 1–2-week diagnostic with ownership. Interview sampling and analytical execution remain unspecified.",
+    "decision_quality": "Gives an immediate reversible mitigation, an accountable review, hypothesis-dependent actions, and explicit conditions for enterprise investment, including reusable demand and credible economics.",
+    "measurement_quality": "Tracks age-matched segment retention, activation, time to value, and churn timing, with discount and service-effort guardrails. Engagement measures, quantitative decision thresholds, and intervention success criteria are absent."
+  },
+  "expected_behavior_checks": [
+    {
+      "behavior": "Validate retention definition, instrumentation, and cohort comparability.",
+      "observed": true,
+      "evidence": "Clarifies relative versus percentage-point decline, account/user/revenue retention, tracking and denominator changes, and age-matched cohorts with complete follow-up."
+    },
+    {
+      "behavior": "Segment by acquisition source, customer type, activation, engagement, and churn timing.",
+      "observed": false,
+      "evidence": "Covers channel, company size, plan, use case, activation, and churn timing, but does not explicitly analyze ongoing engagement."
+    },
+    {
+      "behavior": "Generate competing hypotheses before accepting the sales explanation.",
+      "observed": true,
+      "evidence": "Treats Sales’ explanation as a hypothesis and compares it with acquisition fit, onboarding capacity, reliability, pricing, and other changes."
+    },
+    {
+      "behavior": "Connect any proposed enterprise investment to churn evidence.",
+      "observed": true,
+      "evidence": "Requires specific capability gaps explaining churn among relevant customers, reusable demand, and credible economics before changing the investment recommendation."
+    }
+  ],
+  "forbidden_behavior_checks": [
+    {
+      "behavior": "Treat the aggregate decline as proof of a feature gap.",
+      "observed": false,
+      "evidence": "Explicitly states that aggregate retention alone does not establish a feature gap."
+    },
+    {
+      "behavior": "Recommend building enterprise features without diagnostic evidence.",
+      "observed": false,
+      "evidence": "Defers enterprise-roadmap commitment and makes a narrow pilot conditional on diagnostic evidence."
+    }
+  ],
+  "hard_failure_checks": [
+    {
+      "behavior": "Invent customer research or causal evidence.",
+      "observed": false,
+      "evidence": "Customer research is proposed rather than claimed as completed; causal explanations are labeled hypotheses."
+    }
+  ],
+  "citation_check": {
+    "expected": false,
+    "material_claims": 1,
+    "supported_claims": 1,
+    "notes": "The empirical claim about the reported 12% decline following acquisition acceleration is supported by the case. Recommendations, labeled hypotheses, and methodological judgments are excluded; external citations were not required."
+  },
+  "notes": "The segmentation check is marked false under a strict reading of its compound requirement: most elements are present, but engagement is missing. The response otherwise demonstrates strong diagnostic judgment; several dimensions remain below exceptional because analytical execution and measurement thresholds are unspecified."
+}

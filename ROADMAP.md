@@ -25,7 +25,7 @@ Exit gate:
 
 ## 0.2.0 — Reasoning foundation and thin vertical slice
 
-**Status:** Alpha implemented; reproducible result protocol added; scored baseline pending
+**Status:** Alpha implemented; first observed pilot recorded; calibrated baseline pending
 
 Deliver:
 
@@ -35,14 +35,17 @@ Deliver:
 - a narrow Staff PM skill covering three to five representative decisions;
 - a recorded baseline against the eval suite.
 
-The result schema, aggregation, and provisional gates are implemented. The remaining exit item
-is an executed and calibrated baseline rather than a synthetic test fixture.
+The result schema, aggregation, provisional gates, blind generator packets, and evaluation
+against exported cases and policies are implemented. The [first observed pilot](evals/baselines/seed-pilot-2026-10-05/README.md)
+completed 21 cases with a pilot judge and one repetition; its multilingual gate failed.
+The remaining exit item is a calibrated, independently reviewed baseline demonstrating the
+required behavior rather than a synthetic test fixture or an uncalibrated model assessment.
 
 The Staff PM integration is intentionally moved earlier than in the original specification so architectural problems surface before broad research.
 
 ## 0.3.0 — Research infrastructure
 
-**Status:** Alpha implemented; first knowledge slice awaiting independent review
+**Status:** Alpha implemented; freshness enforcement active; first knowledge slice awaiting independent review
 
 Deliver:
 

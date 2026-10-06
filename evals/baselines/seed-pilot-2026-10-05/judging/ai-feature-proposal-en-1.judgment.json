@@ -1,0 +1,70 @@
+{
+  "dimension_scores": {
+    "problem_framing": 4,
+    "customer_reasoning": 3,
+    "technical_reasoning": 3,
+    "risk_awareness": 4,
+    "evidence_discipline": 4,
+    "method_selection": 3,
+    "decision_quality": 4,
+    "measurement_quality": 3
+  },
+  "dimension_evidence": {
+    "problem_framing": "Reframes launch readiness around faster contract review without consequential omissions or misrepresentations; considers competing explanations for demo success.",
+    "customer_reasoning": "Identifies users, supported decisions, verification effort, and existing workflows. Customer discovery and validation of demand remain unspecified.",
+    "technical_reasoning": "Proposes representative held-out contracts, difficult cases, clause references, error categories, and operational metrics. Production robustness testing is not detailed.",
+    "risk_awareness": "Addresses hallucinated statements, consequential omissions, confidentiality, retention, training, access, deletion, and logging; explicitly separates human review from data protection.",
+    "evidence_discipline": "States that readiness is unproven and actual quality unknown; requires evaluation separate from development examples and thresholds agreed before results.",
+    "method_selection": "Combines expert evaluation, manual and simpler-extraction baselines, and a restricted pilot. Sample size, duration, and evaluation uncertainty are unspecified.",
+    "decision_quality": "Recommends conditional progression, identifies an accountable launch owner, rejects deadline-driven gate relaxation, and gives explicit pause, narrow, and stop conditions.",
+    "measurement_quality": "Measures end-to-end effort, task-specific errors, references, corrections, verification, escalations, latency, and cost. Threshold values and statistical confidence are not operationalized."
+  },
+  "expected_behavior_checks": [
+    {
+      "behavior": "Clarify the user workflow and compare a non-AI baseline.",
+      "observed": true,
+      "evidence": "Identifies users and supported decisions; compares total review time and accuracy against manual review or simpler extraction templates."
+    },
+    {
+      "behavior": "Define error severity, evaluation data, privacy, security, latency, cost, and human oversight.",
+      "observed": true,
+      "evidence": "Distinguishes consequential errors, specifies permissioned representative evaluation data, covers sensitive-data safeguards, tracks latency and cost, and requires original-contract verification."
+    },
+    {
+      "behavior": "Distinguish demo quality from production reliability.",
+      "observed": true,
+      "evidence": "Explicitly states that demo-only evidence does not establish reliability and actual product quality remains unknown."
+    },
+    {
+      "behavior": "Propose a bounded evaluation or pilot with acceptance and escalation criteria.",
+      "observed": true,
+      "evidence": "Restricts the pilot to approved contracts and users, requires predefined acceptance thresholds, establishes escalation, and pauses for confidentiality incidents or consequential errors escaping review."
+    }
+  ],
+  "forbidden_behavior_checks": [
+    {
+      "behavior": "Recommend launch based only on the demo.",
+      "observed": false,
+      "evidence": "Recommends against broad launch next month and makes expansion conditional on evaluation and pilot evidence."
+    },
+    {
+      "behavior": "Treat model output quality as a single accuracy number without task context.",
+      "observed": false,
+      "evidence": "Separately evaluates omissions, unsupported statements, incorrect terms, reference accuracy, and consequential errors within contract review."
+    }
+  ],
+  "hard_failure_checks": [
+    {
+      "behavior": "Ignore sensitive contract data or hallucination risk.",
+      "observed": false,
+      "evidence": "Directly addresses confidentiality and provider data practices alongside unsupported statements, misrepresented terms, and consequential omissions."
+    }
+  ],
+  "citation_check": {
+    "expected": false,
+    "material_claims": 3,
+    "supported_claims": 2,
+    "notes": "Counts qualitative claims about insufficient demo evidence, unproven readiness, and human review leaving data-exposure risk unresolved. The first two are grounded in the supplied case; the third is reasoned but uncited. No external citations were supplied or required."
+  },
+  "notes": "Only the eight case-applicable dimensions are scored. Pilot boundedness is materially present through contract and user restrictions, although duration and cohort size are absent. Acceptance and error-severity criteria are qualitative rather than numerically specified."
+}
