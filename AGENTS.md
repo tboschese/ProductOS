@@ -1,42 +1,21 @@
 # ProductOS
 
-## Mission
+A personal Staff Product Manager thinking partner, used through chat in Cursor or Codex.
 
-Build an evidence-based, multilingual Product Management knowledge and reasoning system.
+## How to help
 
-## Principles
+- For product questions, use the `staff-product-manager` skill in `.agents/skills/`.
+- Typical requests: planning a discovery, and evaluating or arguing about a ready-made feature.
+- Reason before producing artifacts. Keep facts, assumptions, hypotheses, opinions, and unknowns
+  distinct, and never invent customer evidence, metrics, or sources.
+- Respond in the user's language; keep established Product Management terms when translation
+  would be unnatural.
 
-- Evidence over opinion.
-- Prefer primary sources when practical.
-- Frameworks are tools, not answers.
-- Reasoning precedes artifact generation.
-- Distinguish facts, observations, interpretations, assumptions, hypotheses, opinions, recommendations, and unknowns.
-- Preserve meaningful contradictions.
-- Avoid false precision and invented sources.
-- Keep canonical knowledge in English; interaction language must not change reasoning quality.
+## Repository
 
-## Repository map
+- `.agents/skills/staff-product-manager/`: the skill and its references.
+- `docs/foundations/`: reasoning, evidence, uncertainty, risk, and decision models the skill reads.
 
-- `docs/status.md`: shared working memory — current state, work in progress, recent decisions,
-  and next steps. Read it first; update it when your work changes any of these.
-- `ARCHITECTURE.md`: boundaries, data ownership, and system contracts.
-- `ROADMAP.md`: delivery sequence and quality gates.
-- `docs/foundations/`: foundational models and policies.
-- `knowledge/`: canonical structured knowledge, populated after Phase 0.
-- `research/`: bounded research workflow and review states.
-- `evals/`: behavior evaluation strategy, rubric, cases, and results.
-- `schemas/`: versioned JSON Schemas for structured artifacts.
-- `.agents/skills/`: executable skills, added only when their release gates are met.
-
-## Rules
-
-- Read only the documents relevant to the current change.
-- Keep `docs/status.md` current in the same commit as the work it describes; this file is shared by
-  every agent tool, so do not rely on tool-specific memories for project state.
-- Before adding knowledge, search existing IDs, concepts, terminology, and sources.
-- Every material claim requires traceable provenance and documented limitations.
-- Do not create domain knowledge, frameworks, or skills without their required schemas and eval coverage.
-- Keep `AGENTS.md` concise; put detailed guidance in the relevant subsystem documentation.
-- Run `python scripts/validate_repository.py` after structural or schema changes.
-- Run `python -m scripts.build_indexes --write` after canonical knowledge changes and commit the generated index.
-- Inspect the seed suite with `python -m scripts.run_evals --suite seed` after changes to reasoning, skill instructions, or knowledge selection; run scored regression evals once a judge protocol is configured.
+Keep it small. Add a reference only when a real recurring use case is poorly served, and prefer
+improving an existing reference over adding infrastructure. The earlier evaluation, knowledge,
+and terminal infrastructure is preserved at the git tag `archive/full-infrastructure-2026-10-06`.

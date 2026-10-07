@@ -1,1 +1,0 @@
-"""Deterministic ProductOS repository tooling."""

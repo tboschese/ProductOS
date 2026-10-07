@@ -1,53 +1,28 @@
 # ProductOS
 
-ProductOS is an evidence-based, multilingual Product Management knowledge and reasoning system. Its purpose is to improve product decisions, not to maximize framework recall or artifact generation.
+A Staff Product Manager thinking partner for real product decisions, packaged as an agent skill.
+Open this folder in Cursor or Codex and ask in plain language. The agent loads the skill.
 
-## Status
+## Good uses
 
-The repository is at **0.3.0-alpha.6 — Research and evaluation infrastructure with a local runtime preview**. It contains the Phase 0 foundation, Product Reasoning Engine v0, Staff Product Manager and Research Curator skills, structured registries, cross-reference validation, deterministic indexes and source-freshness enforcement, a 21-case seed eval suite, blind exports, snapshot-based reporting, an opt-in behavioral pilot executor, and an optional [local terminal](docs/terminal.md) that uses the user's own AI connection. A [first observed pilot](evals/baselines/seed-pilot-2026-10-05/README.md) is recorded; its multilingual gate failed and its judge remains uncalibrated. The first bounded knowledge slice is `in_review`; broad research and a calibrated scored baseline remain intentionally pending.
+- **Planning a discovery:** "I'm not sure what to investigate about X. What should the discovery
+  be?" You get the dominant uncertainty, competing hypotheses, the smallest useful method,
+  questions to ask, and a decision rule.
+- **Arguing about a ready-made feature:** "Leadership wants feature Y. Help me evaluate it and
+  prepare the conversation." You get the assumptions behind it, alternatives, questions for the
+  requester, and a short argument you can use.
+- Diagnosing a metric change, reviewing a roadmap, OKRs, an experiment, or a strategy.
 
-## Design principles
+Give the context you have; the skill states assumptions instead of inventing facts.
 
-- Reasoning before frameworks.
-- Evidence and provenance before confidence.
-- Explicit uncertainty and competing hypotheses.
-- Recommendations proportional to available evidence.
-- Canonical English knowledge with equivalent interaction quality in English, Brazilian Portuguese, and Spanish.
-- Progressive disclosure instead of a monolithic prompt.
+## Contents
 
-## Getting started
+- [`.agents/skills/staff-product-manager/`](.agents/skills/staff-product-manager/SKILL.md): the
+  skill, with references for discovery, feature challenges, decision patterns, and output modes.
+- [`docs/foundations/`](docs/foundations/): the reasoning, evidence, uncertainty, risk, and
+  decision models it uses.
 
-Requires Python 3.9 or newer.
+The earlier terminal app, evaluation harness, and knowledge base are archived at the git tag
+`archive/full-infrastructure-2026-10-06`.
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install -e '.[dev]'
-python scripts/validate_repository.py
-pytest
-```
-
-## Repository guide
-
-- [Project specification](PROJECT_SPEC.md)
-- [Architecture](ARCHITECTURE.md)
-- [Roadmap](ROADMAP.md)
-- [Phase 0 architecture review](docs/phase-0-review.md)
-- [0.2.0 alpha review](docs/releases/0.2.0-alpha.1.md)
-- [0.3.0 alpha review](docs/releases/0.3.0-alpha.1.md)
-- [0.3.0 alpha.2 review](docs/releases/0.3.0-alpha.2.md)
-- [0.3.0 alpha.3 review](docs/releases/0.3.0-alpha.3.md)
-- [0.3.0 alpha.4 review](docs/releases/0.3.0-alpha.4.md)
-- [0.3.0 alpha.5 review](docs/releases/0.3.0-alpha.5.md)
-- [0.3.0 alpha.6 review](docs/releases/0.3.0-alpha.6.md)
-- [Terminal usage](docs/terminal.md)
-- [Research methodology](research/methodology.md)
-- [Evaluation strategy](evals/strategy.md)
-- [Interface options](docs/design/interface-options.md)
-- [Contribution guide](CONTRIBUTING.md)
-
-## Scope boundary
-
-Phase 0 establishes contracts and executable validation only. Knowledge expansion begins after the architecture and evaluation gates pass.
-
-No open-source license has been selected yet. Until one is added, normal copyright restrictions apply.
+No open-source license has been selected; normal copyright restrictions apply.

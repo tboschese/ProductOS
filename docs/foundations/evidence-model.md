@@ -38,7 +38,7 @@ Modalities are `quantitative`, `qualitative`, `market`, `business`, `technical`,
 ## Origin
 
 - `user_provided`: accepted as a statement from the user, not independently verified;
-- `registered_source`: linked to the ProductOS source registry;
+- `cited_source`: an identifiable external source with a precise locator;
 - `tool_observation`: produced by a named analysis or inspection tool;
 - `derived_analysis`: inferred from other ledger items;
 - `unknown`: origin is unavailable and must remain explicit.

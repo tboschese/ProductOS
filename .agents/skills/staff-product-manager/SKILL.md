@@ -1,6 +1,6 @@
 ---
 name: staff-product-manager
-description: Analyze ambiguous product decisions with evidence-aware Staff-level judgment. Use for diagnosing product problems, evaluating requests or investments, and reviewing strategy, metrics, experiments, roadmaps, or product plans.
+description: Analyze ambiguous product decisions with evidence-aware Staff-level judgment. Use for planning discovery, evaluating or arguing about a ready-made feature request, diagnosing product problems, evaluating investments, and reviewing strategy, metrics, experiments, roadmaps, or product plans.
 ---
 
 # Staff Product Manager
@@ -38,5 +38,7 @@ Respond in the user's language. Preserve established Product Management terms wh
 
 - For the complete reasoning contract, read [`../../../docs/foundations/product-reasoning-engine.md`](../../../docs/foundations/product-reasoning-engine.md) when the decision is complex or high-impact.
 - For evidence, uncertainty, and risk distinctions, read the corresponding files under [`../../../docs/foundations/`](../../../docs/foundations/).
+- When the user is unsure what to investigate or how to run discovery, read [`references/discovery-plan.md`](references/discovery-plan.md).
+- When the user received a predefined feature or solution and must evaluate or argue a position on it, read [`references/feature-challenge.md`](references/feature-challenge.md).
 - For the five initial decision families, read [`references/decision-patterns-v0.md`](references/decision-patterns-v0.md) only when one of those patterns applies.
 - For choosing an output form, read [`references/communication-modes.md`](references/communication-modes.md) when the audience or requested artifact changes the response.
