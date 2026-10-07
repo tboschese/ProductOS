@@ -118,6 +118,23 @@ def test_lock_and_interrupted_generation_recovery(workspace, decision):
         assert reopened.analysis(value["id"])["error"].startswith("interrupted:")
 
 
+def test_damaged_analysis_does_not_block_workspace_or_other_history(workspace, decision):
+    workspace.set_connection({**workspace.connection(), "kind": "codex"})
+    other = workspace.create("Preço", "Subir preço?")
+    tampered = prepare(workspace, other["id"])
+    workspace.path("analyses", tampered["id"], "prompt.txt").write_bytes(b"tampered")
+    broken = prepare(workspace, other["id"], manual=True)
+    workspace.path("analyses", broken["id"], "analysis.json").write_bytes(b"{not json")
+    kept = prepare(workspace, decision["id"], manual=True)
+
+    with Workspace(workspace.root, workspace.contracts) as reopened:
+        assert [item["id"] for item in reopened.analyses(decision["id"])] == [kept["id"]]
+        recovered = reopened.analysis(tampered["id"], verify=False)
+        assert recovered["error"].startswith("interrupted:")
+        with pytest.raises(RuntimeFailure, match="alterado"):
+            reopened.analysis(tampered["id"])
+
+
 def test_prompt_excludes_evaluation_criteria_and_pins_user_evidence(workspace, decision):
     revised = workspace.add_evidence(
         decision,

@@ -286,14 +286,19 @@ class Workspace:
                     raise RuntimeFailure("A resposta salva da análise foi alterada.")
         return value
 
+    def _stored_analyses(self) -> list[dict]:
+        values = []
+        for path in self.path("analyses").glob("analysis-*/analysis.json"):
+            try:
+                values.append(self.analysis(path.parent.name, verify=False))
+            except (RuntimeFailure, OSError, ValueError):
+                continue
+        return values
+
     def analyses(self, decision_id: str) -> list[dict]:
         self.record_path("decisions", decision_id)
         return sorted(
-            (
-                value
-                for p in self.path("analyses").glob("analysis-*/analysis.json")
-                if (value := self.analysis(p.parent.name))["decision_id"] == decision_id
-            ),
+            (value for value in self._stored_analyses() if value["decision_id"] == decision_id),
             key=lambda item: item["started_at"],
             reverse=True,
         )
@@ -334,15 +339,18 @@ class Workspace:
         value["connection"]["reported_model"] = reported_model
         return self.save("workspace-analysis", directory / "analysis.json", value)
 
-    def fail(self, analysis_id: str, error: str, cancelled: bool = False) -> dict:
-        value = self.analysis(analysis_id)
+    def fail(
+        self, analysis_id: str, error: str, cancelled: bool = False, verify: bool = True
+    ) -> dict:
+        value = self.analysis(analysis_id, verify=verify)
         if value["status"] != "running":
             raise RuntimeFailure("A análise não está em execução.")
         value.update(status="cancelled" if cancelled else "failed", completed_at=now(), error=error)
         return self.save("workspace-analysis", self.record_path("analyses", analysis_id), value)
 
     def recover_interrupted(self) -> None:
-        for path in self.path("analyses").glob("analysis-*/analysis.json"):
-            value = self.analysis(path.parent.name)
+        for value in self._stored_analyses():
             if value["status"] == "running":
-                self.fail(value["id"], "interrupted: execução anterior não foi encerrada")
+                self.fail(
+                    value["id"], "interrupted: execução anterior não foi encerrada", verify=False
+                )
