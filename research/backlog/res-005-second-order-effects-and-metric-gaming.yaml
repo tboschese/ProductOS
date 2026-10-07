@@ -1,0 +1,50 @@
+id: res-005-second-order-effects-and-metric-gaming
+schema_version: 0.3.0
+title: Second-order effects and metric gaming in product decisions
+primary_domain: systems-thinking
+research_question: How should ProductOS anticipate feedback loops, delays, and metric gaming when a product decision optimizes one measure or one part of a system?
+why_it_matters: The metric-conflict, marketplace-liquidity, and pricing-change cases involve interventions whose local gains can degrade the wider system, and strong answers must name plausible second-order effects without inventing them.
+scope:
+  - Feedback loops and delays relevant to product and marketplace dynamics.
+  - Degradation of a measure once it becomes a target.
+  - Local versus global optimization and guardrail metrics.
+out_of_scope:
+  - Formal system-dynamics modeling and simulation.
+  - Organizational systems and incentive design beyond their effect on metrics.
+  - Detailed marketplace economics.
+subtopics:
+  - Reinforcing and balancing loops.
+  - Delays between action and observable effect.
+  - Target-induced measure degradation.
+  - Guardrail and counter-metrics.
+primary_source_plan:
+  - "Candidate to verify: Campbell (1979) on the corruption of quantitative social indicators used for decisions."
+  - "Candidate to verify: Sterman, Business Dynamics (2000), for feedback and delay concepts."
+  - Empirical studies of metric gaming in organizations.
+secondary_source_plan:
+  - "Candidate to verify: Meadows, Thinking in Systems (2008), as an accessible conceptual source."
+  - Practitioner writing on guardrail metrics, labeled as opinion where it lacks evidence.
+questions:
+  - Which second-order effects should a response raise, and how can it avoid speculative ones?
+  - When does choosing a target metric predictably change behavior in ways that weaken it?
+  - How should guardrail metrics be chosen and justified?
+expected_outputs:
+  - Source and claim records with locators and limitations.
+  - Concepts and terminology for feedback loops, delays, and target-induced measure degradation.
+  - A decision pattern for reviewing a metric-driven intervention for second-order effects.
+  - An anti-pattern for single-metric optimization without guardrails.
+  - Eval proposals tied to metric-conflict, marketplace-liquidity, and pricing-change.
+conflicting_views_to_investigate:
+  - Guardrail metrics reduce harm versus adding metrics dilutes focus and invites new gaming.
+  - Systems framing improves foresight versus it encourages speculative chains of effects that cannot be tested.
+acceptance_criteria:
+  - Guidance requires second-order effects to be labeled as hypotheses with a way to observe them.
+  - Named laws and adages are traced to their original statements or recorded as unattributed.
+  - Every published entity validates and connects to at least one eval behavior.
+review_status: draft
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-10-06
+  updated_at: 2026-10-06
+  next_review_at: null

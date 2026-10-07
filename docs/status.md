@@ -43,8 +43,16 @@ next. Keep stable rules in `AGENTS.md` and durable decisions in [ADRs](decisions
 
 - Run `evals/configs/seed-calibration.yaml` (three repetitions; makes model calls).
 - Independent review of `res-001`.
-- 0.4.0 research (Product Sense and Judgment, Decision Making, Systems Thinking, Product
-  Strategy, Customer Understanding) only after the gates above, unless deliberately reprioritized.
+- 0.4.0 research. Five bounded tasks are drafted in `research/backlog/` (all `draft`; source
+  plans list candidates still to verify). Suggested order, by how many seed cases each affects:
+  1. `res-003-customer-evidence-quality` (rubric hard failure on stakeholder requests);
+  2. `res-002-reversibility-and-evidence-threshold`;
+  3. `res-004-strategy-as-coherent-choices`;
+  4. `res-005-second-order-effects-and-metric-gaming`;
+  5. `res-006-when-product-intuition-is-trustworthy` (may propose rubric guidance; apply only
+     after calibration).
+  Executing a task (sources, claims, canonical entities) needs independent review before
+  approval, and should not start before calibration unless deliberately reprioritized.
 
 ## Recent decisions
 

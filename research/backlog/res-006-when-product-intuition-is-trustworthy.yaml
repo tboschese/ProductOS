@@ -1,0 +1,46 @@
+id: res-006-when-product-intuition-is-trustworthy
+schema_version: 0.3.0
+title: When product intuition is trustworthy
+primary_domain: product-sense
+research_question: Under which conditions should ProductOS treat expert product intuition or pattern recognition as evidence, and how should it represent product sense as observable reasoning rather than taste?
+why_it_matters: Product sense is the first 0.4.0 capability, but an unbounded notion of judgment would let recommendations rest on unexaminable confidence. ProductOS needs a defensible account of when intuition deserves weight.
+scope:
+  - Research on the conditions under which expert intuition is reliable.
+  - Decomposing product sense into observable reasoning behaviors.
+  - How a response should present intuition-based judgments alongside evidence.
+out_of_scope:
+  - Hiring, interviewing, or assessing product managers for product sense.
+  - Design taste and aesthetic quality judgments.
+  - A comprehensive model of product sense across every component listed in the project specification.
+subtopics:
+  - Environment validity and feedback for expertise.
+  - Pattern recognition versus overconfidence.
+  - Observable components of product sense.
+primary_source_plan:
+  - "Candidate to verify: Kahneman and Klein (2009), Conditions for intuitive expertise, American Psychologist."
+  - Empirical research on expert judgment accuracy and calibration.
+secondary_source_plan:
+  - Practitioner definitions of product sense, recorded as opinion and compared for overlap.
+questions:
+  - Which properties of product environments support or undermine reliable intuition?
+  - How should a response label a judgment that rests on experience rather than case evidence?
+  - Which observable behaviors could a judge use to score product sense?
+expected_outputs:
+  - Source and claim records with locators and limitations.
+  - A concept for trustworthy intuition and a provisional, observable decomposition of product sense.
+  - An anti-pattern for presenting intuition as evidence.
+  - A proposal for rubric guidance on the product_sense dimension, subject to calibration review.
+conflicting_views_to_investigate:
+  - Naturalistic decision-making research emphasizes the value of expert intuition, while heuristics-and-biases research emphasizes its failures.
+  - Product sense may be a useful umbrella for integrated judgment or too vague to evaluate reliably.
+acceptance_criteria:
+  - The decomposition is presented as provisional and tied to observable behaviors.
+  - Any rubric change is proposed, not applied, until calibration review.
+  - Every published entity validates and connects to at least one eval behavior.
+review_status: draft
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-10-06
+  updated_at: 2026-10-06
+  next_review_at: null

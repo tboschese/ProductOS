@@ -21,6 +21,10 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 - Schemas and fixtures for calibration controls, packets, keys, and score sheets.
 - `evals/configs/seed-calibration.yaml`: the pilot executor with three repetitions.
 - `docs/status.md`: shared, tool-independent working memory referenced from `AGENTS.md`.
+- Five draft 0.4.0 research contracts in `research/backlog/` covering customer evidence quality,
+  reversibility and evidence thresholds, strategy coherence, second-order effects and metric
+  gaming, and trustworthy product intuition. Candidate sources are listed for verification; no
+  canonical knowledge was added.
 
 ### Fixed
 
