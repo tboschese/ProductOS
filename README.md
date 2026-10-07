@@ -16,7 +16,10 @@ Open this folder in Cursor or Codex and ask in plain language. The agent loads t
   and experiment results.
 - **Go-to-market:** launch tier, positioning, motion, pricing and packaging, and readiness.
 - **Frameworks:** which one fits the problem, how to apply it, and when it misleads.
-- Reviewing a roadmap, strategy, or product plan.
+- **AI features:** whether AI is the right tool, error tolerance, evaluation, and rollout.
+- **Legacy modernization:** the business case, options short of a rewrite, and continuity.
+- Reviewing a roadmap, strategy, or product plan, and preparing the argument for a specific
+  stakeholder.
 
 Give the context you have; the skill states assumptions instead of inventing facts.
 
@@ -24,7 +27,7 @@ Give the context you have; the skill states assumptions instead of inventing fac
 
 - [`.agents/skills/staff-product-manager/`](.agents/skills/staff-product-manager/SKILL.md): the
   skill, with references for discovery, feature challenges, OKRs, product analytics,
-  go-to-market, frameworks, decision patterns, and output modes.
+  go-to-market, frameworks, AI features, legacy modernization, and communication modes.
 - [`docs/foundations/`](docs/foundations/): the reasoning, evidence, uncertainty, risk, and
   decision models it uses.
 

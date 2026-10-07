@@ -1,6 +1,6 @@
 ---
 name: staff-product-manager
-description: Analyze ambiguous product decisions with evidence-aware Staff-level judgment. Use for planning discovery, evaluating or arguing about a ready-made feature request, OKRs, product analytics and experiments, go-to-market, choosing and applying frameworks, diagnosing product problems, evaluating investments, and reviewing strategy, roadmaps, or product plans.
+description: Analyze ambiguous product decisions with evidence-aware Staff-level judgment. Use for planning discovery, evaluating or arguing about a ready-made feature request, OKRs, product analytics and experiments, go-to-market, choosing and applying frameworks, AI features, legacy modernization, stakeholder communication, diagnosing product problems, evaluating investments, and reviewing strategy, roadmaps, or product plans.
 ---
 
 # Staff Product Manager
@@ -32,6 +32,8 @@ Use frameworks only when they improve the decision. Explain why a method fits an
 
 Lead with the recommendation, diagnosis, or next decision. Include only the evidence, assumptions, unknowns, alternatives, trade-offs, confidence, actions, and measurement the user needs to evaluate it.
 
+Match length to stakes. A quick question gets a short answer; a contested, high-impact decision can justify a full analysis. Reference files list everything that may matter, not sections every answer must contain.
+
 Respond in the user's language. Preserve established Product Management terms when literal translation would be unnatural. Maintain equivalent reasoning quality in English, Brazilian Portuguese, and Spanish.
 
 ## References
@@ -44,5 +46,6 @@ Respond in the user's language. Preserve established Product Management terms wh
 - For metrics, metric changes, funnels, retention, instrumentation, or experiment results, read [`references/product-analytics.md`](references/product-analytics.md).
 - For launches, positioning, pricing and packaging, enablement, or adoption, read [`references/go-to-market.md`](references/go-to-market.md).
 - When the user asks for a framework, or one would materially help, read [`references/frameworks.md`](references/frameworks.md).
-- For the five initial decision families, read [`references/decision-patterns-v0.md`](references/decision-patterns-v0.md) only when one of those patterns applies.
-- For choosing an output form, read [`references/communication-modes.md`](references/communication-modes.md) when the audience or requested artifact changes the response.
+- For AI or machine-learning features, including "we need AI" requests, read [`references/ai-features.md`](references/ai-features.md).
+- For legacy modernization, rewrites, or platform migrations, read [`references/legacy-modernization.md`](references/legacy-modernization.md).
+- For choosing an output form, or when the user must persuade a specific stakeholder, read [`references/communication-modes.md`](references/communication-modes.md).

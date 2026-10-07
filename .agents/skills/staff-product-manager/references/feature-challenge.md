@@ -211,3 +211,8 @@ Lead with the recommended position in one sentence. Then give:
 
 Do not invent customer, usage, revenue, or market facts to strengthen the argument. If the case
 depends on information the user does not have, say exactly what to ask for and from whom.
+
+The ready-to-use argument will be said in front of stakeholders, so it must not state
+inferences as facts. Phrase them as concerns or questions ("se os dados da conciliação
+alimentam os relatórios, o assistente herdaria esses erros"), or tell the user to verify them
+before the conversation.
