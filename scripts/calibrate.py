@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Prepare blind judge-calibration packets and report agreement between judges.
 
-This script never calls a model and never decides whether a judge is calibrated. It freezes a
-blind sample for independent reviewers, then reports agreement so maintainers can decide.
+The script never decides whether a judge is calibrated. `prepare` and `compare` make no model
+calls. `judge-controls` is opt-in and asks an archived run's automated judge to assess the
+labeled negative controls with that run's frozen prompt and rubric.
 """
 
 from __future__ import annotations
@@ -11,12 +12,16 @@ import argparse
 import hashlib
 import json
 import random
+import subprocess
 import sys
 from collections import defaultdict
+from datetime import datetime, timezone
 from itertools import combinations
 from pathlib import Path
 from statistics import mean
-from typing import Any
+from typing import Any, Callable
+
+from jsonschema import Draft202012Validator, ValidationError
 
 from scripts.evaluate_results import (
     load_review_context,
@@ -347,6 +352,15 @@ def compare_pair(
     }
 
 
+def missed_failures(control: dict[str, Any], scores: dict[str, Any]) -> list[str]:
+    intended = control["intended_failures"]
+    hard = observed(scores["hard_failure_checks"])
+    forbidden = observed(scores["forbidden_behavior_checks"])
+    return [b for b in intended["hard_failures"] if not hard.get(b)] + [
+        b for b in intended["forbidden_behaviors"] if not forbidden.get(b)
+    ]
+
+
 def control_detection(
     judges: dict[str, dict[str, dict[str, Any]]],
     key: dict[str, Any],
@@ -360,16 +374,11 @@ def control_detection(
         control, digest = controls.get(provenance["control_id"], (None, None))
         if control is None or digest != provenance["control_sha256"]:
             raise ValueError(f"Control {provenance['control_id']} changed since preparation")
-        intended = control["intended_failures"]
         detection = {}
         for name, scores in judges.items():
             if item_id not in scores:
                 continue
-            hard = observed(scores[item_id]["hard_failure_checks"])
-            forbidden = observed(scores[item_id]["forbidden_behavior_checks"])
-            missed = [b for b in intended["hard_failures"] if not hard.get(b)] + [
-                b for b in intended["forbidden_behaviors"] if not forbidden.get(b)
-            ]
+            missed = missed_failures(control, scores[item_id])
             detection[name] = {"detected_all": not missed, "missed": missed}
         results.append(
             {"item_id": item_id, "control_id": provenance["control_id"], "judges": detection}
@@ -424,6 +433,111 @@ def compare(
             "review disagreements, resolve rubric ambiguities, and record the decision."
         ),
     }
+
+
+def judge_controls(
+    archive: Path,
+    output: Path,
+    control_ids: list[str] | None = None,
+    control_root: Path = CONTROL_ROOT,
+    invoke_judge: Callable[..., str] | None = None,
+    cli_version: str | None = None,
+) -> dict[str, Any]:
+    from scripts.execute_evals import invoke, judge_schema, load_config
+
+    snapshot = archive / "snapshot"
+    run = load_run(archive / "run.json")
+    if run["run_status"] != "completed" or "source_snapshot" not in run:
+        raise ValueError("Control judging requires a completed, archived run with a snapshot")
+    for relative, expected in run["source_snapshot"]["files"].items():
+        if not relative.startswith("snapshot/"):
+            continue
+        if sha256((archive / relative).read_bytes()) != expected:
+            raise ValueError(f"Archived snapshot integrity failure: {relative}")
+    _, cases, review_digest = load_review_context(snapshot / "reviewer.json")
+    config = load_config(snapshot / "configuration.yaml")
+    template = (snapshot / "judge-prompt.md").read_text(encoding="utf-8")
+    rubric = (snapshot / "rubric.md").read_text(encoding="utf-8")
+    judge = run["judge"]
+
+    available = load_controls(control_root)
+    if control_ids is None:
+        control_ids = [key for key, (data, _) in available.items() if data["case_id"] in cases]
+    unknown = [key for key in control_ids if key not in available]
+    if unknown:
+        raise ValueError(f"Unknown negative controls: {', '.join(unknown)}")
+    if not control_ids:
+        raise ValueError("No negative controls target cases in this run")
+
+    invoke_judge = invoke_judge or invoke
+    if cli_version is None:
+        cli_version = subprocess.check_output(["codex", "--version"], text=True).strip()
+    output.mkdir(parents=True, exist_ok=True)
+    results = []
+    for position, control_id in enumerate(control_ids, 1):
+        control, digest = available[control_id]
+        case = cases.get(control["case_id"])
+        if case is None:
+            raise ValueError(f"Control {control_id} targets a case outside the archived run")
+        meta = {"control_sha256": digest, "judge": judge, "review_packet_sha256": review_digest}
+        prefix = output / control_id
+        meta_path = prefix.with_suffix(".meta.json")
+        judgment_path = prefix.with_suffix(".judgment.json")
+        schema = judge_schema(case)
+        if judgment_path.exists():
+            if not meta_path.exists() or json.loads(meta_path.read_bytes()) != meta:
+                raise ValueError(f"Existing judgment for {control_id} used different inputs")
+            judgment = json.loads(judgment_path.read_bytes())
+        else:
+            meta_path.write_bytes(json_bytes(meta))
+            prompt = template.format(
+                rubric=rubric,
+                case=json.dumps(case, ensure_ascii=False),
+                response=control["response"],
+            )
+            judgment = json.loads(
+                invoke_judge(prompt, judge, prefix, config["timeout_seconds"], schema)
+            )
+            Draft202012Validator(schema).validate(judgment)
+            judgment_path.write_bytes(json_bytes(judgment))
+        missed = missed_failures(control, judgment)
+        results.append(
+            {
+                "control_id": control_id,
+                "case_id": control["case_id"],
+                "control_sha256": digest,
+                "detected_all": not missed,
+                "missed": missed,
+                "hard_failures_observed": [
+                    check["behavior"] for check in judgment["hard_failure_checks"]
+                    if check["observed"]
+                ],
+                "forbidden_behaviors_observed": [
+                    check["behavior"] for check in judgment["forbidden_behavior_checks"]
+                    if check["observed"]
+                ],
+                "dimension_scores": judgment["dimension_scores"],
+            }
+        )
+        print(f"Judged control {position}/{len(control_ids)}: {control_id}", flush=True)
+
+    report = {
+        "schema_version": "0.1.0",
+        "run_id": run["id"],
+        "review_packet_sha256": review_digest,
+        "judge": judge,
+        "judge_cli_version": cli_version,
+        "run_cli_version": run["source_snapshot"]["cli_version"],
+        "judged_at": datetime.now(timezone.utc).isoformat(),
+        "controls": results,
+        "interpretation": (
+            "Detection of deliberately unambiguous synthetic failures is necessary but not "
+            "sufficient for calibration; it does not mark the judge calibrated."
+        ),
+    }
+    require_valid("calibration-control-judging", report, "control judging report")
+    (output / "report.json").write_bytes(json_bytes(report))
+    return report
 
 
 def percent(value: float | None) -> str:
@@ -498,6 +612,19 @@ def parser() -> argparse.ArgumentParser:
     )
     compare_command.add_argument("--json", action="store_true", help="Print the report as JSON")
     compare_command.add_argument("--output", type=Path, help="Write the JSON report to a file")
+
+    judge_command = actions.add_parser(
+        "judge-controls", help="Opt-in: ask an archived run's model judge to assess the controls"
+    )
+    judge_command.add_argument(
+        "--archive", type=Path, required=True, help="Archived run directory with snapshot/"
+    )
+    judge_command.add_argument(
+        "--output", type=Path, required=True, help="Directory for judgments; reused on resume"
+    )
+    judge_command.add_argument(
+        "--control", action="append", metavar="CONTROL_ID", help="Control to judge (default: all)"
+    )
     return command
 
 
@@ -522,8 +649,25 @@ def main(argv: list[str] | None = None) -> int:
             if not controls:
                 print("warning: the sample has no negative controls", file=sys.stderr)
             return 0
+        if args.action == "judge-controls":
+            judged = judge_controls(args.archive, args.output, args.control)
+            for result in judged["controls"]:
+                status = (
+                    "detected" if result["detected_all"]
+                    else "missed " + "; ".join(result["missed"])
+                )
+                print(f"- {result['control_id']}: {status}")
+            print(judged["interpretation"])
+            return 0
         report = compare(args.key, args.packet, args.run, args.scores)
-    except (OSError, ValueError, KeyError, json.JSONDecodeError) as error:
+    except (
+        OSError,
+        ValueError,
+        KeyError,
+        json.JSONDecodeError,
+        ValidationError,
+        subprocess.SubprocessError,
+    ) as error:
         print(f"error: {error}", file=sys.stderr)
         return 1
     if args.json:

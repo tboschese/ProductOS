@@ -58,14 +58,32 @@ classification agreement, behavior-check agreement, exact and within-one score a
 absolute and signed score differences overall and by dimension, score differences of two or more
 points, and whether each judge detected every intended failure in each control.
 
+## Automated judging of the controls
+
+Opt-in and makes model calls: ask an archived run's automated judge to assess every control
+with that run's frozen judge configuration, prompt, rubric, and reviewer packet:
+
+```bash
+python -m scripts.calibrate judge-controls \
+  --archive evals/baselines/seed-pilot-2026-10-05 \
+  --output evals/results/control-judging
+```
+
+The command verifies the archived snapshot hashes, records both the run's and the current Codex
+CLI versions, and reuses saved judgments on rerun only when the control, judge, and reviewer packet
+are unchanged. `report.json` lists, per control, whether every intended failure was marked and
+which were missed. The judge model must be available to the Codex login in use; the seed pilot's
+model was refused by an older CLI signed in with a ChatGPT account, so run it from an up-to-date
+Codex installation.
+
 ## Limits
 
 - The report never marks a judge `calibrated`. Maintainers review disagreements, resolve rubric
   ambiguities, record the decision, and recalibrate after material rubric or judge changes.
 - No agreement threshold is prescribed; the protocol requires choosing one from observed
   distributions rather than inventing it in advance.
-- The archived pilot judge never saw the controls, so control detection is reported only for
-  judges that scored them. Testing the automated judge on controls requires a separate judged run.
+- The archived pilot judge never saw the controls, so `compare` reports control detection only
+  for judges that scored them. Use `judge-controls` to test the automated judge on them.
 - Blinding is procedural. Run files and controls are in the repository, so reviewers must agree
   not to consult them before scoring, and they attest to that in the score sheet.
 - Item order and IDs hide provenance, but a case that appears twice signals that one copy may be a

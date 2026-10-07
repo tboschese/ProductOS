@@ -13,6 +13,9 @@ The format follows Keep a Changelog principles and the project uses semantic ver
   `scripts.calibrate compare` validates returned sheets against the exact packet and run, then
   reports pairwise hard-failure, behavior-check, and dimension-score agreement plus control
   detection. It never marks a judge calibrated.
+- Opt-in `scripts.calibrate judge-controls`: the archived pilot judge assesses the negative
+  controls with its frozen prompt, rubric, and configuration, with resumable, input-checked
+  judgments and a schema-validated detection report.
 - Four labeled synthetic negative controls (three English, one Brazilian Portuguese) whose
   intended failures must be declared by their eval case.
 - Schemas and fixtures for calibration controls, packets, keys, and score sheets.

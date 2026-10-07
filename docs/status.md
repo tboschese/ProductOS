@@ -25,10 +25,23 @@ next. Keep stable rules in `AGENTS.md` and durable decisions in [ADRs](decisions
 - Waiting on: at least two independent reviewers to score `packet.json`, then
   `python -m scripts.calibrate compare`.
 
+- Automated judging of the 4 negative controls: `scripts.calibrate judge-controls` is
+  implemented and tested with a fake judge, but has not produced results. In Cursor on
+  2026-10-06 the bundled Codex CLI (0.158.0-alpha.2.1, ChatGPT login, no API key) refused the
+  pilot judge model `gpt-6.1-sol`; the pilot used CLI 0.160.0. Run it from Codex outside Cursor:
+
+  ```bash
+  python -m scripts.calibrate judge-controls \
+    --archive evals/baselines/seed-pilot-2026-10-05 \
+    --output evals/results/control-judging-2026-10-06
+  ```
+
+  Then record which controls were detected here. Do not substitute another judge model; that
+  would not test the pilot judge.
+
 ## Next candidates
 
-- Run `evals/configs/seed-calibration.yaml` (three repetitions; makes model calls) and judge
-  the negative controls with the automated judge.
+- Run `evals/configs/seed-calibration.yaml` (three repetitions; makes model calls).
 - Independent review of `res-001`.
 - 0.4.0 research (Product Sense and Judgment, Decision Making, Systems Thinking, Product
   Strategy, Customer Understanding) only after the gates above, unless deliberately reprioritized.

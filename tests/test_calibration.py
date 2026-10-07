@@ -192,6 +192,76 @@ def test_repository_rejects_controls_with_undeclared_failures():
     assert any("not declared by retention-decline-en" in failure for failure in failures)
 
 
+def fake_judge(detect):
+    calls = []
+
+    def invoke(prompt, judge, prefix, timeout, schema):
+        calls.append(prefix.name)
+        properties = schema["properties"]
+
+        def checks(field, observed):
+            behaviors = properties[field]["items"]["properties"]["behavior"].get("enum", [])
+            return [
+                {"behavior": behavior, "observed": observed, "evidence": "Fake judge."}
+                for behavior in behaviors
+            ]
+
+        dimensions = list(properties["dimension_scores"]["properties"])
+        return json.dumps(
+            {
+                "dimension_scores": {dimension: 0 for dimension in dimensions},
+                "dimension_evidence": {dimension: "Fake judge." for dimension in dimensions},
+                "expected_behavior_checks": checks("expected_behavior_checks", False),
+                "forbidden_behavior_checks": checks("forbidden_behavior_checks", detect),
+                "hard_failure_checks": checks("hard_failure_checks", detect),
+                "citation_check": {
+                    "expected": False,
+                    "material_claims": 0,
+                    "supported_claims": 0,
+                    "notes": "",
+                },
+                "notes": "Fake judge.",
+            }
+        )
+
+    return invoke, calls
+
+
+def test_judge_controls_uses_frozen_judge_and_resumes(tmp_path):
+    invoke, calls = fake_judge(detect=True)
+    report = calibrate.judge_controls(
+        ARCHIVE, tmp_path / "judged", CONTROLS, invoke_judge=invoke, cli_version="fake 1"
+    )
+    assert calls == CONTROLS
+    (result,) = report["controls"]
+    assert result["detected_all"] is True
+    assert report["judge"]["calibration_status"] == "pilot"
+    assert report["run_cli_version"] != report["judge_cli_version"]
+
+    again, repeated = fake_judge(detect=False)
+    resumed = calibrate.judge_controls(
+        ARCHIVE, tmp_path / "judged", CONTROLS, invoke_judge=again, cli_version="fake 1"
+    )
+    assert repeated == []
+    assert resumed["controls"][0]["detected_all"] is True
+
+    meta = tmp_path / "judged" / f"{CONTROLS[0]}.meta.json"
+    meta.write_text(meta.read_text().replace('"pilot"', '"calibrated"'), encoding="utf-8")
+    with pytest.raises(ValueError, match="different inputs"):
+        calibrate.judge_controls(
+            ARCHIVE, tmp_path / "judged", CONTROLS, invoke_judge=again, cli_version="fake 1"
+        )
+
+
+def test_judge_controls_reports_missed_failures(tmp_path):
+    invoke, _ = fake_judge(detect=False)
+    report = calibrate.judge_controls(
+        ARCHIVE, tmp_path / "judged", invoke_judge=invoke, cli_version="fake 1"
+    )
+    assert len(report["controls"]) == 4
+    assert all(not result["detected_all"] and result["missed"] for result in report["controls"])
+
+
 def test_cli_prepare_and_compare(tmp_path, capsys):
     output = tmp_path / "kit"
     assert (
