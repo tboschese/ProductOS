@@ -11,14 +11,20 @@ Open this folder in Cursor or Codex and ask in plain language. The agent loads t
 - **Arguing about a ready-made feature:** "Leadership wants feature Y. Help me evaluate it and
   prepare the conversation." You get the assumptions behind it, alternatives, questions for the
   requester, and a short argument you can use.
-- Diagnosing a metric change, reviewing a roadmap, OKRs, an experiment, or a strategy.
+- **OKRs:** drafting or fixing goals that measure outcomes, with baselines and guardrails.
+- **Product analytics:** diagnosing a metric change, defining metrics, reading cohorts, funnels,
+  and experiment results.
+- **Go-to-market:** launch tier, positioning, motion, pricing and packaging, and readiness.
+- **Frameworks:** which one fits the problem, how to apply it, and when it misleads.
+- Reviewing a roadmap, strategy, or product plan.
 
 Give the context you have; the skill states assumptions instead of inventing facts.
 
 ## Contents
 
 - [`.agents/skills/staff-product-manager/`](.agents/skills/staff-product-manager/SKILL.md): the
-  skill, with references for discovery, feature challenges, decision patterns, and output modes.
+  skill, with references for discovery, feature challenges, OKRs, product analytics,
+  go-to-market, frameworks, decision patterns, and output modes.
 - [`docs/foundations/`](docs/foundations/): the reasoning, evidence, uncertainty, risk, and
   decision models it uses.
 
