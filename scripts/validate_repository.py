@@ -64,6 +64,7 @@ EVAL_SCHEMA_BY_PARENT = {
     "multilingual": "eval-case",
     "regression": "eval-suite",
     "configs": "eval-config",
+    "controls": "calibration-control",
 }
 
 MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
@@ -372,6 +373,22 @@ def validate_content(validators: Mapping[str, Validator]) -> list[str]:
                 failures.append(
                     f"{path.relative_to(ROOT)} has no canonical English case for {family_id}"
                 )
+
+        if schema_key == "calibration-control":
+            relative = path.relative_to(ROOT)
+            if path.stem != data["id"]:
+                failures.append(f"{relative} filename must match control id {data['id']}")
+            case = eval_cases.get(str(data["case_id"]))
+            if case is None:
+                failures.append(f"{relative} references missing eval case {data['case_id']}")
+                continue
+            for field_name in ("hard_failures", "forbidden_behaviors"):
+                for behavior in data["intended_failures"][field_name]:
+                    if behavior not in case[field_name]:
+                        failures.append(
+                            f"{relative} intended {field_name} entry is not declared by "
+                            f"{data['case_id']}: {behavior}"
+                        )
 
     return failures
 

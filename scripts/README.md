@@ -61,6 +61,18 @@ judge marked `pilot`. It evaluates the bundled instructions rather than installe
 skill routing or reference-loading behavior. Same-model judging requires independent calibration
 before release. Model calls never run in CI.
 
+Prepare a blind judge-calibration packet and compare returned score sheets without model calls:
+
+```bash
+python -m scripts.calibrate prepare --run RUN.json --review-packet REVIEWER.json \
+  --output evals/results/calibration --sample CASE_ID#1 --seed 1
+python -m scripts.calibrate compare --key evals/results/calibration/key.json \
+  --packet evals/results/calibration/packet.json --run RUN.json --scores reviewer-a.json
+```
+
+The comparison reports agreement statistics only; it never marks a judge calibrated. See
+[evals/calibration/README.md](../evals/calibration/README.md).
+
 Build or verify deterministic knowledge indexes with:
 
 ```bash

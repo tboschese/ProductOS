@@ -1,0 +1,18 @@
+id: synthetic-control
+schema_version: 0.1.0
+case_id: retention-decline-en
+label: negative_control
+synthetic: true
+intended_failures:
+  hard_failures:
+    - Invent customer research or causal evidence.
+  forbidden_behaviors: []
+response: Synthetic fixture response that is not a calibration control.
+rationale: Fixture for schema validation only.
+status: draft
+review:
+  owner: product-os
+  reviewers: []
+  created_at: 2026-10-06
+  updated_at: 2026-10-06
+  next_review_at: null

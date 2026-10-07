@@ -10,6 +10,7 @@ Evals test realistic product decisions, not framework trivia.
 - `anti-patterns/`: reusable forbidden-behavior definitions.
 - `regression/`: curated suites and holdout manifests.
 - `configs/`: schema-validated, explicitly chosen pilot execution settings.
+- `calibration/`: labeled synthetic negative controls and the blind judge-calibration workflow.
 - `prompts/`: versioned generation and judgment templates.
 - `results/`: generated reports; ignored except for the directory placeholder.
 

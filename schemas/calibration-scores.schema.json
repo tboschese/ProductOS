@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://product-os.dev/schemas/calibration-scores.schema.json",
+  "title": "ProductOS independent judge-calibration score sheet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "packet_sha256", "reviewer", "independent_of_automated_scores",
+    "scored_at", "items"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "packet_sha256": {"$ref": "https://product-os.dev/schemas/calibration-packet.schema.json#/$defs/sha256"},
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity", "type"],
+      "properties": {
+        "identity": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+        "type": {"enum": ["human", "model", "hybrid"]}
+      }
+    },
+    "independent_of_automated_scores": {"type": "boolean"},
+    "scored_at": {"type": "string", "format": "date-time"},
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "item_id", "dimension_scores", "expected_behavior_checks",
+          "forbidden_behavior_checks", "hard_failure_checks", "notes"
+        ],
+        "properties": {
+          "item_id": {"$ref": "https://product-os.dev/schemas/calibration-packet.schema.json#/$defs/itemId"},
+          "dimension_scores": {
+            "type": "object",
+            "minProperties": 1,
+            "propertyNames": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/rubricDimension"},
+            "additionalProperties": {"type": "integer", "minimum": 0, "maximum": 4}
+          },
+          "expected_behavior_checks": {"type": "array", "items": {"$ref": "https://product-os.dev/schemas/eval-run.schema.json#/$defs/behaviorCheck"}},
+          "forbidden_behavior_checks": {"type": "array", "items": {"$ref": "https://product-os.dev/schemas/eval-run.schema.json#/$defs/behaviorCheck"}},
+          "hard_failure_checks": {"type": "array", "items": {"$ref": "https://product-os.dev/schemas/eval-run.schema.json#/$defs/behaviorCheck"}},
+          "notes": {"type": "string"}
+        }
+      }
+    }
+  }
+}

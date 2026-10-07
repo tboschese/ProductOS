@@ -50,7 +50,8 @@ with the [recorded assessments](run.json) and per-dimension evidence in the judg
 
 There was no observed hard-failure response in this pilot. The calibration protocol still
 requires failing examples; use explicitly labeled negative controls or subsequent observed
-failures rather than relabeling this run. At least three repetitions are required during
+failures rather than relabeling this run. The [calibration workflow](../../calibration/README.md)
+prepares this sample with the labeled controls as a blind packet and compares returned scores. At least three repetitions are required during
 stochastic calibration. Do not change skill instructions or relax thresholds merely to match
 these scores. Resolve response omissions, compound-behavior interpretation, and judge-anchor
 disagreements before using automated scores for release decisions.

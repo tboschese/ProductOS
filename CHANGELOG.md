@@ -6,6 +6,24 @@ The format follows Keep a Changelog principles and the project uses semantic ver
 
 ## [Unreleased]
 
+### Added
+
+- Judge-calibration kit: `scripts.calibrate prepare` freezes a shuffled, blind packet of sampled
+  run responses and negative controls with a separate coordinator key and blank score sheet;
+  `scripts.calibrate compare` validates returned sheets against the exact packet and run, then
+  reports pairwise hard-failure, behavior-check, and dimension-score agreement plus control
+  detection. It never marks a judge calibrated.
+- Four labeled synthetic negative controls (three English, one Brazilian Portuguese) whose
+  intended failures must be declared by their eval case.
+- Schemas and fixtures for calibration controls, packets, keys, and score sheets.
+- `evals/configs/seed-calibration.yaml`: the pilot executor with three repetitions.
+- `docs/status.md`: shared, tool-independent working memory referenced from `AGENTS.md`.
+
+### Fixed
+
+- One tampered or unreadable analysis record no longer blocks opening the local workspace or
+  listing other decisions' analyses; opening a specific analysis still verifies its integrity.
+
 ## [0.3.0-alpha.6] — 2026-10-06
 
 ### Added

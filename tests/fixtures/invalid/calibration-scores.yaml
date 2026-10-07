@@ -1,0 +1,15 @@
+schema_version: 0.1.0
+packet_sha256: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+reviewer:
+  identity: synthetic-reviewer
+  type: human
+independent_of_automated_scores: true
+scored_at: "2026-10-06T12:00:00Z"
+items:
+  - item_id: item-001
+    dimension_scores:
+      decision_quality: null
+    expected_behavior_checks: []
+    forbidden_behavior_checks: []
+    hard_failure_checks: []
+    notes: Unscored template items are not a completed score sheet.

@@ -40,6 +40,9 @@ against exported cases and policies are implemented. The [first observed pilot](
 completed 21 cases with a pilot judge and one repetition; its multilingual gate failed.
 The remaining exit item is a calibrated, independently reviewed baseline demonstrating the
 required behavior rather than a synthetic test fixture or an uncalibrated model assessment.
+The [calibration kit](evals/calibration/README.md) prepares blind review packets with labeled
+negative controls and reports judge agreement; independent reviewers and a three-repetition run
+are still required.
 
 The Staff PM integration is intentionally moved earlier than in the original specification so architectural problems surface before broad research.
 

@@ -17,6 +17,8 @@ Build an evidence-based, multilingual Product Management knowledge and reasoning
 
 ## Repository map
 
+- `docs/status.md`: shared working memory — current state, work in progress, recent decisions,
+  and next steps. Read it first; update it when your work changes any of these.
 - `ARCHITECTURE.md`: boundaries, data ownership, and system contracts.
 - `ROADMAP.md`: delivery sequence and quality gates.
 - `docs/foundations/`: foundational models and policies.
@@ -29,6 +31,8 @@ Build an evidence-based, multilingual Product Management knowledge and reasoning
 ## Rules
 
 - Read only the documents relevant to the current change.
+- Keep `docs/status.md` current in the same commit as the work it describes; this file is shared by
+  every agent tool, so do not rely on tool-specific memories for project state.
 - Before adding knowledge, search existing IDs, concepts, terminology, and sources.
 - Every material claim requires traceable provenance and documented limitations.
 - Do not create domain knowledge, frameworks, or skills without their required schemas and eval coverage.

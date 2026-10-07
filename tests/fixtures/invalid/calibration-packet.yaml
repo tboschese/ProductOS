@@ -1,0 +1,20 @@
+schema_version: 0.1.0
+audience: calibration_reviewer
+rubric: Synthetic rubric fixture.
+rubric_sha256: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+items:
+  - item_id: item-001
+    case:
+      id: retention-decline-en
+      locale: en
+      title: Synthetic case
+      input: Synthetic input.
+      context: {}
+      applicable_dimensions: [decision_quality]
+      expected_behaviors: [Synthetic expected behavior.]
+      forbidden_behaviors: []
+      hard_failures: []
+      scoring_notes: ""
+      citations_expected: false
+    response: Synthetic response.
+    kind: control

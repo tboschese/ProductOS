@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://product-os.dev/schemas/calibration-control.schema.json",
+  "title": "ProductOS labeled negative control for judge calibration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "schema_version", "case_id", "label", "synthetic", "intended_failures",
+    "response", "rationale", "status", "review"
+  ],
+  "properties": {
+    "id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "schema_version": {"const": "0.1.0"},
+    "case_id": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/canonicalId"},
+    "label": {"const": "negative_control"},
+    "synthetic": {"const": true},
+    "intended_failures": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hard_failures", "forbidden_behaviors"],
+      "properties": {
+        "hard_failures": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"},
+        "forbidden_behaviors": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/nonEmptyStringList"}
+      },
+      "anyOf": [
+        {"properties": {"hard_failures": {"minItems": 1}}},
+        {"properties": {"forbidden_behaviors": {"minItems": 1}}}
+      ]
+    },
+    "response": {"type": "string", "minLength": 1},
+    "rationale": {"type": "string", "minLength": 1},
+    "status": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/status"},
+    "review": {"$ref": "https://product-os.dev/schemas/common.schema.json#/$defs/review"}
+  }
+}

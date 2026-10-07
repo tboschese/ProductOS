@@ -72,6 +72,14 @@ borderline, and failing responses.
 ProductOS does not yet prescribe a universal agreement coefficient or sample size. Those
 thresholds must be selected with actual baseline distributions rather than invented in advance.
 
+`scripts.calibrate` prepares a blind, shuffled packet of sampled responses and labeled negative
+controls, keeps provenance in a separate coordinator key, validates returned score sheets against
+the exact packet, and reports agreement for every pair of judges. It does not mark a judge
+calibrated. See [calibration/README.md](calibration/README.md).
+
+`evals/configs/seed-calibration.yaml` declares the same pilot executor with three repetitions for
+the stochastic-calibration run.
+
 ## Gate interpretation
 
 The suite owns explicit provisional thresholds. `scripts.evaluate_results` calculates:
